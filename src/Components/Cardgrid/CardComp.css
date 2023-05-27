@@ -55,4 +55,6 @@
     transform: translateX(4px);
   }
   
-  
+  .ImageCard{
+    object-fit: cover;
+  }

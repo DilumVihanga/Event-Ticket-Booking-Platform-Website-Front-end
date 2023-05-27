@@ -2,8 +2,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComp from './Components/NavbarComp';
 import HeroComp from './Components/Hero/HeroComp';
-import Listevent from './Components/Listevent';
+import ListeventComp from './Components/Listevent/ListeventComp';
 import CardGridComp from './Components/Cardgrid/CardGridComp';
+
 
 
 
@@ -12,7 +13,7 @@ function App() {
     <div className="App">
       <NavbarComp/>
      <HeroComp/>
-     <Listevent/><br></br><br></br><br></br>
+     <ListeventComp/><br></br><br></br><br></br>
      <CardGridComp/><br></br>
      <CardGridComp/>
            
