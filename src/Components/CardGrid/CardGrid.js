@@ -1,13 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
-import "./Test.css";
+import "../CardGrid/CardGrid.css"
 
-
-export default function Test() {
+export default function CardGrid() {
   return (
     <div>
         <div class="main">
-  <h1>Responsive Card Grid Layout</h1>
+ 
   <ul class="cards">
     <li class="cards_item">
       <div class="card">
@@ -72,7 +71,6 @@ export default function Test() {
   </ul>
 </div>
 
-<h3 class="made_by">Made with ♡</h3>
     </div>
   )
 }
