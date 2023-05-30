@@ -1,91 +1,47 @@
-import React from 'react'
-import HeroSlider, { Overlay, Slide, MenuNav } from "hero-slider";
-import Wrapper from "../Hero/Wrapper";
+import Carousel from 'react-bootstrap/Carousel';
 
-
-const bogliasco = "https://i.ibb.co/gz4SLgT/maxresdefault-7.jpg";
-const countyClare = "https://i.ibb.co/1zkv0z3/maxresdefault-8.jpg";
-const craterRock = "https://i.ibb.co/NmZVwkV/maxresdefault-9.jpg";
-const giauPass = "https://i.imgur.com/8IuucQZ.jpg";
-const dejongo = "https://i.ibb.co/NmZVwkV/maxresdefault-9.jpg";
-const hihihihi = "https://i.ibb.co/NmZVwkV/maxresdefault-9.jpg";
-
-export default function BasicSlider() {
+function HeroComp() {
   return (
-    <HeroSlider
-      height={"100vh"}
-      autoplay
-      controller={{
-        initialSlide: 1,
-        slidingDuration: 500,
-        slidingDelay: 100,
-        onSliding: (nextSlide) =>
-          console.debug("onSliding(nextSlide): ", nextSlide),
-        onBeforeSliding: (previousSlide, nextSlide) =>
-          console.debug(
-            "onBeforeSliding(previousSlide, nextSlide): ",
-            previousSlide,
-            nextSlide
-          ),
-        onAfterSliding: (nextSlide) =>
-          console.debug("onAfterSliding(nextSlide): ", nextSlide)
-      }}
-    >
-      <Overlay>
-        <Wrapper>
-          
-        </Wrapper>
-      </Overlay>
+    <Carousel slide={false}>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://picsum.photos/500/300/?image=10"
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://picsum.photos/500/300/?image=10"
+          alt="Second slide"
+        />
 
-      <Slide
-        shouldRenderMask
-        label="Giau Pass - Italy"
-        background={{
-          backgroundImageSrc: giauPass
-        }}
-      />
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://picsum.photos/500/300/?image=10"
+          alt="Third slide"
+        />
 
-      <Slide
-        shouldRenderMask
-        label="Bogliasco - Italy"
-        background={{
-          backgroundImageSrc: bogliasco
-        }}
-      />
-
-      <Slide
-        shouldRenderMask
-        label="County Clare - Ireland"
-        background={{
-          backgroundImageSrc: countyClare
-        }}
-      />
-
-      <Slide
-        shouldRenderMask
-        label="Crater Rock, OR - United States"
-        background={{
-          backgroundImageSrc: craterRock
-        }}
-      />
-
-      <Slide
-        shouldRenderMask
-        label="dejongo, OR - Sri Lanka"
-        background={{
-          backgroundImageSrc: dejongo
-        }}
-      />
-
-      <Slide
-        shouldRenderMask
-        label="hihihihi, OR - Sri Lanka"
-        background={{
-          backgroundImageSrc: hihihihi
-        }}
-      />
-
-      <MenuNav />
-    </HeroSlider>
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
   );
 }
+
+export default HeroComp;
