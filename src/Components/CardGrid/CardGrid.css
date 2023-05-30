@@ -18,7 +18,7 @@ body {
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;
-  padding: 1rem;
+  
 }
 
 .main{
@@ -92,7 +92,7 @@ img {
 
 .card_content {
   padding: 1rem;
-  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
+  background: linear-gradient(to bottom left, #7848f4 40%, #b09be6 100%);
 }
 
 .card_title {

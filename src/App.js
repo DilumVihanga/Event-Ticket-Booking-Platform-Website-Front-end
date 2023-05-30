@@ -1,13 +1,13 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavbarComp from './Components/NavbarComp';
+import NavComp from './Components/Navbar/NavComp';
 import HeroComp from './Components/Hero/HeroComp';
 import CardGrid from './Components/CardGrid/CardGrid';
 
 function App() {
   return (
     <div className="App">
-      <NavbarComp/>
+      <NavComp/>
      <HeroComp/><br></br><br></br><br></br>
           <CardGrid/>
      
