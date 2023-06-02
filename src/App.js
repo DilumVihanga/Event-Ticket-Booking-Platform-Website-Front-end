@@ -4,6 +4,8 @@ import NavComp from './Components/Navbar/NavComp';
 import HeroComp from './Components/Hero/HeroComp';
 import CardGrid from './Components/CardGrid/CardGrid';
 import HorizontalcardComp from './Components/Horizontalcard/HorizontalcardComp';
+import CategorycardComp from './Components/Categorycard/CategorycardComp';
+
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
      <HeroComp/><br></br><br></br>
      <HorizontalcardComp/> <br></br>
           <CardGrid/>
+          <CategorycardComp/>
+          
      
                 
     </div>
