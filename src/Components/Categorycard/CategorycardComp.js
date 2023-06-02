@@ -2,6 +2,7 @@
 import React from 'react'
 import "../Categorycard/CategorycardComp.css"
 
+
 export default function CategorycardComp() {
   return (
     <div>
@@ -14,9 +15,7 @@ export default function CategorycardComp() {
         <div class="s-img-con">
         </div>
 
-      
-
-        
+              
         <div class="listar-search-categories listar-categories-fixed-bottom">
           <div class="listar-listing-categories">
             <a>
@@ -66,6 +65,8 @@ export default function CategorycardComp() {
                   Outdoor </div>
               </div>
             </a>
+
+            
 
           </div>
         </div>

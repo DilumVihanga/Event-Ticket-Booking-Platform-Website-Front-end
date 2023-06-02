@@ -10,11 +10,13 @@ import CategorycardComp from './Components/Categorycard/CategorycardComp';
 function App() {
   return (
     <div className="App">
+      
       <NavComp/>
      <HeroComp/><br></br><br></br>
+     <CategorycardComp/>
      <HorizontalcardComp/> <br></br>
           <CardGrid/>
-          <CategorycardComp/>
+          
           
      
                 

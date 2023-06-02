@@ -1,11 +1,14 @@
-
+.listar-category-icon-box {
+    background-color: rgb(38, 100, 201);
+  }
+  
 
 .searchbox {
     
     background-color: #2f53c1;
     margin: 5% auto;
     display: table;
-    width: 100%;
+    width: 70%;
     position: relative;
     margin-right: auto;
     margin-left: auto;
