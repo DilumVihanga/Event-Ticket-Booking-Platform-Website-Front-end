@@ -3,7 +3,7 @@
     margin-right:-100px;
   }
   .menu-outer:hover .bar { background:rgba(122, 64, 198, 0.9); }
-  .menu-outer > nav ul { top:15%; }
+  .menu-outer > nav ul { top:8%; }
   
   /* The rest I chnaged parts but not most of it */
   
