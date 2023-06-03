@@ -33,10 +33,11 @@ html {
   .card-media {
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
-    height: 125px;
+    height: 170px;
     margin-bottom: 25px;
     transition: all 300ms ease-out;
-    width: 100%;
+    width: 80%;
+    margin-left: 10%;
   }
   
   .card-media:hover {
@@ -47,7 +48,7 @@ html {
     background: none;
     float: left;
     height: 100%;
-    width: 20%;
+    width: 30%;
     position: relative;
   }
   
@@ -138,7 +139,8 @@ html {
     height: 100%;
     padding: 12px 15px;
     position: relative;
-    width: 65%;
+    width: 70%;
+    border-radius: 0 10px 10px 0;
   }
   
   .card-media-body-top {
