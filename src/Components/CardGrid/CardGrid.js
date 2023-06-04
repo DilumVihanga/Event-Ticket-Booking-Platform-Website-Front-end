@@ -30,7 +30,7 @@ export default function CardGrid() {
     </li>
     <li class="cards_item">
       <div class="card">
-        <div class="card_image"><img src="https://picsum.photos/500/300/?image=11"/></div>
+        <div class="card_image"><img src="https://mytickets.lk/contents/main-banner/devi%201%20main.jpg"/></div>
         <div class="card_content">
           <h2 class="card_title">Card Grid Layout</h2>
           <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
