@@ -52,7 +52,7 @@ export default function CardGrid() {
     </li>
     <li class="cards_item">
       <div class="card">
-        <div class="card_image"><img src="https://www.ozlanka.com/wp-content/uploads/2023/02/BnS_with_Umaria-_Randhir_2Forty2_544_300.jpg"/></div>
+        <div class="card_image"><img src="https://mytickets.lk/contents/main-banner/hanthanata%20new%20main%20banner.jpg"/></div>
         <div class="card_content">
           <h2 class="card_title">Card Grid Layout</h2>
           <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
