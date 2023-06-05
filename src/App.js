@@ -19,7 +19,7 @@ function App() {
      
      <CategorycardComp/><br></br><br></br>
      <HorizontalcardComp/> <br></br><br></br><br></br>
-          <CardGrid/>
+          <CardGrid/><br></br><br></br><br></br>
 
           <FooterComp/>
           

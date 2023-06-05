@@ -17,7 +17,7 @@ export default function FooterComp() {
                         <div class="single-cta">
                         
                             <div class="cta-text">
-                            <FontAwesomeIcon icon={faLocationDot} size="2xl" style={{color: "#ea6d2a", paddingBottom:'20px'}} />
+                            <FontAwesomeIcon icon={faLocationDot} size="2xl" style={{color: "#b09be6", paddingBottom:'20px'}} />
                                 <h4>Find us</h4>
                                 <span>1010 Avenue, sw 54321, chandigarh</span>
                             </div>
@@ -27,7 +27,7 @@ export default function FooterComp() {
                         <div class="single-cta">
                             <i class="fas fa-phone"></i>
                             <div class="cta-text">
-                            <FontAwesomeIcon icon={faPhoneVolume} size="2xl" style={{color: "#ea6d2a", paddingBottom:'20px'}} />  
+                            <FontAwesomeIcon icon={faPhoneVolume} size="2xl" style={{color: "#b09be6", paddingBottom:'20px'}} />  
                                 <h4>Call us</h4>
                                 <span>9876543210 0</span>
                             </div>
@@ -37,7 +37,7 @@ export default function FooterComp() {
                         <div class="single-cta">
                             <i class="far fa-envelope-open"></i>
                             <div class="cta-text">
-                            <FontAwesomeIcon icon={faEnvelope} size="2xl" style={{color: "#ea6d2a", paddingBottom:'20px'}} />
+                            <FontAwesomeIcon icon={faEnvelope} size="2xl" style={{color: "#b09be6", paddingBottom:'20px'}} />
                                 <h4>Mail us</h4>
                                 <span>mail@info.com</span>
                             </div>
