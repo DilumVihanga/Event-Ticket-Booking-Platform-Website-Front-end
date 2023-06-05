@@ -2,6 +2,7 @@ import React from 'react'
 import "../Footer/Footer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLocationDot, faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
+import { faFacebook, faTwitter, faGooglePlus } from '@fortawesome/free-brands-svg-icons';
 
 
 
@@ -58,9 +59,9 @@ export default function FooterComp() {
                             </div>
                             <div class="footer-social-icon">
                                 <span>Follow us</span>
-                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
-                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
-                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                                <a href="#"><FontAwesomeIcon icon={faFacebook} size="xl"style={{ marginRight:'20px'}}/></a>
+                                <a href="#"><FontAwesomeIcon icon={faTwitter} size="xl" style={{ marginRight:'20px'}}/></a>
+                                <a href="#"><FontAwesomeIcon icon={faGooglePlus} size="xl" style={{ marginRight:'20px'}}/></a>
                             </div>
                         </div>
                     </div>
@@ -107,7 +108,7 @@ export default function FooterComp() {
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 text-center text-lg-left">
                         <div class="copyright-text">
-                            <p>Copyright &copy; 2018, All Right Reserved <a href="https://codepen.io/anupkumar92/">Anup</a></p>
+                            <p>Copyright &copy; 2023, All Right Reserved. Developed by <a href="https://github.com/DilumVihanga">Dilum Vihanga</a></p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">

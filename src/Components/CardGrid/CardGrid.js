@@ -5,7 +5,7 @@ import "../CardGrid/CardGrid.css"
 export default function CardGrid() {
   return (
     <div>
-        <div class="main">
+        <div class="main" id='upcomingevents'>
  
   <ul class="cards">
     <li class="cards_item">

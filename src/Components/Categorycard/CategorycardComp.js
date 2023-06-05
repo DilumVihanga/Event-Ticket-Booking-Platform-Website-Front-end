@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import "../Categorycard/CategorycardComp.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMusic, faVolleyball, faMasksTheater, faBusinessTime } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function CategorycardComp() {
@@ -22,11 +24,11 @@ export default function CategorycardComp() {
               <div>
                 <div class="listar-category-icon-wrapper">
                   <div class="listar-category-icon-box" ></div>
-                  <span class="far fa-moon">
+                  <span class="far fa-moon"> <FontAwesomeIcon icon={faMusic} size="xl" />
                   </span>
                 </div>
                 <div class="listar-header-category-name">
-                  Nightlife </div>
+                  Music </div>
               </div>
             </a>
 
@@ -34,11 +36,11 @@ export default function CategorycardComp() {
               <div>
                 <div class="listar-category-icon-wrapper">
                   <div class="listar-category-icon-box" ></div>
-                  <span class="fab fa-airbnb">
+                  <span class="fab fa-airbnb"> <FontAwesomeIcon icon={faMasksTheater} size="xl"/>
                   </span>
                 </div>
                 <div class="listar-header-category-name">
-                  Stay </div>
+                  Drama </div>
               </div>
             </a>
 
@@ -46,11 +48,11 @@ export default function CategorycardComp() {
               <div>
                 <div class="listar-category-icon-wrapper">
                   <div class="listar-category-icon-box" ></div>
-                  <span class="fab fa-fly">
+                  <span class="fab fa-fly"> <FontAwesomeIcon icon={faBusinessTime} size="xl"/>
                   </span>
                 </div>
                 <div class="listar-header-category-name">
-                  Air </div>
+                  Conference </div>
               </div>
             </a>
 
@@ -58,11 +60,11 @@ export default function CategorycardComp() {
               <div>
                 <div class="listar-category-icon-wrapper">
                   <div class="listar-category-icon-box" ></div>
-                  <span class="fab fa-forumbee">
+                  <span class="fab fa-forumbee"> <FontAwesomeIcon icon={faVolleyball} size="xl"/>
                   </span>
                 </div>
                 <div class="listar-header-category-name">
-                  Outdoor </div>
+                  Sports </div>
               </div>
             </a>
 

@@ -58,6 +58,7 @@ img {
 
 .cards {
   display: flex;
+  
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
@@ -88,6 +89,7 @@ img {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  text-align: center;
 }
 
 .card_content {

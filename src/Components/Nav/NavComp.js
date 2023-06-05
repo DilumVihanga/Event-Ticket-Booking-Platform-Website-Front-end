@@ -1,9 +1,14 @@
 import React from 'react'
 import "../Nav/Nav.css"
+import zIndex from '@mui/material/styles/zIndex'
+import { position } from '@chakra-ui/react'
 
 export default function NavComp() {
   return (
     <div>
+        <div class="nav-logo">
+                                <a href="index.html"><img src="https://i.ibb.co/1bBxbPC/event-ticketlk-low-resolution-logo-color-on-transparent-background.png" style={{width:'210px', height:'130px', zIndex:'200', position:'absolute', marginTop:'20px'}} alt="logo"/></a>
+                            </div>
         {/* <!-- source https://cssdeck.com/labs/css-side-menu --> */}
 <div class="menu-outer">
     <div class="menu-icon">
@@ -14,7 +19,7 @@ export default function NavComp() {
     <nav>
         <ul>
            <li><a href="#">Home</a></li>
-           <li><a href="#">Upcoming Events</a></li>
+           <li><a href="./Pages/Upcomingevents">Upcoming Events</a></li>
            <li><a href="#">About</a></li> 
             <li><a href="#">Contact</a></li>
             <li><a href="#">Cart</a></li>
