@@ -16,3 +16,16 @@
     width: 5rem;
     height: 5rem;
   }
+
+  .event-title {
+    font-size: 50px;
+    padding-bottom: 20px;
+    text-shadow: 2px 2px 0 rgb(153, 56, 218);
+  }
+
+  .discription {
+    font-size: 20px;
+    padding-bottom: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 1px 1px 0 rgb(153, 56, 218);
+  }

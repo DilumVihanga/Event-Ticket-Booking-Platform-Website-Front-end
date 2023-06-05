@@ -16,8 +16,8 @@ function HeroComp() {
           style={{ height: "100vh" }}
         />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit grero, a pharetra augue mollis interdum.</p>
+          <h3 className="event-title">EventTicket.lk</h3>
+          <p className="discription">Sri-Lanka's Number 1 Event Ticket Booking Platform</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -29,8 +29,8 @@ function HeroComp() {
         />
 
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3 className="event-title">Roo Sara</h3>
+          <p className="discription">Get ready for an unforgettable night at Roo Sara Event, where magic happens!</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -42,9 +42,9 @@ function HeroComp() {
         />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          <h3 className="event-title">Infinity Live</h3>
+          <p className="discription">
+          Experience the infinite possibilities of entertainment at Infinity Live, where every moment is electrifying!
           </p>
         </Carousel.Caption>
       </Carousel.Item>

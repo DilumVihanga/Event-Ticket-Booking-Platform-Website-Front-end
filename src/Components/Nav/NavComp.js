@@ -18,12 +18,12 @@ export default function NavComp() {
     </div>
     <nav>
         <ul>
-           <li><a href="#">Home</a></li>
-           <li><a href="./Pages/Upcomingevents">Upcoming Events</a></li>
-           <li><a href="#">About</a></li> 
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Cart</a></li>
-            <li><a href="#">Checkout</a></li>
+           <li><a href="/">Home</a></li>
+           <li><a href="/upcomingevents"> All Events</a></li>
+           <li><a href="/contact">Contact</a></li>                      
+            <li><a href="/upcomingevents">Cart</a></li>
+            <li><a href="/upcomingevents">Checkout</a></li>
+            <li><a href="/login">Login</a></li> 
        </ul>
    </nav>
 </div>

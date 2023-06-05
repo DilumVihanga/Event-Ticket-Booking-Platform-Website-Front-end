@@ -20,7 +20,7 @@ export default function FooterComp() {
                             <div class="cta-text">
                             <FontAwesomeIcon icon={faLocationDot} size="2xl" style={{color: "#b09be6", paddingBottom:'20px'}} />
                                 <h4>Find us</h4>
-                                <span>1010 Avenue, sw 54321, chandigarh</span>
+                                <span>80/9, Ganeramba, Beruwala, Sri Lanka.</span>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@ export default function FooterComp() {
                             <div class="cta-text">
                             <FontAwesomeIcon icon={faPhoneVolume} size="2xl" style={{color: "#b09be6", paddingBottom:'20px'}} />  
                                 <h4>Call us</h4>
-                                <span>9876543210 0</span>
+                                <span>+94 77 590 9351</span>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@ export default function FooterComp() {
                             <div class="cta-text">
                             <FontAwesomeIcon icon={faEnvelope} size="2xl" style={{color: "#b09be6", paddingBottom:'20px'}} />
                                 <h4>Mail us</h4>
-                                <span>mail@info.com</span>
+                                <span>contact@eventticket.lk</span>
                             </div>
                         </div>
                     </div>
@@ -54,8 +54,7 @@ export default function FooterComp() {
                                 <a href="index.html"><img src="https://i.ibb.co/1bBxbPC/event-ticketlk-low-resolution-logo-color-on-transparent-background.png" class="img-fluid" alt="logo"/></a>
                             </div>
                             <div class="footer-text">
-                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
-                                elit,Lorem ipsum dolor sit amet.</p>
+                                <p>Discover the convenience of Ticket Event, your go-to platform for seamless and stress-free ticket booking experiences.</p>
                             </div>
                             <div class="footer-social-icon">
                                 <span>Follow us</span>
