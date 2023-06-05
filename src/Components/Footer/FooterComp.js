@@ -50,7 +50,7 @@ export default function FooterComp() {
                     <div class="col-xl-4 col-lg-4 mb-50">
                         <div class="footer-widget">
                             <div class="footer-logo">
-                                <a href="index.html"><img src="https://i.ibb.co/QDy827D/ak-logo.png" class="img-fluid" alt="logo"/></a>
+                                <a href="index.html"><img src="https://i.ibb.co/1bBxbPC/event-ticketlk-low-resolution-logo-color-on-transparent-background.png" class="img-fluid" alt="logo"/></a>
                             </div>
                             <div class="footer-text">
                                 <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
