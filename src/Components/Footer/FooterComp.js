@@ -1,5 +1,10 @@
 import React from 'react'
 import "../Footer/Footer.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faLocationDot, faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
+
+
+
 
 export default function FooterComp() {
   return (
@@ -60,9 +65,6 @@ export default function FooterComp() {
             </div>
         </div>
     </footer>
-   
-
-</div>
     </div>
   )
 }
