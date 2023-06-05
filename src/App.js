@@ -1,12 +1,8 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import HeroComp from './Components/Hero/HeroComp';
-import CardGrid from './Components/CardGrid/CardGrid';
-import HorizontalcardComp from './Components/Horizontalcard/HorizontalcardComp';
-import CategorycardComp from './Components/Categorycard/CategorycardComp';
-import NavComp from './Components/Nav/NavComp';
-import FooterComp from './Components/Footer/FooterComp';
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Contact from './Pages/Contact';
+import Upcomingevents from './Pages/Upcomingevents';
+import Home from './Pages/Home';
 
 
 
@@ -29,5 +25,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
