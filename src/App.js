@@ -22,6 +22,7 @@ export default function () {
         <Route path="/detail" element={<Detail/>}/>
         </Routes>      
       </BrowserRouter>
+      <br></br> <br></br> <br></br> <br></br>
       <FooterComp/>
       
     </div>
