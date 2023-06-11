@@ -53,7 +53,7 @@ export default function FooterComp() {
                             <div class="footer-logo">
                                 <a href="index.html"><img src="https://i.ibb.co/1bBxbPC/event-ticketlk-low-resolution-logo-color-on-transparent-background.png" class="img-fluid" alt="logo"/></a>
                             </div>
-                            <div class="footer-text">
+                            <div class="footer-text-L">
                                 <p>Discover the convenience of Ticket Event, your go-to platform for seamless and stress-free ticket booking experiences.</p>
                             </div>
                             <div class="footer-social-icon">
@@ -92,7 +92,7 @@ export default function FooterComp() {
                                 <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
                             </div>
                             <div class="subscribe-form">
-                                <form action="#">
+                                <form class="formmail"action="#">
                                     <input type="text" placeholder="Email Address"/>
                                     <button><FontAwesomeIcon icon={faEnvelope} /></button>
                                 </form>

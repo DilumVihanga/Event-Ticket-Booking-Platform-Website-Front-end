@@ -53,7 +53,7 @@ ul {
   font-size: 14px;
       color: #7e7e7e;
   line-height: 28px;
-  padding: 0 30px 0 30px;
+  padding: 0px;
 }
 .footer-social-icon span {
   color: #fff;
@@ -173,4 +173,16 @@ ul {
 .footer-social-icon{
   padding-top:10px ;
   padding-left: 30px;
+}
+.formmail{
+  padding:opx;
+}
+
+.footer-text-L {
+  margin-bottom: 14px;
+  font-size: 14px;
+      color: #7e7e7e;
+  line-height: 28px;
+  padding-left: 30px;
+  padding-right: 40px;
 }

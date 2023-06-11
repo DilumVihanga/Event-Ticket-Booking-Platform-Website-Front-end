@@ -7,6 +7,7 @@ import Home from './Pages/Home';
 import NavComp from './Components/Nav/NavComp';
 import FooterComp from './Components/Footer/FooterComp';
 import LoginSignup from './Pages/LoginSignup';
+import Detail from './Pages/Detail';
 
 export default function () {
   return (
@@ -18,6 +19,7 @@ export default function () {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/upcomingevents" element={<Upcomingevents/>}/>
         <Route path="/login" element={<LoginSignup/>}/>
+        <Route path="/detail" element={<Detail/>}/>
         </Routes>      
       </BrowserRouter>
       <FooterComp/>

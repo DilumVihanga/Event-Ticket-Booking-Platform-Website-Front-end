@@ -4,6 +4,7 @@ import HeroComp from '../Components/Hero/HeroComp';
 import CardGrid from '../Components/CardGrid/CardGrid';
 import HorizontalcardComp from '../Components/Horizontalcard/HorizontalcardComp';
 import CategorycardComp from '../Components/Categorycard/CategorycardComp';
+import CalendarComp from '../Components/EventCalendar/CalendarComp';
 
 
 
@@ -20,7 +21,7 @@ export default function Home() {
      <h1 style={{fontFamily:"cursive" , color: "white"}}>Upcoming Events</h1> <br></br><br></br><br></br><br></br>
           <CardGrid/><br></br><br></br><br></br>
 
-          <CalendarComp/><br></br><br></br>
+         <CalendarComp/>
             
     </div>
   )
