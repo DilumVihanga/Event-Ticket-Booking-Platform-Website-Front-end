@@ -19,6 +19,8 @@ export default function Home() {
      <HorizontalcardComp/> <br></br><br></br><br></br><br></br>
      <h1 style={{fontFamily:"cursive" , color: "white"}}>Upcoming Events</h1> <br></br><br></br><br></br><br></br>
           <CardGrid/><br></br><br></br><br></br>
+
+          <CalendarComp/><br></br><br></br>
             
     </div>
   )
