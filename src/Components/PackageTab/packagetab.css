@@ -1,12 +1,12 @@
 .css-8atqhb {
     width: 100%;
-    background-color: rgb(142, 2, 230);
+    background-color: rgb(255, 255, 255);
     border-radius: 20px;
 }
 
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
     background-color: rgba(255, 245, 238, 0.008);
-    color: #c8c5c5;
+    color: #9112c7;
     font-size: 20px;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .css-ahj2mt-MuiTypography-root{
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 

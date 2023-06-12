@@ -16,26 +16,25 @@ export default function OrderformComp() {
   <div className="small-container single-product">
     <div className="row">
       <div className="col-2">
-        <img src="https://i.ibb.co/1MydDzN/gallery-1.jpg" alt width="100%" id="ProductImg" />
+        <img src="https://miro.medium.com/v2/resize:fit:1200/1*pkXFFWN5Wxuk3rlrXnGKOQ.png" alt width="100%" id="ProductImg" />
         
       </div>
       <div className="col-2">
-        <p>Home / T-Shirt</p>
-        <h1>Red Printed T-Shirt by HRX</h1>
-        <h4>₹500</h4>
+        <div class="orderbreadcrumb"style={{fontFamily:"cursive" , color: "gray"}}>Home / Back to 70's</div>
+        <div class="orderformheading"style={{fontFamily:"cursive" , color: "white"}}>Back to 70's with Dialog</div>
+        <div class="priceform"style={{fontFamily:"cursive" , color: "white"}}>Rs. 1500.00</div>
         <select>
-          <option>Select Size</option>
-          <option>XXL</option>
-          <option>XL</option>
-          <option>L</option>
-          <option>M</option>
-          <option>S</option>
+          <option>Select Ticket Package</option>
+          <option>Gold Package</option>
+          <option>Silver Package</option>
+          <option>Bronze Package</option>
+          
         </select>
         <input type="number" defaultValue={1} min="1" max="999"/>
         <a href className="btnform">Add To Cart</a>
        
       </div>
-      <h3>Package Details <i className="fas fa-indent" /></h3>
+      <h3 style={{fontFamily:"cursive" , color: "white"}}>Package Details <i className="fas fa-indent" /></h3>
         <br />
         <br></br><br></br><br></br><br></br>
         <PackageTabComp/>
