@@ -8,6 +8,7 @@ import NavComp from './Components/Nav/NavComp';
 import FooterComp from './Components/Footer/FooterComp';
 import LoginSignup from './Pages/LoginSignup';
 import Detail from './Pages/Detail';
+import TicketOrder from './Pages/TicketOrder';
 
 export default function () {
   return (
@@ -20,6 +21,7 @@ export default function () {
         <Route path="/upcomingevents" element={<Upcomingevents/>}/>
         <Route path="/login" element={<LoginSignup/>}/>
         <Route path="/detail" element={<Detail/>}/>
+        <Route path="/orderform" element={<TicketOrder/>}/>
         </Routes>      
       </BrowserRouter>
       <br></br> <br></br> <br></br> <br></br>
