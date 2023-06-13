@@ -118,7 +118,9 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-           Event Organizer Dashboard 
+           <span>Event Organizer Dashboard </span> 
+           <a href="./">
+  <span class="backhome">Back To Home</span> </a>
           </Typography>
         </Toolbar>
       </AppBar>
