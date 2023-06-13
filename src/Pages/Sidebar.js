@@ -5,7 +5,7 @@ import SideNavBar from '../Components/SideNavBar/SideNavBar'
 export default function Sidebar() {
   return (
     <div>
-        <SideNavBar/>
+        <SideNavBar/>        
     </div>
   )
 }
