@@ -7,7 +7,7 @@ export default function NavComp() {
   return (
     <div>
         <div class="nav-logo">
-                                <a href="index.html"><img src="https://i.ibb.co/1bBxbPC/event-ticketlk-low-resolution-logo-color-on-transparent-background.png" style={{width:'210px', height:'130px', zIndex:'200', position:'absolute', marginTop:'20px'}} alt="logo"/></a>
+                                <a href="/"><img src="https://i.ibb.co/1bBxbPC/event-ticketlk-low-resolution-logo-color-on-transparent-background.png" style={{width:'210px', height:'130px', zIndex:'200', position:'absolute', marginTop:'20px'}} alt="logo"/></a>
                             </div>
        
 <div class="menu-outer">

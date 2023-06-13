@@ -13,7 +13,7 @@ export default function FooterComp() {
           <footer class="footer-section">
         <div class="container">
             <div class="footer-cta pt-5 pb-5">
-                <div class="row">
+                <div class="rowf">
                     <div class="col-xl-4 col-md-4 mb-30">
                         <div class="single-cta">
                         
