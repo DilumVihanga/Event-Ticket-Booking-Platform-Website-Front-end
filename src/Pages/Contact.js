@@ -4,6 +4,6 @@ import NavComp from '../Components/Nav/NavComp';
 
 export default function Contact() {
   return (
-    <div><HeroComp/></div>
+    <div><NavComp/><HeroComp/></div>
   )
 }

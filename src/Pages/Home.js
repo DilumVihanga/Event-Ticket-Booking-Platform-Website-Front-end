@@ -5,13 +5,14 @@ import CardGrid from '../Components/CardGrid/CardGrid';
 import HorizontalcardComp from '../Components/Horizontalcard/HorizontalcardComp';
 import CategorycardComp from '../Components/Categorycard/CategorycardComp';
 import CalendarComp from '../Components/EventCalendar/CalendarComp';
+import NavComp from '../Components/Nav/NavComp';
 
 
 
 export default function Home() {
   return (
     <div>
-        {/* <NavComp/> */}
+        <NavComp/>
      <HeroComp/><br></br><br></br>
      
      <CategorycardComp/><br></br><br></br>

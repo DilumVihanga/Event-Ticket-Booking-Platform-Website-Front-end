@@ -9,7 +9,7 @@ export default function OrderformComp() {
     <div>
         <div>
           <DetailHeaderComp/>
-  <div className="container">
+  <div className="container"style={{marginTop:'21em'}}>
     
   </div>
   {/* single product details */}

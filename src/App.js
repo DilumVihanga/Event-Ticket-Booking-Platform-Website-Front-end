@@ -8,12 +8,17 @@ import FooterComp from './Components/Footer/FooterComp';
 import LoginSignup from './Pages/LoginSignup';
 import Detail from './Pages/Detail';
 import TicketOrder from './Pages/TicketOrder';
+import Checkout from './Pages/Checkout';
+import Sidebar from './Pages/Sidebar';
+
+
 
 export default function () {
   return (
     <div>
-      <NavComp/>
+      
       <BrowserRouter>
+      
       <Routes>
         <Route index element={<Home/>}/>
         <Route path="/contact" element={<Contact/>}/>
@@ -21,6 +26,8 @@ export default function () {
         <Route path="/login" element={<LoginSignup/>}/>
         <Route path="/detail" element={<Detail/>}/>
         <Route path="/orderform" element={<TicketOrder/>}/>
+        <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/dashboard" element={<Sidebar/>}/>
         </Routes>      
       </BrowserRouter>
       <br></br> <br></br> <br></br> <br></br>

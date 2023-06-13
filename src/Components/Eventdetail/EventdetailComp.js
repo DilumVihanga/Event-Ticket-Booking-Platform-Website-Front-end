@@ -15,7 +15,7 @@ export default function EventdetailComp() {
     </div>
     
   </header>
-  <section className="content">
+  <section style={{marginTop:'21em'}}className="content">
     <DetailboxComp/>
     <article class="articleevent">
       <p>Wolf vinyl hella, jean shorts disrupt skateboard master cleanse hashtag iPhone. Pop-up bicycle rights Brooklyn iPhone Helvetica kitsch Godard, XOXO blog aesthetic beard quinoa. Fixie kale chips PBR&amp;B twee, YOLO raw denim before they sold out photo booth bespoke seitan food truck. Ethical chia before they sold out, trust fund viral ennui you probably haven't heard of them cred bitters mixtape semiotics deep v jean shorts pork belly occupy shabby chic sriracha ethnic normcore bicycle rights single-origin coffee slow-carb jean shorts. Twee ethnic mumblecore, Carles banh mi slow-carb pour-over organic. Ethical tofu narwhal, hoodie viral ennui tousled paleo. Butcher chia cray iPhone keytar, sustainable Cosby sweater literally try-hard put a bird on it photo booth ethical street art literally semiotics.</p>
