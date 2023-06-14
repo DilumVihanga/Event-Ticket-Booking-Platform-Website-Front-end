@@ -47,7 +47,7 @@ export default function HorizontalcardComp() {
       </div>
       <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
         <span class="card-media-body-supporting-bottom-text subtle">#Music #Party</span>
-        <a href="#/" class="card-media-body-supporting-bottom-text card-media-link u-float-right">VIEW TICKETS</a>
+        <a href="/detail" class="card-media-body-supporting-bottom-text card-media-link u-float-right">VIEW TICKETS</a>
       </div>
     </div>
   </div>
@@ -121,7 +121,7 @@ export default function HorizontalcardComp() {
       </div>
       <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
         <span class="card-media-body-supporting-bottom-text subtle">#Music #Performance</span>
-        <a href="#/" class="card-media-body-supporting-bottom-text card-media-link u-float-right">VIEW TICKETS</a>
+        <a href="/detail" class="card-media-body-supporting-bottom-text card-media-link u-float-right">VIEW TICKETS</a>
       </div>
     </div>
   </div>
