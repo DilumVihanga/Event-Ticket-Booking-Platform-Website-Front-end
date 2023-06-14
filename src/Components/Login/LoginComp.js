@@ -14,7 +14,7 @@ const App = () => {
     <div className="formstyle">
       <h1 className="heading">Login Form</h1>
       <form onSubmit={handleSubmit} noValidate>
-        <div className="form-container">
+        <div className="form-containerpage">
           <LoginInput
             state={state}
             handleChange={handleChange}

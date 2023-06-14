@@ -10,8 +10,9 @@ export default function EventdetailComp() {
   <header>
     <div className="header-banner">
       <h1 class="detailhead">Back To 70'S</h1>
-     <button class="bookbutton"> Buy Tickets
-</button>
+      <a href="/orderform">
+  <button class="bookbutton">Buy Tickets</button>
+</a>
     </div>
     
   </header>
