@@ -207,7 +207,7 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <LoginComp/>
+        <img src="https://i.ibb.co/mTxzd3y/04-Event-Detaildash-1.png" alt="04-Event-Detaildash-1" border="0"style={{width:'100%', height:'auto', imageResolution:'from-image'}}></img>
       </Box>
     </Box>
   );
