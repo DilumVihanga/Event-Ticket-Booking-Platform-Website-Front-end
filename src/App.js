@@ -10,6 +10,10 @@ import Detail from './Pages/Detail';
 import TicketOrder from './Pages/TicketOrder';
 import Checkout from './Pages/Checkout';
 import Sidebar from './Pages/Sidebar';
+import LoginComp from './Components/Login/LoginComp';
+import CardGrid from './Components/CardGrid/CardGrid';
+import HeroComp from './Components/Hero/HeroComp';
+import PackageTabComp from './Components/PackageTab/PackageTabComp';
 
 
 
@@ -27,7 +31,14 @@ export default function () {
         <Route path="/detail" element={<Detail/>}/>
         <Route path="/orderform" element={<TicketOrder/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
-        <Route path="/dashboard" element={<Sidebar/>}/>
+        <Route path="dashboard" element={<Sidebar/>}> 
+         <Route path="overview" element={<LoginComp/>}/>
+          <Route path="tickets" element={<CardGrid/>}/>
+          <Route path="events" element={<HeroComp/>}/>
+          <Route path="sales" element={<PackageTabComp/>}/>
+         </Route>
+         
+        
         </Routes>      
       </BrowserRouter>
 

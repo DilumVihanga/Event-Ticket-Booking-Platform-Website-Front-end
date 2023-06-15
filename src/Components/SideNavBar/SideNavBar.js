@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -147,13 +148,13 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {[
-            { text: 'Overview', Icon: OverviewIcon },
-            { text: 'Events', Icon: EventsIcon },
-            { text: 'Tickets', Icon: TicketIcon },
-            { text: 'Sales', Icon: SalesIcon },
-          ].map(({ text, Icon }, index) => (
+            { text: 'Overview', Icon: OverviewIcon, link: '/dashboard/overview' },
+            { text: 'Events', Icon: EventsIcon , link: '/dashboard/events' },
+            { text: 'Tickets', Icon: TicketIcon, link: '/dashboard/tickets' },
+            { text: 'Sales', Icon: SalesIcon , link: '/dashboard/sales'},
+          ].map(({ text, Icon, link }, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
+             <Link to={link}> <ListItemButton
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -170,7 +171,8 @@ export default function MiniDrawer() {
                   <Icon />
                 </ListItemIcon> 
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
+              </ListItemButton> 
+              </Link>
             </ListItem>
           ))}
         </List>
@@ -207,8 +209,8 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <img src="https://i.ibb.co/mTxzd3y/04-Event-Detaildash-1.png" alt="04-Event-Detaildash-1" border="0"style={{width:'100%', height:'auto', imageResolution:'from-image'}}></img>
-      </Box>
+        <Outlet />
+         </Box>
     </Box>
   );
 }
