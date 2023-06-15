@@ -32,6 +32,7 @@ export default function () {
         <Route path="/orderform" element={<TicketOrder/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
         <Route path="dashboard" element={<Sidebar/>}> 
+        <Route path="" element={<LoginComp/>}/>
          <Route path="overview" element={<LoginComp/>}/>
           <Route path="tickets" element={<CardGrid/>}/>
           <Route path="events" element={<HeroComp/>}/>
