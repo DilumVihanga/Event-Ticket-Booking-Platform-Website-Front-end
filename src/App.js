@@ -13,7 +13,7 @@ import Sidebar from './Pages/Sidebar';
 import LoginComp from './Components/Login/LoginComp';
 import CardGrid from './Components/CardGrid/CardGrid';
 import HeroComp from './Components/Hero/HeroComp';
-import PackageTabComp from './Components/PackageTab/PackageTabComp';
+import OrderformComp from './Components/TicketOrderFrom/OrderformComp';
 
 
 
@@ -36,7 +36,7 @@ export default function () {
          <Route path="overview" element={<LoginComp/>}/>
           <Route path="tickets" element={<CardGrid/>}/>
           <Route path="events" element={<HeroComp/>}/>
-          <Route path="sales" element={<PackageTabComp/>}/>
+          <Route path="sales" element={<OrderformComp/>}/>
          </Route>
          
         
