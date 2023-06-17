@@ -15,6 +15,7 @@ import CardGrid from './Components/CardGrid/CardGrid';
 import HeroComp from './Components/Hero/HeroComp';
 import OrderformComp from './Components/TicketOrderFrom/OrderformComp';
 import SidebarORG from './Pages/SidebarORG';
+import SidebarADMIN from './Pages/SidebarADMIN';
 
 
 
@@ -39,7 +40,13 @@ export default function () {
           <Route path="events" element={<HeroComp/>}/>
           <Route path="sales" element={<OrderformComp/>}/>
          </Route>
-         
+         <Route path="admin" element={<SidebarADMIN/>}> 
+        <Route path="" element={<LoginComp/>}/>
+         <Route path="overview" element={<LoginComp/>}/>
+          <Route path="tickets" element={<CardGrid/>}/>
+          <Route path="events" element={<HeroComp/>}/>
+          <Route path="sales" element={<OrderformComp/>}/>
+         </Route>
         
         </Routes>      
       </BrowserRouter>
