@@ -41,6 +41,7 @@ export default function () {
           <Route path="tickets" element={<CardGrid/>}/>
           <Route path="events" element={<HeroComp/>}/>
           <Route path="sales" element={<OrderformComp/>}/>
+          <Route path="reports" element={<CardGrid/>}/>
          </Route>
 
          <Route path="admin" element={<SidebarADMIN/>}> 

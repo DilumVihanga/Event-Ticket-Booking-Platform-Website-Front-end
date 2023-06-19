@@ -153,7 +153,7 @@ export default function MiniDrawer() {
             { text: 'Events', Icon: EventsIcon , link: '/dashboard/events' },
             { text: 'Tickets', Icon: TicketIcon, link: '/dashboard/tickets' },
             { text: 'Sales', Icon: SalesIcon , link: '/dashboard/sales'},
-            { text: 'Reports', Icon: ReportsIcon , link: '/dashboard/sales'},
+            { text: 'Reports', Icon: ReportsIcon , link: '/dashboard/reports'},
 
             
           ].map(({ text, Icon, link }, index) => (
