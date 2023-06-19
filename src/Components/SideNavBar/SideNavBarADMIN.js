@@ -23,6 +23,8 @@ import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import GroupIcon from '@mui/icons-material/Group';
+import EngineeringIcon from '@mui/icons-material/Engineering';
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginComp from '../Login/LoginComp';
@@ -109,10 +111,10 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
-  const TicketIcon = () => <BookOnlineIcon />;
-  const OverviewIcon = () => <QueryStatsIcon />;
+
   const EventsIcon = () => <EventAvailableIcon />;
-  const SalesIcon = () => <MonetizationOnIcon />;
+  const UsersIcon = () => <GroupIcon />;
+  const OrganizersIcon = () => <EngineeringIcon />;
 
   return (
     <Box className="alldash" sx={{ display: 'flex' }}>
@@ -148,10 +150,11 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {[
-            { text: 'Overview', Icon: OverviewIcon, link: '/dashboard/overview' },
-            { text: 'Events', Icon: EventsIcon , link: '/dashboard/events' },
-            { text: 'Tickets', Icon: TicketIcon, link: '/dashboard/tickets' },
-            { text: 'Sales', Icon: SalesIcon , link: '/dashboard/sales'},
+            
+            { text: 'Events', Icon: EventsIcon , link: '/admin/events' },
+         
+            { text: 'Users', Icon: UsersIcon , link: '/admin/users'},
+            { text: 'Organizers', Icon: OrganizersIcon , link: '/admin/organizers'},
           ].map(({ text, Icon, link }, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
              <Link to={link}> <ListItemButton
@@ -180,7 +183,6 @@ export default function MiniDrawer() {
         <List>
   {[
     { text: 'Profile', icon: <AccountCircleIcon /> },
-    { text: 'Reports', icon: <SummarizeIcon /> },
     { text: 'Logout', icon: <LogoutIcon /> },
   ].map((item) => (
     <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>

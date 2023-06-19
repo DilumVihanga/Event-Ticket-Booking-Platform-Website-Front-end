@@ -113,6 +113,7 @@ export default function MiniDrawer() {
   const OverviewIcon = () => <QueryStatsIcon />;
   const EventsIcon = () => <EventAvailableIcon />;
   const SalesIcon = () => <MonetizationOnIcon />;
+  const ReportsIcon = () => <SummarizeIcon />;
 
   return (
     <Box className="alldash" sx={{ display: 'flex' }}>
@@ -152,6 +153,8 @@ export default function MiniDrawer() {
             { text: 'Events', Icon: EventsIcon , link: '/dashboard/events' },
             { text: 'Tickets', Icon: TicketIcon, link: '/dashboard/tickets' },
             { text: 'Sales', Icon: SalesIcon , link: '/dashboard/sales'},
+            { text: 'Reports', Icon: ReportsIcon , link: '/dashboard/sales'},
+
             
           ].map(({ text, Icon, link }, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
@@ -181,7 +184,6 @@ export default function MiniDrawer() {
         <List>
   {[
     { text: 'Profile', icon: <AccountCircleIcon /> },
-    
     { text: 'Logout', icon: <LogoutIcon /> },
   ].map((item) => (
     <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
