@@ -1,10 +1,10 @@
 import React from 'react'
-import SideNavBar from '../Components/SideNavBar/SideNavBar'
+import SideNavBarADMIN from '../Components/SideNavBar/SideNavBarADMIN'
 
 export default function SidebarADMIN() {
   return (
     <div>
-        <SideNavBar/>
+        <SideNavBarADMIN/>
     </div>
   )
 }

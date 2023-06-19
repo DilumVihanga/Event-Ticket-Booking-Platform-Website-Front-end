@@ -34,6 +34,7 @@ export default function () {
         <Route path="/detail" element={<Detail/>}/>
         <Route path="/orderform" element={<TicketOrder/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
+
         <Route path="dashboard" element={<SidebarORG/>}> 
         <Route path="" element={<LoginComp/>}/>
          <Route path="overview" element={<LoginComp/>}/>
@@ -41,6 +42,7 @@ export default function () {
           <Route path="events" element={<HeroComp/>}/>
           <Route path="sales" element={<OrderformComp/>}/>
          </Route>
+
          <Route path="admin" element={<SidebarADMIN/>}> 
         <Route path="" element={<LoginComp/>}/>
          <Route path="overview" element={<LoginComp/>}/>
@@ -48,10 +50,12 @@ export default function () {
           <Route path="events" element={<HeroComp/>}/>
           <Route path="sales" element={<OrderformComp/>}/>
          </Route>
+
          <Route path="ordermanage" element={<SidebarUSER/>}> 
         <Route path="" element={<LoginComp/>}/>
-         <Route path="overview" element={<LoginComp/>}/>
-          <Route path="tickets" element={<CardGrid/>}/>
+         
+          <Route path="orders" element={<CardGrid/>}/>
+          <Route path="validated" element={<CardGrid/>}/>
           <Route path="events" element={<HeroComp/>}/>
           <Route path="sales" element={<OrderformComp/>}/>
          </Route>

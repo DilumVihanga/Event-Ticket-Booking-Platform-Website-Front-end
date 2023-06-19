@@ -1,11 +1,11 @@
 import React from 'react'
-import SideNavBar from '../Components/SideNavBar/SideNavBar'
+import SideNavBarORG from '../Components/SideNavBar/SideNavBarORG'
 
 
 export default function SidebarORG() {
   return (
     <div>
-        <SideNavBar/>        
+        <SideNavBarORG/>        
     </div>
   )
 }

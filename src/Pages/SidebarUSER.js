@@ -1,10 +1,10 @@
 import React from 'react'
-import SideNavBar from '../Components/SideNavBar/SideNavBar'
+import SideNavBarUSER from '../Components/SideNavBar/SideNavBarUSER'
 
 export default function SidebarUSER() {
   return (
     <div>
-        <SideNavBar/>
+        <SideNavBarUSER/>
     </div>
   )
 }

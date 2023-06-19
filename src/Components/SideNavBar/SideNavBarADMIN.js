@@ -132,7 +132,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            <span>Event Organizer Dashboard </span> 
+            <span>Admin Dashboard </span> 
             <a href="./">
               <span className="backhome">Back To Home</span>
             </a>
