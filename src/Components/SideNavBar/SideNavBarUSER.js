@@ -133,7 +133,7 @@ export default function MiniDrawer() {
           <Typography variant="h6" noWrap component="div">
             <span>User Profile
                </span> 
-            <a href="./">
+            <a href="/">
               <span className="backhome">Back To Home</span>
             </a>
           </Typography>
