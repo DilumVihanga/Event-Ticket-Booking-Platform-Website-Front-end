@@ -6,6 +6,7 @@ const RegisterFormORG = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [nic, setNIC] = useState('');
   const [addressLine1, setAddressLine1] = useState('');
   const [addressLine2, setAddressLine2] = useState('');
@@ -23,6 +24,10 @@ const RegisterFormORG = () => {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
   };
 
   const handleNICChange = (e) => {
@@ -64,12 +69,17 @@ const RegisterFormORG = () => {
       alert('Invalid NIC number. Please enter a valid NIC number.');
       return;
     }
+    if (password !== confirmPassword) {
+      alert('Passwords do not match. Please enter matching passwords.');
+      return;
+    }
     // Handle form submission logic here
     console.log('Form submitted:', name, email, password, nic, addressLine1, addressLine2, city, image, agreed);
     // Reset form fields
     setName('');
     setEmail('');
     setPassword('');
+    setConfirmPassword('');
     setNIC('');
     setAddressLine1('');
     setAddressLine2('');
@@ -98,7 +108,7 @@ const RegisterFormORG = () => {
       <form className="register-form" onSubmit={handleSubmit}>
         {step === 1 && (
           <>
-            <h2 style={{ display: 'flex', justifyContent: 'center', fontFamily: 'Arial, sans-serif', color:'black',fontSize: '24px', marginBottom: '20px' }}>Event Organizer Registration</h2>
+            <h2 style={{ display: 'flex', justifyContent: 'center', fontFamily: 'Arial, sans-serif', color:'black',fontSize: '24px', marginBottom: '20px' , marginTop:'20px'}}>Event Organizer Registration</h2>
 
             <div>
               <label htmlFor="name">Name:</label>
@@ -127,6 +137,16 @@ const RegisterFormORG = () => {
                 id="password"
                 value={password}
                 onChange={handlePasswordChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="confirmPassword">Confirm Password:</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
                 required
               />
             </div>
@@ -185,7 +205,7 @@ const RegisterFormORG = () => {
         )}
         {step === 2 && (
           <>
-            <h2 style={{ display: 'flex', justifyContent: 'center', fontFamily: 'Arial, sans-serif', color:'black',fontSize: '24px', marginBottom: '20px' }}>Event Organizer Registration</h2>
+            <h2 style={{ display: 'flex', justifyContent: 'center', fontFamily: 'Arial, sans-serif', color:'black',fontSize: '24px', marginBottom: '20px', marginTop:'20px' }}>Event Organizer Registration</h2>
             <div className="agreement">
               <h3 style={{color:'black', display: 'flex', justifyContent: 'center'}}>Event Ticket Booking Platform Guidelines and Rules</h3>
               <ol style={{marginTop:'20px'}}>
@@ -197,8 +217,8 @@ const RegisterFormORG = () => {
       </ul>
     </li>
 
-    <li>
-      <strong>Event Listings:</strong>
+    <li style={{marginTop:'10px'}} >
+      <strong >Event Listings:</strong>
       <ul>
         <li>Submit complete and accurate information about your events.</li>
         <li>Include event details such as date, time, location, and ticket prices.</li>
@@ -207,8 +227,8 @@ const RegisterFormORG = () => {
       </ul>
     </li>
 
-    <li>
-      <strong>Ticket Sales:</strong>
+    <li style={{marginTop:'10px'}}>
+      <strong >Ticket Sales:</strong>
       <ul>
         <li>Set fair and reasonable prices for your tickets.</li>
         <li>Clearly state the terms and conditions of ticket sales, including refund and cancellation policies.</li>
@@ -216,7 +236,7 @@ const RegisterFormORG = () => {
       </ul>
     </li>
 
-    <li>
+    <li style={{marginTop:'10px'}}>
       <strong>Communication with Attendees:</strong>
       <ul>
         <li>Respond promptly and professionally to attendee inquiries and concerns.</li>
@@ -224,21 +244,21 @@ const RegisterFormORG = () => {
       </ul>
     </li>
 
-    <li>
+    <li style={{marginTop:'10px'}}>
       <strong>Event Cancellation or Changes:</strong>
       <ul>
         <li>In case of event cancellation or significant changes, promptly notify ticket holders and provide appropriate refund options.</li>
       </ul>
     </li>
 
-    <li>
+    <li style={{marginTop:'10px'}}>
       <strong>Compliance with Laws and Regulations:</strong>
       <ul>
         <li>Ensure that your event and ticket sales comply with all applicable laws and regulations, including consumer protection laws and data privacy regulations.</li>
       </ul>
     </li>
   </ol>
-  <input
+              <input
                 type="checkbox"
                 id="agreement"
                 checked={agreed}
