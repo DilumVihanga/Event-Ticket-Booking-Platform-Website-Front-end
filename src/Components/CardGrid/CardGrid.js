@@ -10,7 +10,7 @@ export default function CardGrid() {
   <ul class="cards">
     <li class="cards_item">
       <div class="card">
-        <div class="card_image"><img src="https://mytickets.lk/contents/main-banner/Tour%20Of%20Legends%20chap%203%20gampaha%20main.jpg"/></div>
+        <div class="card_image"><img src="https://buzzer.lk/wp-content/uploads/2023/02/Deep-Jungle-Festival.jpg"/></div>
         <div class="card_content">
           <h2 class="card_title">Tour of Legends</h2>
           <p class="card_text">Embark on a legendary journey through Sri Lanka's captivating wonders.</p>
@@ -62,7 +62,7 @@ export default function CardGrid() {
     </li>
     <li class="cards_item">
       <div class="card">
-        <div class="card_image"><img src="https://mytickets.lk/contents/main-banner/noize%20main.jpg"/></div>
+        <div class="card_image"><img src="https://mytickets.lk/contents/main-banner/Coctail-Night-Mytickets-Main-Banner-%20chap%201.jpg"/></div>
         <div class="card_content">
           <h2 class="card_title">Back to 70's</h2>
           <p class="card_text">Indulge in the nostalgia of the 70's at 'Back to 70's' - a retro celebration like no other.</p>
