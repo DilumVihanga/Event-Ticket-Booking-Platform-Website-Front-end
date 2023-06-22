@@ -22,8 +22,8 @@ export default function SeatingchartComp() {
 <use href="#s" x="515" y="10" class="s"/><text x="533" y="15">= Reserved by you</text>
 <use href="#s" x="740" y="10" class="r"/><text x="758" y="15">= Reserved</text>
 <use href="#s" x="910" y="10" class="w"/><text x="928" y="15">= Handicap</text>
-<text x="700" y="95" style={{ fill: "#bbb", textAnchor: "middle" }}
->NELUM POKUNA AUDITORIUM</text>
+<text x="700" y="95" style={{ fill: "#b09be6", textAnchor: "middle" }}
+>  NELUM POKUNA AUDITORIUM</text>
 <path class="g" d="M0,100l200,-100h100v50q400,50 800,0v-50h100l200,100"/>
 <text x="700" y="70" class="g">Stage</text>
 <text x="700" y="820" class="g">A/V</text>
