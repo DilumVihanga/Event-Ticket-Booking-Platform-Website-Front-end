@@ -1,0 +1,104 @@
+.register-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .step-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  
+  .step {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    background-color: #070707;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .step.active {
+    background-color: #b09be6;
+  }
+  
+  .register-form {
+    background-color: #d5d2dd;
+    padding: 20px;
+    border-radius: 4px;
+  }
+  
+  .register-form h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 20px;
+  }
+  
+  .register-form div {
+    margin-bottom: 10px;
+  }
+  
+  .register-form label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .register-form input[type="text"],
+  .register-form input[type="email"],
+  .register-form input[type="password"],
+  .register-form input[type="file"],
+  .register-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .register-form textarea {
+    resize: vertical;
+  }
+  
+  .register-form .agreement {
+    margin-bottom: 20px;
+  }
+  
+  .register-form .agreement h3 {
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  .register-form .agreement p {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .register-form .agreement input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .register-form button {
+    padding: 10px 20px;
+    background-color: #b09be6;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .register-form button[type="button"] {
+    margin-right: 10px;
+  }
+  
+  .register-form button:hover {
+    background-color: #333;
+  }
+  
