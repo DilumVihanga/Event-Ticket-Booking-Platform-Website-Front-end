@@ -18,7 +18,8 @@ import SidebarORG from './Pages/SidebarORG';
 import SidebarADMIN from './Pages/SidebarADMIN';
 import SidebarUSER from './Pages/SidebarUSER';
 import Seatmap from './Pages/Seatmap';
-import RegisterformORG from './Pages/RegisterformORG';
+import LoginORG from './Pages/LoginORG';
+import LoginUSER from './Pages/LoginUSER';
 
 
 
@@ -37,7 +38,8 @@ export default function () {
         <Route path="/orderform" element={<TicketOrder/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
         <Route path="/seatmap" element={<Seatmap/>}/>
-        <Route path="/register" element={<RegisterformORG/>}/>
+        <Route path="/registero" element={<LoginORG/>}/>
+        <Route path="/registeru" element={<LoginUSER/>}/>
 
         <Route path="dashboard" element={<SidebarORG/>}> 
         <Route path="" element={<LoginComp/>}/>

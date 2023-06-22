@@ -1,0 +1,27 @@
+import React from 'react'
+
+import LoginFormUSER from '../Components/RegisterformUSER/LoginFormUSER'
+import RegisterFormUSER from '../Components/RegisterformUSER/RegisterFormUSER'
+import NavComp from '../Components/Nav/NavComp';
+import Login from '../Components/Login.json'
+import Lottie from "lottie-react"
+
+export default function RegisterformORG() {
+  return (
+    <div>
+        <NavComp/><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
+       <div style={{width:'600px', position:'absolute', marginTop:'0px', marginLeft:'80px'}}> <Lottie animationData={Login} /> </div>
+        
+
+       <div style={{marginLeft:'40%'}}><LoginFormUSER/> 
+       
+       <h1 style={{fontFamily:"cursive" , color: "white", fontSize:'14px'}}>Still not a Member? Register Now 👇</h1>
+       
+       <br></br><br></br><br></br>
+
+       <RegisterFormUSER/> </div> 
+       
+    </div>
+  )
+}
