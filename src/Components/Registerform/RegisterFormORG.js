@@ -98,7 +98,8 @@ const RegisterFormORG = () => {
       <form className="register-form" onSubmit={handleSubmit}>
         {step === 1 && (
           <>
-            <h2>Event Organizer Registration - Step 1</h2>
+            <h2 style={{ display: 'flex', justifyContent: 'center', fontFamily: 'Arial, sans-serif', color:'black',fontSize: '24px', marginBottom: '20px' }}>Event Organizer Registration</h2>
+
             <div>
               <label htmlFor="name">Name:</label>
               <input
@@ -170,8 +171,8 @@ const RegisterFormORG = () => {
               />
             </div>
             <div>
-              <label htmlFor="image">Image:</label>
-              <input
+              <label htmlFor="image">Profile Picture:</label>
+              <input style={{paddingBottom:'40px'}}
                 type="file"
                 id="image"
                 value={image}
@@ -184,19 +185,67 @@ const RegisterFormORG = () => {
         )}
         {step === 2 && (
           <>
-            <h2>Event Organizer Registration - Step 2</h2>
+            <h2 style={{ display: 'flex', justifyContent: 'center', fontFamily: 'Arial, sans-serif', color:'black',fontSize: '24px', marginBottom: '20px' }}>Event Organizer Registration</h2>
             <div className="agreement">
-              <h3>Event Ticket Booking Platform Guidelines and Rules</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fringilla urna non nunc vestibulum, at pharetra metus tempus. Integer sagittis nulla velit, in cursus nulla commodo sed. Fusce et risus bibendum, posuere nulla a, placerat lorem. Integer non sagittis justo.</p>
-              <p>By proceeding, you agree to the event ticket booking platform guidelines and rules.</p>
-              <input
+              <h3 style={{color:'black', display: 'flex', justifyContent: 'center'}}>Event Ticket Booking Platform Guidelines and Rules</h3>
+              <ol style={{marginTop:'20px'}}>
+    <li>
+      <strong>Account Registration:</strong>
+      <ul>
+        <li>Provide accurate and up-to-date information during the registration process.</li>
+        <li>Choose a strong and secure password to protect your account.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Event Listings:</strong>
+      <ul>
+        <li>Submit complete and accurate information about your events.</li>
+        <li>Include event details such as date, time, location, and ticket prices.</li>
+        <li>Upload high-quality images related to your event.</li>
+        <li>Ensure that your event complies with all legal requirements and regulations.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Ticket Sales:</strong>
+      <ul>
+        <li>Set fair and reasonable prices for your tickets.</li>
+        <li>Clearly state the terms and conditions of ticket sales, including refund and cancellation policies.</li>
+        <li>Prevent unauthorized resale or distribution of tickets.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Communication with Attendees:</strong>
+      <ul>
+        <li>Respond promptly and professionally to attendee inquiries and concerns.</li>
+        <li>Provide clear instructions and information about the event to attendees.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Event Cancellation or Changes:</strong>
+      <ul>
+        <li>In case of event cancellation or significant changes, promptly notify ticket holders and provide appropriate refund options.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Compliance with Laws and Regulations:</strong>
+      <ul>
+        <li>Ensure that your event and ticket sales comply with all applicable laws and regulations, including consumer protection laws and data privacy regulations.</li>
+      </ul>
+    </li>
+  </ol>
+  <input
                 type="checkbox"
                 id="agreement"
                 checked={agreed}
                 onChange={handleAgreementChange}
                 required
               />
-              <label htmlFor="agreement">I agree to the guidelines and rules</label>
+              <label htmlFor="agreement"style={{marginTop:'-38px', marginLeft:'25px'}}>I agree to the guidelines and rules</label>
             </div>
             <button type="button" onClick={handlePreviousStep}>Previous</button>
             <button type="submit">Register</button>
