@@ -17,6 +17,8 @@ import OrderformComp from './Components/TicketOrderFrom/OrderformComp';
 import SidebarORG from './Pages/SidebarORG';
 import SidebarADMIN from './Pages/SidebarADMIN';
 import SidebarUSER from './Pages/SidebarUSER';
+import Seatmap from './Pages/Seatmap';
+import RegisterformORG from './Pages/RegisterformORG';
 
 
 
@@ -34,6 +36,8 @@ export default function () {
         <Route path="/detail" element={<Detail/>}/>
         <Route path="/orderform" element={<TicketOrder/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/seatmap" element={<Seatmap/>}/>
+        <Route path="/register" element={<RegisterformORG/>}/>
 
         <Route path="dashboard" element={<SidebarORG/>}> 
         <Route path="" element={<LoginComp/>}/>
