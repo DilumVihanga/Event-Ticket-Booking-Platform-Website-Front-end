@@ -30,7 +30,7 @@ export default function CardGrid() {
     </li>
     <li class="cards_item">
       <div class="card">
-        <div class="card_image"><img src="https://mytickets.lk/contents/main-banner/marians%20thama%2035%20event%20new%20chap%203.jpg"/></div>
+        <div class="card_image"><img src="https://thebendwi.org/wp-content/uploads/2023/03/Radio-Gaga_LiveMusic-at-The-Bend-Theater.jpg"/></div>
         <div class="card_content">
           <h2 class="card_title">Spelenders</h2>
           <p class="card_text">Experience the spellbinding magic of the Splendors event extravaganza.</p>
@@ -62,7 +62,7 @@ export default function CardGrid() {
     </li>
     <li class="cards_item">
       <div class="card">
-        <div class="card_image"><img src="https://mytickets.lk/contents/main-banner/Coctail-Night-Mytickets-Main-Banner-%20chap%201.jpg"/></div>
+        <div class="card_image"><img src="https://buzzer.lk/wp-content/uploads/2023/02/Deep-Jungle-Festival.jpg"/></div>
         <div class="card_content">
           <h2 class="card_title">Back to 70's</h2>
           <p class="card_text">Indulge in the nostalgia of the 70's at 'Back to 70's' - a retro celebration like no other.</p>
