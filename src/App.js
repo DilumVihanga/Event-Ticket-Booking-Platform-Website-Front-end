@@ -20,7 +20,7 @@ import SidebarUSER from './Pages/SidebarUSER';
 import Seatmap from './Pages/Seatmap';
 import LoginORG from './Pages/LoginORG';
 import LoginUSER from './Pages/LoginUSER';
-
+import RegisterUSER from './Pages/RegisterUSER';
 
 
 
@@ -40,7 +40,8 @@ export default function () {
         <Route path="/checkout" element={<Checkout/>}/>
         <Route path="/seatmap" element={<Seatmap/>}/>
         <Route path="/registero" element={<LoginORG/>}/>
-        <Route path="/registeru" element={<LoginUSER/>}/>
+        <Route path="/loginu" element={<LoginUSER/>}/>
+        <Route path="/registeru" element={<RegisterUSER/>}/>
      
         <Route path="dashboard" element={<SidebarORG/>}> 
         <Route path="" element={<LoginComp/>}/>
