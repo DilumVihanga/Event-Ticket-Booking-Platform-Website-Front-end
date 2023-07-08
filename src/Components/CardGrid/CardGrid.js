@@ -1,78 +1,41 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react'
-import "../CardGrid/CardGrid.css"
+import React, { useState, useEffect } from 'react';
+import '../CardGrid/CardGrid.css';
+import axios from 'axios';
 
 export default function CardGrid() {
+  const [events, setEvents] = useState([]);
+
+  const getEvents = async () => {
+    const response = await axios.get('http://localhost:8000/api/events');
+    setEvents(response.data);
+  };
+
+  useEffect(() => {
+    getEvents();
+  }, []);
+
   return (
     <div>
-        <div class="main" id='upcomingevents'>
- 
-  <ul class="cards">
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img src="https://buzzer.lk/wp-content/uploads/2023/02/Deep-Jungle-Festival.jpg"/></div>
-        <div class="card_content">
-          <h2 class="card_title">Tour of Legends</h2>
-          <p class="card_text">Embark on a legendary journey through Sri Lanka's captivating wonders.</p>
-          <button class="btn card_btn">Book Now</button>
-        </div>
+      <div className="main" id="upcomingevents">
+        <ul className="cards">
+          {events.map((event, index) => (
+            <li key={event.eventID} className="cards_item">
+              <div className="card">
+                <div className="card_image">
+                  <img src={event.eventIMAGE} alt={event.eventNAME} />
+                </div>
+                <div className="card_content">
+                  <h2 className="card_title">{event.eventNAME}</h2>
+                  <p className="card_text">{event.eventDISCRIPTION}</p>
+                  <p className="card_text">Index: {index}</p> {/* Accessing the index */}
+                  <button className="btn card_btn">Book Now</button>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
-    </li>
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img src="https://mytickets.lk/contents/main-banner/sen%20main%20chap%2001.jpg"/></div>
-        <div class="card_content">
-          <h2 class="card_title">සෙන්කඩගලපුරේ</h2>
-          <p class="card_text">සෙන්කඩගලපුරේ රාත්‍රියේ ජාතික ස්වර්ණයක් සෙන්කඩගලපුරේ රාත්‍රියේ </p>
-          <button class="btn card_btn">Book Now</button>
-        </div>
-      </div>
-    </li>
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img src="https://thebendwi.org/wp-content/uploads/2023/03/Radio-Gaga_LiveMusic-at-The-Bend-Theater.jpg"/></div>
-        <div class="card_content">
-          <h2 class="card_title">Spelenders</h2>
-          <p class="card_text">Experience the spellbinding magic of the Splendors event extravaganza.</p>
-          <button class="btn card_btn">Book Now</button>
-        </div>
-      </div>
-    </li>
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image">
-          <img src="https://thebendwi.org/wp-content/uploads/2023/03/Radio-Gaga_LiveMusic-at-The-Bend-Theater.jpg" />
-          </div>
-        <div class="card_content">
-          <h2 class="card_title">Radio Gaga</h2>
-          <p class="card_text">Indulge in the nostalgic charm of the Radio Gaga event sensation</p>
-          <button class="btn card_btn">Book Now</button>
-        </div>
-      </div>
-    </li>
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img src="https://www.ozlanka.com/wp-content/uploads/2023/02/BnS_with_Umaria-_Randhir_2Forty2_544_300.jpg"/></div>
-        <div class="card_content">
-          <h2 class="card_title"> B & S Show</h2>
-          <p class="card_text">Sri Lanka's hottest artists gather at the iconic B & S Show.</p>
-          <button class="btn card_btn">Book Now</button>
-        </div>
-      </div>
-    </li>
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img src="https://buzzer.lk/wp-content/uploads/2023/02/Deep-Jungle-Festival.jpg"/></div>
-        <div class="card_content">
-          <h2 class="card_title">Back to 70's</h2>
-          <p class="card_text">Indulge in the nostalgia of the 70's at 'Back to 70's' - a retro celebration like no other.</p>
-          <button class="btn card_btn">Book Now</button>
-        </div>
-      </div>
-    </li>
-  </ul>
-</div>
-
     </div>
-  )
+  );
 }
