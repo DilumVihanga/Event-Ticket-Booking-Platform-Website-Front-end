@@ -23,6 +23,7 @@ import LoginUSER from './Pages/LoginUSER';
 
 
 
+
 export default function () {
   return (
     <div>
@@ -40,7 +41,7 @@ export default function () {
         <Route path="/seatmap" element={<Seatmap/>}/>
         <Route path="/registero" element={<LoginORG/>}/>
         <Route path="/registeru" element={<LoginUSER/>}/>
-
+     
         <Route path="dashboard" element={<SidebarORG/>}> 
         <Route path="" element={<LoginComp/>}/>
          <Route path="overview" element={<LoginComp/>}/>

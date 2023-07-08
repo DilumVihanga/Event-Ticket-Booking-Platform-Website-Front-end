@@ -16,7 +16,7 @@ export default function RegisterformORG() {
 
        <div style={{marginLeft:'40%'}}><LoginFormUSER/> 
        
-       <h1 style={{fontFamily:"cursive" , color: "white", fontSize:'14px'}}>Still not a Member? Register Now 👇</h1>
+       <h1 style={{fontFamily:"cursive" , color: "white", fontSize:'14px'}}>Still not a Member? Register Now 👉</h1>
        
        <br></br><br></br><br></br>
 

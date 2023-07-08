@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Loginformmm.css';
 
 const LoginFormUSER = () => {
@@ -13,13 +14,25 @@ const LoginFormUSER = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Login submitted:', email, password);
-    // Reset form fields
-    setEmail('');
-    setPassword('');
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/user/', {
+        userEMAIL: email,
+        USERPASSWORD: password
+      });
+
+      // Handle successful login here (e.g., store user data, redirect, etc.)
+      console.log('Login successful:', response.data);
+
+      // Reset form fields
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      // Handle login error here (e.g., display error message)
+      console.log('Login error:', error);
+    }
   };
 
   return (

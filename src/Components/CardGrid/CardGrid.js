@@ -2,39 +2,58 @@
 import React, { useState, useEffect } from 'react';
 import '../CardGrid/CardGrid.css';
 import axios from 'axios';
+import { styled } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+
+const StyledCard = styled(Card)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+`;
 
 export default function CardGrid() {
   const [events, setEvents] = useState([]);
 
-  const getEvents = async () => {
-    const response = await axios.get('http://localhost:8000/api/events');
-    setEvents(response.data);
-  };
-
   useEffect(() => {
-    getEvents();
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/api/events');
+        setEvents(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
     <div>
       <div className="main" id="upcomingevents">
-        <ul className="cards">
-          {events.map((event, index) => (
-            <li key={event.eventID} className="cards_item">
-              <div className="card">
+        <Grid container spacing={2}>
+          {events.map((event) => (
+            <Grid item xs={12} sm={6} md={4} key={event.eventID}>
+              <StyledCard sx={{ maxWidth: 345 }}>
                 <div className="card_image">
                   <img src={event.eventIMAGE} alt={event.eventNAME} />
                 </div>
-                <div className="card_content">
-                  <h2 className="card_title">{event.eventNAME}</h2>
-                  <p className="card_text">{event.eventDISCRIPTION}</p>
-                  <p className="card_text">Index: {index}</p> {/* Accessing the index */}
+                <CardContent>
+                  <Typography variant="h5" component="div">
+                    {event.eventNAME}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {event.eventDISCRIPTION}
+                  </Typography>
                   <button className="btn card_btn">Book Now</button>
-                </div>
-              </div>
-            </li>
+                </CardContent>
+              </StyledCard>
+            </Grid>
           ))}
-        </ul>
+        </Grid>
       </div>
     </div>
   );
