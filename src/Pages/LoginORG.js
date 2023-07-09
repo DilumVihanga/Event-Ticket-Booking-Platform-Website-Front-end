@@ -1,5 +1,4 @@
 import React from 'react'
-import RegisterFormORG from '../Components/RegisterformORG/RegisterFormORG'
 import LoginFormORG from '../Components/RegisterformORG/LoginFormORG'
 import NavComp from '../Components/Nav/NavComp';
 import Register from '../Components/Register.json'
@@ -14,11 +13,10 @@ export default function RegisterformORG() {
 
        <div style={{marginLeft:'40%'}}>  <LoginFormORG/> 
        
-       <h1 style={{fontFamily:"cursive" , color: "white", fontSize:'14px'}}>Still not a Member? Register Now 👇</h1>
+       <h1> 
+       <p  style={{fontFamily:"cursive" , color: "white", fontSize:'14px'}}className="register-link"> Still not a Member? <a href="/registerorg">Register Now 👉</a>  </p>   </h1>
+     
 
-       <br></br><br></br><br></br>
-       
-       <RegisterFormORG/> 
        
        </div>
     </div>
