@@ -2,285 +2,201 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Register.css';
 
-const RegisterFormORG = () => {
+const RegistrationFormORG = () => {
   const [step, setStep] = useState(1);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [nic, setNIC] = useState('');
-  const [addressLine1, setAddressLine1] = useState('');
-  const [addressLine2, setAddressLine2] = useState('');
-  const [city, setCity] = useState('');
-  const [image, setImage] = useState('');
-  const [agreed, setAgreed] = useState(false);
+  const [formData, setFormData] = useState({
+    organizerNAME: '',
+    organizerEMAIL: '',
+    organizerREGNO: '',
+    organizerPHONE: '',
+    organizerPASSWORD: '',
+    organizerCONPASSWORD: '',
+    organizerNIC: '',
+    addressLINE1: '',
+    addressLINE2: '',
+    organizerCITY: '',
+    organizerAGREED: false,
+  });
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const fieldValue = type === 'checkbox' ? checked : value;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: fieldValue,
+    }));
   };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
-  const handleNICChange = (e) => {
-    setNIC(e.target.value);
-  };
-
-  const handleAddressLine1Change = (e) => {
-    setAddressLine1(e.target.value);
-  };
-
-  const handleAddressLine2Change = (e) => {
-    setAddressLine2(e.target.value);
-  };
-
-  const handleCityChange = (e) => {
-    setCity(e.target.value);
-  };
-
-  const handleImageChange = (e) => {
-    setImage(e.target.value);
-  };
-
-  const handleAgreementChange = (e) => {
-    setAgreed(e.target.checked);
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Validation
-    if (password !== confirmPassword) {
-      alert('Passwords do not match. Please enter matching passwords.');
-      return;
-    }
 
-    // Prepare the form data
-    const formData = new FormData();
-    formData.append('adminID', ''); // Replace with the actual adminID value
-    formData.append('organizerNAME', name);
-    formData.append('organizerEMAIL', email);
-    formData.append('organizerREGNO', ''); // Set the appropriate value
-    formData.append('organizerPHONE', ''); // Set the appropriate value
-    formData.append('organizerPASSWORD', password);
-    formData.append('organizerCONPASSWORD', confirmPassword);
-    formData.append('organizerNIC', nic);
-    formData.append('organizerIMAGE', image);
-    formData.append('addressLINE1', addressLine1);
-    formData.append('addressLINE2', addressLine2);
-    formData.append('organizerCITY', city);
-    formData.append('organizerAGREED', agreed);
+    // Send the form data to the Django backend
+    axios
+      .post('http://localhost:8000/api/organizer/', formData)
+      .then((response) => {
+        // Handle the response from the backend
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
 
-    try {
-      // Send the POST request to the Django backend API
-      const response = await axios.post('http://localhost:8000/api/organizer/', formData);
-      console.log('Form submitted:', response.data);
-      // Reset form fields
-      setName('');
-      setEmail('');
-      setPassword('');
-      setConfirmPassword('');
-      setNIC('');
-      setAddressLine1('');
-      setAddressLine2('');
-      setCity('');
-      setImage('');
-      setAgreed(false);
-    } catch (error) {
-      console.error('Form submission failed:', error);
-      // Handle error and display an error message to the user
+  const handleNextStep = (e) => {
+    if (step === 1) {
+      setStep(2);
+    } else {
+      handleSubmit(e);
     }
   };
 
-  const renderStepIndicator = (currentStep) => {
-    return (
-      <div className="step-indicator">
-        <div className={`step ${currentStep === 1 ? 'active' : ''}`}>Step 1</div>
-        <div className={`step ${currentStep === 2 ? 'active' : ''}`}>Step 2</div>
-      </div>
-    );
+  const handlePreviousStep = () => {
+    setStep(1);
   };
 
   return (
-    <div className="register-form-container">
-      {renderStepIndicator(step)}
-      <form className="register-form" onSubmit={handleSubmit}>
-        {step === 1 && (
-          <>
-            <h2>Event Organizer Registration</h2>
-
-            <div>
-              <label htmlFor="name">Name:</label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={handleNameChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={handleEmailChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="confirmPassword">Confirm Password:</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={handleConfirmPasswordChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="nic">NIC Number:</label>
-              <input
-                type="text"
-                id="nic"
-                value={nic}
-                onChange={handleNICChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="addressLine1">Address Line 1:</label>
-              <input
-                type="text"
-                id="addressLine1"
-                value={addressLine1}
-                onChange={handleAddressLine1Change}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="addressLine2">Address Line 2:</label>
-              <input
-                type="text"
-                id="addressLine2"
-                value={addressLine2}
-                onChange={handleAddressLine2Change}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="city">City:</label>
-              <input
-                type="text"
-                id="city"
-                value={city}
-                onChange={handleCityChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="image">Profile Picture:</label>
-              <input
-                type="file"
-                id="image"
-                value={image}
-                onChange={handleImageChange}
-                required
-              />
-            </div>
-            <button type="button" onClick={() => setStep(step + 1)}>Next</button>
-          </>
-        )}
-        {step === 2 && (
-          <>
-            <h2>Event Organizer Registration</h2>
-            <div className="agreement">
-              <h3>Event Ticket Booking Platform Guidelines and Rules</h3>
-              <ol>
-                <li>
-                  <strong>Account Registration:</strong>
-                  <ul>
-                    <li>Provide accurate and up-to-date information during the registration process.</li>
-                    <li>Choose a strong and secure password to protect your account.</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <strong>Event Listings:</strong>
-                  <ul>
-                    <li>Submit complete and accurate information about your events.</li>
-                    <li>Include event details such as date, time, location, and ticket prices.</li>
-                    <li>Upload high-quality images related toyour event.</li>
-                    <li>Ensure that your event complies with all legal requirements and regulations.</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <strong>Ticket Sales:</strong>
-                  <ul>
-                    <li>Set fair and reasonable prices for your tickets.</li>
-                    <li>Clearly state the terms and conditions of ticket sales, including refund and cancellation policies.</li>
-                    <li>Prevent unauthorized resale or distribution of tickets.</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <strong>Communication with Attendees:</strong>
-                  <ul>
-                    <li>Respond promptly and professionally to attendee inquiries and concerns.</li>
-                    <li>Provide clear instructions and information about the event to attendees.</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <strong>Event Cancellation or Changes:</strong>
-                  <ul>
-                    <li>In case of event cancellation or significant changes, promptly notify ticket holders and provide appropriate refund options.</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <strong>Compliance with Laws and Regulations:</strong>
-                  <ul>
-                    <li>Ensure that your event and ticket sales comply with all applicable laws and regulations, including consumer protection laws and data privacy regulations.</li>
-                  </ul>
-                </li>
-              </ol>
+    <div className="registration-form">
+      {step === 1 && (
+        <>
+          <h2>Event Organizer Registration - Step 1</h2>
+          <div className="form-group">
+            <label htmlFor="organizerNAME">Name:</label>
+            <input
+              type="text"
+              id="organizerNAME"
+              name="organizerNAME"
+              value={formData.organizerNAME}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="organizerEMAIL">Email:</label>
+            <input
+              type="email"
+              id="organizerEMAIL"
+              name="organizerEMAIL"
+              value={formData.organizerEMAIL}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="organizerREGNO">Registration Number:</label>
+            <input
+              type="text"
+              id="organizerREGNO"
+              name="organizerREGNO"
+              value={formData.organizerREGNO}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="organizerPHONE">Phone:</label>
+            <input
+              type="text"
+              id="organizerPHONE"
+              name="organizerPHONE"
+              value={formData.organizerPHONE}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="organizerPASSWORD">Password:</label>
+            <input
+              type="password"
+              id="organizerPASSWORD"
+              name="organizerPASSWORD"
+              value={formData.organizerPASSWORD}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="organizerCONPASSWORD">Confirm Password:</label>
+            <input
+              type="password"
+              id="organizerCONPASSWORD"
+              name="organizerCONPASSWORD"
+              value={formData.organizerCONPASSWORD}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="organizerNIC">NIC Number:</label>
+            <input
+              type="text"
+              id="organizerNIC"
+              name="organizerNIC"
+              value={formData.organizerNIC}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="addressLINE1">Address Line 1:</label>
+            <input
+              type="text"
+              id="addressLINE1"
+              name="addressLINE1"
+              value={formData.addressLINE1}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="addressLINE2">Address Line 2:</label>
+            <input
+              type="text"
+              id="addressLINE2"
+              name="addressLINE2"
+              value={formData.addressLINE2}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="organizerCITY">City:</label>
+            <input
+              type="text"
+              id="organizerCITY"
+              name="organizerCITY"
+              value={formData.organizerCITY}
+              onChange={handleChange}
+            />
+          </div>
+          
+          <button type="button" onClick={handleNextStep}>
+            Next
+          </button>
+        </>
+      )}
+      {step === 2 && (
+        <>
+          <h2>Event Organizer Registration - Step 2</h2>
+          <div className="agreement">
+            <h3>Event Ticket Booking Platform Guidelines and Rules</h3>
+            <ol>
+              <li>...</li>
+              <li>...</li>
+              <li>...</li>
+              {/* Add your guidelines here */}
+            </ol>
+            <div className="form-group">
+              <label htmlFor="organizerAGREED">I agree to the guidelines and rules:</label>
               <input
                 type="checkbox"
-                id="agreement"
-                checked={agreed}
-                onChange={handleAgreementChange}
-                required
+                id="organizerAGREED"
+                name="organizerAGREED"
+                checked={formData.organizerAGREED}
+                onChange={handleChange}
               />
-              <label htmlFor="agreement">I agree to the guidelines and rules</label>
             </div>
-            <button type="button" onClick={() => setStep(step - 1)}>Previous</button>
-            <button type="submit">Register</button>
-          </>
-        )}
-      </form>
+            <button type="button" onClick={handlePreviousStep}>
+              Previous
+            </button>
+            <button type="submit" onClick={handleSubmit}>
+              Register
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
-export default RegisterFormORG;
+export default RegistrationFormORG;
