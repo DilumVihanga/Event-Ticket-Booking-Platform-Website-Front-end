@@ -93,6 +93,8 @@
   cursor: pointer;
   transition: background-color 0.3s;
   margin-right: 10px;
+  margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 .register-form .step-button:last-child {

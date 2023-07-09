@@ -20,8 +20,8 @@ const RegistrationFormORG = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const fieldValue = type === 'checkbox' ? checked : value;
+    const { name, value, type, checked, files } = e.target;
+    const fieldValue = type === 'checkbox' ? checked : files ? files[0] : value;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: fieldValue,
@@ -31,9 +31,19 @@ const RegistrationFormORG = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Create a FormData object to store the form data
+    const formDataObj = new FormData();
+    for (const key in formData) {
+      if (key === 'organizerIMAGE') {
+        formDataObj.append(key, formData[key], formData[key].name);
+      } else {
+        formDataObj.append(key, formData[key]);
+      }
+    }
+
     // Send the form data to the Django backend
     axios
-      .post('http://localhost:8000/api/organizer/', formData)
+      .post('http://localhost:8000/api/organizer/', formDataObj)
       .then((response) => {
         // Handle the response from the backend
         console.log(response.data);
@@ -74,15 +84,6 @@ const RegistrationFormORG = () => {
                 id="organizerNAME"
                 name="organizerNAME"
                 value={formData.organizerNAME}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="organizerIMAGE">Image:</label>
-              <input
-                type="file"
-                id="organizerIMAGE"
-                name="organizerIMAGE"
                 onChange={handleChange}
               />
             </div>
@@ -176,6 +177,15 @@ const RegistrationFormORG = () => {
                 onChange={handleChange}
               />
             </div>
+            <div className="form-group">
+              <label htmlFor="organizerIMAGE">Image:</label>
+              <input
+                type="file"
+                id="organizerIMAGE"
+                name="organizerIMAGE"
+                onChange={handleChange}
+              />
+            </div>
             <button type="button" onClick={handleNextStep} className="step-button">
               Next
             </button>
@@ -221,7 +231,7 @@ const RegistrationFormORG = () => {
                 <li>
                   <strong>Event Cancellation or Changes:</strong>
                   <ul>
-                  <li>In case of event cancellation or significant changes, promptly notify ticket holders and provide appropriate refund options.</li>
+                    <li>In case of event cancellation or significant changes, promptly notify ticket holders and provide appropriate refund options.</li>
                   </ul>
                 </li>
                 <li>
@@ -232,8 +242,8 @@ const RegistrationFormORG = () => {
                 </li>
               </ol>
               <div className="form-group">
-                <label htmlFor="organizerAGREED">I agree to the guidelines and rules:</label>
-                <input
+                <label htmlFor="organizerAGREED"style={{paddingLeft:'15px', paddingTop:'25px'}}>I agree to the guidelines and rules:</label>
+                <input style={{marginLeft: '40px', marginTop: '-35px'}}
                   type="checkbox"
                   id="organizerAGREED"
                   name="organizerAGREED"
