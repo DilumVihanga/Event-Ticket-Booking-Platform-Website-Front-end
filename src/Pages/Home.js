@@ -7,6 +7,7 @@ import CategorycardComp from '../Components/Categorycard/CategorycardComp';
 import CalendarComp from '../Components/EventCalendar/CalendarComp';
 import NavComp from '../Components/Nav/NavComp';
 import PadignationComp from '../Components/Padignation/PadignationComp';
+import Googlemapcomp from '../Components/Googlemap/Googlemapcomp';
 
 
 
@@ -22,8 +23,9 @@ export default function Home() {
      <HorizontalcardComp/> <br></br> <PadignationComp/>  <br></br><br></br><br></br>
      <h1 style={{fontFamily:"cursive" , color: "white"}}>Upcoming Events</h1> <br></br><br></br><br></br><br></br>
           <CardGrid/><br></br><PadignationComp/> <br></br><br></br>
-
-         <CalendarComp/>
+         
+      
+          <Googlemapcomp/>   
             
     </div>
   )
