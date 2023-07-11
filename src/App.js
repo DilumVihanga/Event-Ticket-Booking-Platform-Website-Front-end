@@ -23,6 +23,7 @@ import LoginUSER from './Pages/LoginUSER';
 import RegisterUSER from './Pages/RegisterUSER';
 import RegisterORG from './Pages/RegisterORG';
 import Eventcreate from './Pages/Eventcreate';
+import Userlogin from './Pages/Userlogin';
 
 
 
@@ -46,6 +47,7 @@ export default function () {
         <Route path="/registeru" element={<RegisterUSER/>}/>
         <Route path="/registerorg" element={<RegisterORG/>}/>
         <Route path="/create" element={<Eventcreate/>}/>
+        <Route path="/log" element={<Userlogin/>}/>
      
         <Route path="dashboard" element={<SidebarORG/>}> 
         <Route path="" element={<LoginComp/>}/>
