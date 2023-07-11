@@ -63,3 +63,25 @@
   margin-left: 8px;
   color: #ffffff;
 }
+
+submitted-data {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  text-align: center;
+}
+
+.submitted-data h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #333;
+}
+
+.submitted-data p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+}
