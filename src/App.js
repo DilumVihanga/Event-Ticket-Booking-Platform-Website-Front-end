@@ -24,6 +24,8 @@ import RegisterUSER from './Pages/RegisterUSER';
 import RegisterORG from './Pages/RegisterORG';
 import Eventcreate from './Pages/Eventcreate';
 import Userlogin from './Pages/Userlogin';
+import PrivateRoute from './utils/PrivateRoute';
+
 
 
 
@@ -36,6 +38,7 @@ export default function () {
       
       <Routes>
         <Route index element={<Home/>}/>
+        <Route element= {<PrivateRoute/>}> <Route element= {<Contact/>}  path="/contact"/> </Route>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/upcomingevents" element={<Upcomingevents/>}/>
         <Route path="/login" element={<LoginSignup/>}/>

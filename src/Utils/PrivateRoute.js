@@ -1,11 +1,9 @@
-import { Route, Navigate } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 
-const PrivateRoute = ({ children, ...rest }) => {
-  const authenticated = false;
+const PrivateRoute = () => {
+  let auth = { token: false };
   return (
-    <Route {...rest}>
-      {!authenticated ? <Navigate to="/log" /> : children}
-    </Route>
+    auth.token ? <Outlet /> : <Navigate to="/log" />
   );
 };
 
