@@ -24,7 +24,8 @@ import RegisterUSER from './Pages/RegisterUSER';
 import RegisterORG from './Pages/RegisterORG';
 import Eventcreate from './Pages/Eventcreate';
 import Userlogin from './Pages/Userlogin';
-import PrivateRoute from './utils/PrivateRoute';
+import PrivateRoute from './Utils/PrivateRoute';
+import {AuthProvider} from './Context/AuthContext';
 
 
 
@@ -33,7 +34,7 @@ import PrivateRoute from './utils/PrivateRoute';
 export default function () {
   return (
     <div>
-      
+      <AuthProvider>
       <BrowserRouter>
       
       <Routes>
@@ -42,12 +43,13 @@ export default function () {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/upcomingevents" element={<Upcomingevents/>}/>
         <Route path="/login" element={<LoginSignup/>}/>
-        <Route path="/detail" element={<Detail/>}/>
+        
+        <Route path="/detail" element={<Detail/>}/> 
         <Route path="/orderform" element={<TicketOrder/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
         <Route path="/seatmap" element={<Seatmap/>}/>
         <Route path="/loginorg" element={<LoginORG/>}/>
-        <Route path="/loginu" element={<LoginUSER/>}/>
+        <Route path="/loginu" element={<LoginUSER/>}/> 
         <Route path="/registeru" element={<RegisterUSER/>}/>
         <Route path="/registerorg" element={<RegisterORG/>}/>
         <Route path="/create" element={<Eventcreate/>}/>
@@ -81,7 +83,7 @@ export default function () {
          </Route>
         </Routes>      
       </BrowserRouter>
-
+      </AuthProvider>
       
       <br></br> <br></br> <br></br> <br></br>
       <FooterComp/>
