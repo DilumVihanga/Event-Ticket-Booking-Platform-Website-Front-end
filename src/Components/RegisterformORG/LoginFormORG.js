@@ -24,8 +24,8 @@ const LoginFormORG = () => {
 
   return (
     <div className="login-form-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2 className="login-heading">Organizer Login</h2>
+      <form className="login-form" onSubmit={handleSubmit}style={{backgroundColor:'white'}}>
+        <h2 className="title">ORGANIZER LOGIN</h2>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input

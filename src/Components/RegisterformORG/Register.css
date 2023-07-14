@@ -14,17 +14,17 @@
   flex: 1;
   text-align: center;
   padding: 10px;
-  background-color: #070707;
+  background-color: #484848;
   color: #fff;
   font-weight: bold;
 }
 
 .step.active {
-  background-color: #b09be6;
+  background-color: rgb(153, 65, 225);
 }
 
 .register-form {
-  background-color: #d5d2dd;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 4px;
 }
@@ -86,7 +86,7 @@
 
 .register-form .step-button {
   padding: 10px 20px;
-  background-color: #b09be6;
+  background-color: rgb(153, 65, 225);
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -108,3 +108,16 @@
  .register-form input[type="file"]{
   padding-bottom: 30px;
  }
+
+ .title {
+  font-size: 28px;
+  color: rgb(153, 65, 225);
+  font-weight: 600;
+  letter-spacing: 1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  margin-bottom: 0px;
+}
+

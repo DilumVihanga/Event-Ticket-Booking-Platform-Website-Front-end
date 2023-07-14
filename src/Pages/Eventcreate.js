@@ -12,8 +12,6 @@ const EventForm = () => {
     eventIMAGE: null,
   });
 
-  const [submittedData, setSubmittedData] = useState(null);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEventData((prevState) => ({
@@ -46,7 +44,6 @@ const EventForm = () => {
       .then((response) => {
         // Handle the response from the backend
         console.log(response.data);
-        setSubmittedData(response.data); // Save the submitted data in state
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -54,17 +51,19 @@ const EventForm = () => {
   };
 
   return (
-    <div className="event-form-container" >
-      <form onSubmit={handleSubmit} className="event-form" >
-        <h2 className="form-title">Create New Event</h2>
+    <div className="event-form-container" style={{ display:'flex', justifyContent:'center'}} >
+      <div style={{width:'50%', display:'flex', justifyContent:'center'}}>
+      <form onSubmit={handleSubmit} className="form" >
+        <h2 className="title">Create New Event</h2>
         <label className="form-label">
           Event Name
           <input
             type="text"
+            className="input"
             name="eventNAME"
             value={eventData.eventNAME}
             onChange={handleChange}
-            className="form-input"
+            
           />
         </label>
         <label className="form-label">
@@ -74,7 +73,7 @@ const EventForm = () => {
             name="eventDATE"
             value={eventData.eventDATE}
             onChange={handleChange}
-            className="form-input"
+            className="input"
           />
         </label>
         <label className="form-label">
@@ -83,7 +82,7 @@ const EventForm = () => {
             name="eventDISCRIPTION"
             value={eventData.eventDISCRIPTION}
             onChange={handleChange}
-            className="form-textarea"
+            className="input"
           />
         </label>
         <label className="form-label">
@@ -93,7 +92,7 @@ const EventForm = () => {
             name="eventLOCATION"
             value={eventData.eventLOCATION}
             onChange={handleChange}
-            className="form-input"
+            className="input"
           />
         </label>
         <label className="form-label">
@@ -103,7 +102,7 @@ const EventForm = () => {
             name="eventSTARTTIME"
             value={eventData.eventSTARTTIME}
             onChange={handleChange}
-            className="form-input"
+            className="input"
           />
         </label>
         <label className="form-label">
@@ -113,43 +112,16 @@ const EventForm = () => {
               type="file"
               accept="image/*"
               onChange={handleImageChange}
-              className="form-input"
+              className="input"
             />
             <span className="form-file-name">
               {eventData.eventIMAGE ? eventData.eventIMAGE.name : 'No file chosen'}
             </span>
           </div>
         </label>
-        <button type="submit" className="form-button">Create an Event</button>
+        <button type="submit" className="submit">Create an Event</button>
       </form>
-      
-      {submittedData && (
-          <div
-          className="submitted-data"
-          
-        >
-          <h3 style={{ fontSize: '24px', marginBottom: '10px', color: '#800080' }}>Submitted Event Data</h3>
-          <p style={{ fontSize: '16px', marginBottom: '8px', color: '#800080' }}>
-            <strong>Event Name:</strong> {submittedData.eventNAME}
-          </p>
-          <p style={{ fontSize: '16px', marginBottom: '8px', color: '#800080' }}>
-            <strong>Event Date:</strong> {submittedData.eventDATE}
-          </p>
-          <p style={{ fontSize: '16px', marginBottom: '8px', color: '#800080' }}>
-            <strong>Event Description:</strong> {submittedData.eventDISCRIPTION}
-          </p>
-          <p style={{ fontSize: '16px', marginBottom: '8px', color: '#800080' }}>
-            <strong>Event Location:</strong> {submittedData.eventLOCATION}
-          </p>
-          <p style={{ fontSize: '16px', marginBottom: '8px', color: '#800080' }}>
-            <strong>Event Start Time:</strong> {submittedData.eventSTARTTIME}
-          </p>
-        </div>
-        
-        
-        
-        )}
-      
+      </div>
     </div>
   );
 };

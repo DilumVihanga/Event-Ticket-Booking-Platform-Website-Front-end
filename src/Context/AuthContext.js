@@ -1,3 +1,4 @@
+// AuthContext.js
 import React, { createContext, useState } from 'react';
 
 const AuthContext = createContext();
@@ -8,6 +9,7 @@ const AuthProvider = ({ children }) => {
 
   const loginUser = async (username, password) => {
     try {
+      // Make API call to authenticate user
       const response = await fetch('http://localhost:8000/api/token/', {
         method: 'POST',
         headers: {
@@ -18,10 +20,10 @@ const AuthProvider = ({ children }) => {
 
       if (response.ok) {
         const data = await response.json();
-        setAuthTokens(data.refreshToken);
+        setAuthTokens(data.authTokens);
         setUser(data.user);
       } else {
-        throw new Error('Login failed. Please check your credentials.');
+        throw new Error('Invalid credentials');
       }
     } catch (error) {
       console.error('Error occurred while logging in:', error);

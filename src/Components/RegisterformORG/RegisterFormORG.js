@@ -73,15 +73,16 @@ const RegistrationFormORG = () => {
   return (
     <div className="register-form-container">
       {renderStepIndicator(step)}
-      <form className="register-form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit} >
         {step === 1 && (
           <>
-            <h2>Event Organizer Registration - Step 1</h2>
+            <h2 class='title'style={{color:'rgb(153, 65, 225)', fontSize:'20px'}}>EVENT ORGANIZER REGISTRATION - STEP 1</h2>
             <div className="form-group">
               <label htmlFor="organizerNAME">Name:</label>
               <input
                 type="text"
                 id="organizerNAME"
+                className="input"
                 name="organizerNAME"
                 value={formData.organizerNAME}
                 onChange={handleChange}
@@ -92,6 +93,7 @@ const RegistrationFormORG = () => {
               <input
                 type="email"
                 id="organizerEMAIL"
+                className="input"
                 name="organizerEMAIL"
                 value={formData.organizerEMAIL}
                 onChange={handleChange}
@@ -102,6 +104,7 @@ const RegistrationFormORG = () => {
               <input
                 type="text"
                 id="organizerREGNO"
+                className="input"
                 name="organizerREGNO"
                 value={formData.organizerREGNO}
                 onChange={handleChange}
@@ -112,6 +115,7 @@ const RegistrationFormORG = () => {
               <input
                 type="text"
                 id="organizerPHONE"
+                className="input"
                 name="organizerPHONE"
                 value={formData.organizerPHONE}
                 onChange={handleChange}
@@ -122,6 +126,7 @@ const RegistrationFormORG = () => {
               <input
                 type="password"
                 id="organizerPASSWORD"
+                className="input"
                 name="organizerPASSWORD"
                 value={formData.organizerPASSWORD}
                 onChange={handleChange}
@@ -132,6 +137,7 @@ const RegistrationFormORG = () => {
               <input
                 type="password"
                 id="organizerCONPASSWORD"
+                className="input"
                 name="organizerCONPASSWORD"
                 value={formData.organizerCONPASSWORD}
                 onChange={handleChange}
@@ -143,6 +149,7 @@ const RegistrationFormORG = () => {
                 type="text"
                 id="organizerNIC"
                 name="organizerNIC"
+                className="input"
                 value={formData.organizerNIC}
                 onChange={handleChange}
               />
@@ -153,6 +160,7 @@ const RegistrationFormORG = () => {
                 type="text"
                 id="addressLINE1"
                 name="addressLINE1"
+                className="input"
                 value={formData.addressLINE1}
                 onChange={handleChange}
               />
@@ -163,6 +171,7 @@ const RegistrationFormORG = () => {
                 type="text"
                 id="addressLINE2"
                 name="addressLINE2"
+                className="input"
                 value={formData.addressLINE2}
                 onChange={handleChange}
               />
@@ -173,6 +182,7 @@ const RegistrationFormORG = () => {
                 type="text"
                 id="organizerCITY"
                 name="organizerCITY"
+                className="input"
                 value={formData.organizerCITY}
                 onChange={handleChange}
               />
@@ -183,19 +193,20 @@ const RegistrationFormORG = () => {
                 type="file"
                 id="organizerIMAGE"
                 name="organizerIMAGE"
+                className="input"
                 onChange={handleChange}
               />
             </div>
-            <button type="button" onClick={handleNextStep} className="step-button">
+            <button type="button" onClick={handleNextStep} className="submit">
               Next
             </button>
           </>
         )}
         {step === 2 && (
           <>
-            <h2>Event Organizer Registration - Step 2</h2>
+            <h2 style={{color:'rgb(153, 65, 225)', fontSize:'22px', marginTop:'20px'}}>EVENT ORGANIZER REGISTRATION - STEP 2</h2>
             <div className="agreement">
-              <h3>Event Ticket Booking Platform Guidelines and Rules</h3>
+              <h3 style={{color:'black', marginBottom:'10px', fontSize:'20px'}}>Guidelines and Rules</h3>
               <ol>
                 <li>
                   <strong>Account Registration:</strong>
@@ -251,10 +262,10 @@ const RegistrationFormORG = () => {
                   onChange={handleChange}
                 />
               </div>
-              <button type="button" onClick={handlePreviousStep} className="step-button">
+              <button type="button" onClick={handlePreviousStep} className="submit"style={{marginRight:'15px', marginTop:'20px'}}>
                 Previous
               </button>
-              <button type="submit" className="step-button">
+              <button type="submit" className="submit">
                 Register
               </button>
             </div>

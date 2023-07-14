@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 
 const LoginForm = () => {
-  const { loginUser, authTokens, user } = useContext(AuthContext);
+  const { loginUser, user } = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -16,11 +16,11 @@ const LoginForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Submitting form...');
     loginUser(username, password);
   };
 
   console.log('Rendering LoginForm...');
+  console.log('user:', user);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -33,10 +33,7 @@ const LoginForm = () => {
         <input type="password" id="password" value={password} onChange={handlePasswordChange} />
       </div>
       <button type="submit">Login</button>
-      <div>
-        <p>authTokens: {authTokens}</p>
-        <p>user: {user}</p>
-      </div>
+      {user && <p>Logged in as: {user}</p>}
     </form>
   );
 };

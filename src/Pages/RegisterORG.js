@@ -9,7 +9,7 @@ export default function RegisterformORG() {
     <div>
       <NavComp/><br></br><br></br><br></br><br></br>
 
-      <div style={{width:'500px', position:'absolute', marginTop:'40px', marginLeft:'150px'}}> <Lottie animationData={Register} /> </div>
+      <div style={{width:'500px', position:'fixed', marginTop:'150px', marginLeft:'150px'}}> <Lottie animationData={Register} /> </div>
 
        <div style={{marginLeft:'40%'}}>  
        <br></br>

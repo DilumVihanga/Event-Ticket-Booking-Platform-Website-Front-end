@@ -1,50 +1,140 @@
-.registration-form {
-  max-width: 550px;
-  margin: 0 auto;
-  padding: 40px 90px 40px 90px;
-  background-color: #d5d2dd;
-  border-radius: 5px;
-}
-
-.registration-form h2 {
-  margin-top: 0;
-    margin-bottom: 20px;
-    color: #000;
-    font-size: 36px;
-    text-align: center;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-    font-weight: bold;
-    color: #333;
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.form-group input {
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
 }
 
-button[type="submit"] {
+.registerall{
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 28px;
+  color: rgb(153, 65, 225);
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  margin-bottom: 0px;
+}
+
+.title::before,.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  top: 20px;
+  background-color: rgb(185, 65, 225);
+  
+  
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+  background-color: rgb(255, 255, 255);
+  margin-top: -20px;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.message, .signin {
+  color: rgba(88, 87, 87, 0.822);
+  font-size: 14px;
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a {
+  color: royalblue;
+}
+
+.signin a:hover {
+  text-decoration: underline royalblue;
+}
+
+.flex {
+  display: flex;
   width: 100%;
-  padding: 10px;
-  background-color: #8438b7;
-  color: #fff;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: grey;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 15px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span,.form label .input:valid + span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form label .input:valid + span {
+  color: green;
+}
+
+.submit {
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  outline: none;
+  background-color: rgb(164, 65, 225);
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
 }
 
-button[type="submit"]:hover {
-  background-color: #363936;
+.submit:hover {
+  background-color: rgb(56, 90, 194);
 }
 
-/* Optional: Add additional styles to customize the form appearance */
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}

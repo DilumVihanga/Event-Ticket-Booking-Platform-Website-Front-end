@@ -9,9 +9,9 @@ import Lottie from "lottie-react"
 export default function RegisterformORG() {
   return (
     <div>
-        <NavComp/><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+        <NavComp/><br></br><br></br><br></br><br></br><br></br>
 
-       <div style={{width:'600px', position:'absolute', marginTop:'0px', marginLeft:'80px'}}> <Lottie animationData={Login} /> </div>
+       <div style={{width:'600px', position:'fixed', marginTop:'60px', marginLeft:'80px'}}> <Lottie animationData={Login} /> </div>
         
 
        <div style={{marginLeft:'40%'}}> <RegisterFormUSER/>
