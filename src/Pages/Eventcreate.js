@@ -9,6 +9,7 @@ const EventForm = () => {
     eventDISCRIPTION: '',
     eventLOCATION: '',
     eventSTARTTIME: '',
+    eventADDRESS: '',
     eventIMAGE: null,
   });
 
@@ -37,6 +38,7 @@ const EventForm = () => {
     formData.append('eventDISCRIPTION', eventData.eventDISCRIPTION);
     formData.append('eventLOCATION', eventData.eventLOCATION);
     formData.append('eventSTARTTIME', eventData.eventSTARTTIME);
+    formData.append('eventADDRESS', eventData.eventADDRESS);
     formData.append('eventIMAGE', eventData.eventIMAGE);
 
     axios
@@ -51,9 +53,9 @@ const EventForm = () => {
   };
 
   return (
-    <div className="event-form-container" style={{ display:'flex', justifyContent:'center'}} >
-      <div style={{width:'50%', display:'flex', justifyContent:'center'}}>
-      <form onSubmit={handleSubmit} className="form" >
+    <div className="event-form-container">
+      <div style={{ width: '60%' }}>yy</div>
+      <form onSubmit={handleSubmit} className="form">
         <h2 className="title">Create New Event</h2>
         <label className="form-label">
           Event Name
@@ -63,7 +65,6 @@ const EventForm = () => {
             name="eventNAME"
             value={eventData.eventNAME}
             onChange={handleChange}
-            
           />
         </label>
         <label className="form-label">
@@ -96,6 +97,16 @@ const EventForm = () => {
           />
         </label>
         <label className="form-label">
+          Event Address
+          <input
+            type="text"
+            name="eventADDRESS"
+            value={eventData.eventADDRESS}
+            onChange={handleChange}
+            className="input"
+          />
+        </label>
+        <label className="form-label">
           Event Start Time
           <input
             type="time"
@@ -119,9 +130,10 @@ const EventForm = () => {
             </span>
           </div>
         </label>
-        <button type="submit" className="submit">Create an Event</button>
+        <button type="submit" className="submit">
+          Create an Event
+        </button>
       </form>
-      </div>
     </div>
   );
 };

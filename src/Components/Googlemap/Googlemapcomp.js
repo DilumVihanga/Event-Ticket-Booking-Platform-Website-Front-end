@@ -1,36 +1,30 @@
 import React from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
-const MapContainer = (props) => {
-  const mapStyles = {
-    width: '80%', // Set the map width to 80%
-    height: '200px', // Set the height to 200 pixels
-    margin: '0 auto', // Align the map to the center
-    /* marginBottom:'200px' */
-    
-  };
+const MapComponent = (props) => {
+  const locations = [
+    { name: 'Beruwala', lat: 6.4783, lng: 79.9828 },
+    { name: 'London', lat: 51.5074, lng: -0.1278 },
+    { name: 'Colombo', lat: 6.9271, lng: 79.8612 },
+  ];
 
   return (
     <Map
       google={props.google}
-      zoom={14}
-      style={mapStyles}
-      initialCenter={{
-        lat: 6.9271, // Latitude of Colombo
-        lng: 79.8612, // Longitude of Colombo
-      }}
+      zoom={2}
+      initialCenter={{ lat: 0, lng: 0 }}
+      style={{ width: '100%', height: '500px' }}
     >
-      <Marker
-        position={{
-          lat: 6.9271, // Latitude of Colombo
-          lng: 79.8612, // Longitude of Colombo
-        }}
-        label="Colombo Event" // Set the place name as the marker label
-      />
+      {locations.map((location) => (
+        <Marker
+          key={location.name}
+          position={{ lat: location.lat, lng: location.lng }}
+        />
+      ))}
     </Map>
   );
 };
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyDJgOj3oAxtvoCXoiBzYkpHutELCXeJEes', // Replace with your own API key
-})(MapContainer);
+  apiKey: 'AIzaSyDJgOj3oAxtvoCXoiBzYkpHutELCXeJEes',
+})(MapComponent);

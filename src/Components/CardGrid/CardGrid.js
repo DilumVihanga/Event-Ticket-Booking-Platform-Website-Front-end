@@ -15,6 +15,10 @@ const StyledCard = styled(Card)`
   margin-bottom: 20px;
 `;
 
+const event = {
+  eventNAME: 'Sample Event',
+};
+
 export default function CardGrid() {
   const [events, setEvents] = useState([]);
 
@@ -37,19 +41,40 @@ export default function CardGrid() {
         <Grid container spacing={2}>
           {events.map((event) => (
             <Grid item xs={12} sm={6} md={4} key={event.eventID}>
-              <StyledCard sx={{ maxWidth: 345 }}>
+              <StyledCard sx={{ maxWidth: 345 }} >
                 <div className="card_image">
                   <img src={event.eventIMAGE} alt={event.eventNAME} />
                 </div>
-                <CardContent>
-                  <Typography variant="h5" component="div">
-                    {event.eventNAME}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {event.eventDISCRIPTION}
-                  </Typography>
-                  <button className="btn card_btn">Book Now</button>
-                </CardContent>
+                <CardContent style={{ fontFamily: 'Arial' }}>
+      <Typography variant="h5" component="div" style={{ fontSize: '24px' }}>
+        {event.eventName}
+      </Typography>
+      <Typography variant="body2" color="text.secondary" style={{ marginBottom:'10px' }}>
+        {event.eventDISCRIPTION}
+      </Typography>
+      <button
+        className="btn card_btn"
+        style={{
+          fontFamily: 'Arial',
+          fontSize: '18px',
+          backgroundColor: '#9364f0e6',
+          color: '#fff',
+          padding: '8px 16px',
+          border: 'none',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          transition: 'transform 0.3s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.transform = 'scale(1.1)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.transform = 'scale(1)';
+        }}
+      >
+        Book Now
+      </button>
+    </CardContent>
               </StyledCard>
             </Grid>
           ))}
