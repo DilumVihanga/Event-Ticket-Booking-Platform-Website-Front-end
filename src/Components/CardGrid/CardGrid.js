@@ -45,11 +45,11 @@ export default function CardGrid() {
                 <div className="card_image">
                   <img src={event.eventIMAGE} alt={event.eventNAME} />
                 </div>
-                <CardContent style={{ fontFamily: 'Arial' }}>
-      <Typography variant="h5" component="div" style={{ fontSize: '24px' }}>
-        {event.eventName}
+                <CardContent style={{ fontFamily: 'Arial', paddingLeft:'35px', paddingRight:'35px'}}>
+      <Typography variant="h5" component="div" style={{ marginBottom:'10px' }}>
+        {event.eventNAME}
       </Typography>
-      <Typography variant="body2" color="text.secondary" style={{ marginBottom:'10px' }}>
+      <Typography variant="body2" color="text.secondary" style={{ marginBottom:'20px' }}>
         {event.eventDISCRIPTION}
       </Typography>
       <button

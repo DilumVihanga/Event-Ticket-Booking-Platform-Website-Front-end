@@ -26,5 +26,5 @@ const MapComponent = (props) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyDJgOj3oAxtvoCXoiBzYkpHutELCXeJEes',
+  apiKey: '888888888',
 })(MapComponent);

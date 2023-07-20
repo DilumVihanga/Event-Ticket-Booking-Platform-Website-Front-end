@@ -54,7 +54,7 @@ const EventForm = () => {
 
   return (
     <div className="event-form-container">
-      <div style={{ width: '60%' }}>yy</div>
+      <div style={{ width: '60%', display:'flex', margin:'auto' }}>
       <form onSubmit={handleSubmit} className="form">
         <h2 className="title">Create New Event</h2>
         <label className="form-label">
@@ -119,7 +119,7 @@ const EventForm = () => {
         <label className="form-label">
           Event Image
           <div className="form-file-input">
-            <input
+            <input style={{paddingBottom:'45px'}}
               type="file"
               accept="image/*"
               onChange={handleImageChange}
@@ -134,6 +134,7 @@ const EventForm = () => {
           Create an Event
         </button>
       </form>
+      </div>
     </div>
   );
 };

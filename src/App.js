@@ -22,10 +22,10 @@ import LoginORG from './Pages/LoginORG';
 import LoginUSER from './Pages/LoginUSER';
 import RegisterUSER from './Pages/RegisterUSER';
 import RegisterORG from './Pages/RegisterORG';
-import Eventcreate from './Pages/Eventcreate';
 import Userlogin from './Pages/Userlogin';
 import PrivateRoute from './Utils/PrivateRoute';
 import {AuthProvider} from './Context/AuthContext';
+import EventForm from './Components/EventForm/EventForm';
 
 
 
@@ -52,14 +52,14 @@ export default function () {
         <Route path="/loginu" element={<LoginUSER/>}/> 
         <Route path="/registeru" element={<RegisterUSER/>}/>
         <Route path="/registerorg" element={<RegisterORG/>}/>
-        <Route path="/create" element={<Eventcreate/>}/>
+        
         <Route path="/log" element={<Userlogin/>}/>
      
         <Route path="dashboard" element={<SidebarORG/>}> 
         <Route path="" element={<LoginComp/>}/>
          <Route path="overview" element={<LoginComp/>}/>
           <Route path="tickets" element={<CardGrid/>}/>
-          <Route path="events" element={<HeroComp/>}/>
+          <Route path="events" element={<EventForm/>}/>
           <Route path="sales" element={<OrderformComp/>}/>
           <Route path="reports" element={<CardGrid/>}/>
          </Route>
