@@ -4,7 +4,7 @@ import './RegisterFormUser.css';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    customerName: '', // Update field name to match Django model
+    username: '', // Update field name to match Django model
     email: '',
     password: '',
     customerPHONE: '',
@@ -20,13 +20,15 @@ const RegistrationForm = () => {
 
     // Convert the form data to match the Django backend's expected format
     const postData = {
-      customerName: formData.customerName, // Update field name to match Django model
-      email: formData.email,
-      password: formData.password,
+      user: {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+      },
       customerPHONE: formData.customerPHONE,
       customerNIC: formData.customerNIC,
-      user_type: 'customer', // Set the user_type as 'customer'
     };
+    
 
     // Send the form data to the Django backend
     axios
@@ -54,8 +56,8 @@ const RegistrationForm = () => {
               required
               type="text"
               className="input"
-              name="customerName"
-              value={formData.customerName}
+              name="username"
+              value={formData.username}
               onChange={handleChange}
             />
             <span>Username</span>
