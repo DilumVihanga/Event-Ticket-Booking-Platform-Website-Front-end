@@ -1,38 +1,60 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import jwtDecode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 import './Loginformm.css';
 
 const LoginFormORG = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Login submitted:', email, password);
-    // Reset form fields
-    setEmail('');
-    setPassword('');
+    try {
+      const response = await axios.post('http://localhost:8000/api/token/', {
+        username,
+        password,
+      });
+      const { access } = response.data;
+
+      // Decode the token to get the payload
+      const decodedToken = jwtDecode(access);
+
+      // Check if the role is "ORGANIZER" before allowing login
+      if (decodedToken.role === 'ORGANIZER') {
+        // Store the access token in local storage (you can use cookies or other methods as well)
+        localStorage.setItem('access_token', access);
+
+        // Redirect to the desired URL after successful login
+        navigate('/dashboard');
+      } else {
+        console.error('Only organizers are allowed to log in.');
+      }
+    } catch (error) {
+      console.error('Login failed', error);
+    }
   };
 
   return (
     <div className="login-form-container">
-      <form className="login-form" onSubmit={handleSubmit}style={{backgroundColor:'white'}}>
+      <form className="login-form" onSubmit={handleSubmit} style={{ backgroundColor: 'white' }}>
         <h2 className="title">ORGANIZER LOGIN</h2>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="username">Username:</label>
           <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={handleEmailChange}
+            type="text"
+            id="username"
+            value={username}
+            onChange={handleUsernameChange}
             required
           />
         </div>

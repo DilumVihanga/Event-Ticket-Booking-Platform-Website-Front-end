@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -25,10 +25,7 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import LogoutIcon from '@mui/icons-material/Logout';
-import LoginComp from '../Login/LoginComp';
-
-
-
+import jwtDecode from 'jwt-decode'; // Import the jwt-decode library
 
 const drawerWidth = 240;
 
@@ -100,6 +97,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate(); // Get the navigate function
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -114,6 +112,31 @@ export default function MiniDrawer() {
   const EventsIcon = () => <EventAvailableIcon />;
   const SalesIcon = () => <MonetizationOnIcon />;
   const ReportsIcon = () => <SummarizeIcon />;
+
+  // Function to decode the JWT and extract the username
+  const getUserNameFromToken = (token) => {
+    try {
+      const decodedToken = jwtDecode(token);
+      return decodedToken?.username || ''; // Return the username or an empty string if not present
+    } catch (error) {
+      console.error('Error decoding the token:', error);
+      return '';
+    }
+  };
+
+  // Get the token from local storage
+  const token = localStorage.getItem('access_token');
+
+  // Decode the token to get the username
+  const userName = getUserNameFromToken(token);
+
+  const handleLogout = () => {
+    // Remove the token from the local storage
+    localStorage.removeItem('access_token');
+
+    // Optionally, navigate to login page after logout
+    navigate('/loginorg');
+  };
 
   return (
     <Box className="alldash" sx={{ display: 'flex' }}>
@@ -133,7 +156,8 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            <span>Event Organizer Dashboard </span> 
+            <span>Event Organizer Dashboard</span>
+            {userName && <span style={{color:'orange'}}> - Hi, {userName}</span>}
             <a href="/">
               <span className="backhome">Back To Home</span>
             </a>
@@ -154,16 +178,45 @@ export default function MiniDrawer() {
             { text: 'Tickets', Icon: TicketIcon, link: '/dashboard/tickets' },
             { text: 'Sales', Icon: SalesIcon , link: '/dashboard/sales'},
             { text: 'Reports', Icon: ReportsIcon , link: '/dashboard/reports'},
-
-            
           ].map(({ text, Icon, link }, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-             <Link to={link}> <ListItemButton
+              <Link to={link}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Icon />
+                  </ListItemIcon> 
+                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton> 
+              </Link>
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {[
+            { text: 'Profile', icon: <AccountCircleIcon /> },
+            { text: 'Logout', icon: <LogoutIcon />, action: handleLogout }, // Add the handleLogout function to the "Logout" item
+          ].map((item) => (
+            <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
+              <ListItemButton
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                onClick={item.action} // Call the handleLogout function when "Logout" is clicked
               >
                 <ListItemIcon
                   sx={{
@@ -172,48 +225,18 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  <Icon />
-                </ListItemIcon> 
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton> 
-              </Link>
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <Divider />
-        <List>
-  {[
-    { text: 'Profile', icon: <AccountCircleIcon /> },
-    { text: 'Logout', icon: <LogoutIcon /> },
-  ].map((item) => (
-    <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-      <ListItemButton
-        sx={{
-          minHeight: 48,
-          justifyContent: open ? 'initial' : 'center',
-          px: 2.5,
-        }}
-      >
-        <ListItemIcon
-          sx={{
-            minWidth: 0,
-            mr: open ? 3 : 'auto',
-            justifyContent: 'center',
-          }}
-        >
-          {item.icon}
-        </ListItemIcon>
-        <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
-      </ListItemButton>
-    </ListItem>
-  ))}
-</List>
-
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Outlet />
-         </Box>
+      </Box>
     </Box>
   );
 }
