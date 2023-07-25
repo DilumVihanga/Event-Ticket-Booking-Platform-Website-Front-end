@@ -23,6 +23,7 @@ import LoginUSER from './Pages/LoginUSER';
 import RegisterUSER from './Pages/RegisterUSER';
 import RegisterORG from './Pages/RegisterORG';
 import Userlogin from './Pages/Userlogin';
+import Logout from './Pages/Logout';
 import PrivateRoute from './Utils/PrivateRoute';
 import {AuthProvider} from './Context/AuthContext';
 import EventForm from './Components/EventForm/EventForm';
@@ -43,6 +44,7 @@ export default function () {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/upcomingevents" element={<Upcomingevents/>}/>
         <Route path="/login" element={<LoginSignup/>}/>
+        <Route path="/logout" element={<Logout/>}/>
         
         <Route path="/detail" element={<Detail/>}/> 
         <Route path="/orderform" element={<TicketOrder/>}/>

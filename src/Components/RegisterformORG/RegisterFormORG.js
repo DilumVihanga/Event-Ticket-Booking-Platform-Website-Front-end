@@ -5,23 +5,21 @@ import './Register.css';
 const RegistrationFormORG = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    organizerNAME: '',
-    organizerEMAIL: '',
+    username: '',
+    email: '',
+    password: '',
     organizerREGNO: '',
     organizerPHONE: '',
-    organizerPASSWORD: '',
-    organizerCONPASSWORD: '',
     organizerNIC: '',
     addressLINE1: '',
     addressLINE2: '',
     organizerCITY: '',
     organizerAGREED: false,
-    organizerIMAGE: null,
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked, files } = e.target;
-    const fieldValue = type === 'checkbox' ? checked : files ? files[0] : value;
+    const { name, value, type, checked } = e.target;
+    const fieldValue = type === 'checkbox' ? checked : value;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: fieldValue,
@@ -31,19 +29,25 @@ const RegistrationFormORG = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Create a FormData object to store the form data
-    const formDataObj = new FormData();
-    for (const key in formData) {
-      if (key === 'organizerIMAGE') {
-        formDataObj.append(key, formData[key], formData[key].name);
-      } else {
-        formDataObj.append(key, formData[key]);
-      }
-    }
+    const postData = {
+      user: {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        role: 'ORGANIZER', // Set the role to 'ORGANIZER' for organizer registration
+      },
+      organizerREGNO: formData.organizerREGNO,
+      organizerPHONE: formData.organizerPHONE,
+      organizerNIC: formData.organizerNIC,
+      addressLINE1: formData.addressLINE1,
+      addressLINE2: formData.addressLINE2,
+      organizerCITY: formData.organizerCITY,
+      organizerAGREED: formData.organizerAGREED,
+    };
 
     // Send the form data to the Django backend
     axios
-      .post('http://localhost:8000/api/organizer/', formDataObj)
+      .post('http://localhost:8000/api/organizer-profiles/', postData)
       .then((response) => {
         // Handle the response from the backend
         console.log(response.data);
@@ -73,18 +77,20 @@ const RegistrationFormORG = () => {
   return (
     <div className="register-form-container">
       {renderStepIndicator(step)}
-      <form className="form" onSubmit={handleSubmit} >
+      <form className="form" onSubmit={handleSubmit}>
         {step === 1 && (
           <>
-            <h2 class='title'style={{color:'rgb(153, 65, 225)', fontSize:'20px'}}>EVENT ORGANIZER REGISTRATION - STEP 1</h2>
+            <h2 className="title" style={{ color: 'rgb(153, 65, 225)', fontSize: '20px' }}>
+              EVENT ORGANIZER REGISTRATION - STEP 1
+            </h2>
             <div className="form-group">
               <label htmlFor="organizerNAME">Name:</label>
               <input
                 type="text"
-                id="organizerNAME"
+                id="username"
                 className="input"
-                name="organizerNAME"
-                value={formData.organizerNAME}
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
               />
             </div>
@@ -92,13 +98,26 @@ const RegistrationFormORG = () => {
               <label htmlFor="organizerEMAIL">Email:</label>
               <input
                 type="email"
-                id="organizerEMAIL"
+                id="email"
                 className="input"
-                name="organizerEMAIL"
-                value={formData.organizerEMAIL}
+                name="email"
+                value={formData.email}
                 onChange={handleChange}
               />
             </div>
+
+            <div className="form-group">
+              <label htmlFor="organizerPASSWORD">Password:</label>
+              <input
+                type="password"
+                id="password"
+                className="input"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+            </div>
+
             <div className="form-group">
               <label htmlFor="organizerREGNO">Registration Number:</label>
               <input
@@ -121,28 +140,7 @@ const RegistrationFormORG = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="organizerPASSWORD">Password:</label>
-              <input
-                type="password"
-                id="organizerPASSWORD"
-                className="input"
-                name="organizerPASSWORD"
-                value={formData.organizerPASSWORD}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="organizerCONPASSWORD">Confirm Password:</label>
-              <input
-                type="password"
-                id="organizerCONPASSWORD"
-                className="input"
-                name="organizerCONPASSWORD"
-                value={formData.organizerCONPASSWORD}
-                onChange={handleChange}
-              />
-            </div>
+
             <div className="form-group">
               <label htmlFor="organizerNIC">NIC Number:</label>
               <input
@@ -187,16 +185,6 @@ const RegistrationFormORG = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="organizerIMAGE">Image:</label>
-              <input
-                type="file"
-                id="organizerIMAGE"
-                name="organizerIMAGE"
-                className="input"
-                onChange={handleChange}
-              />
-            </div>
             <button type="button" onClick={handleNextStep} className="submit">
               Next
             </button>
@@ -204,9 +192,11 @@ const RegistrationFormORG = () => {
         )}
         {step === 2 && (
           <>
-            <h2 style={{color:'rgb(153, 65, 225)', fontSize:'22px', marginTop:'20px'}}>EVENT ORGANIZER REGISTRATION - STEP 2</h2>
+            <h2 style={{ color: 'rgb(153, 65, 225)', fontSize: '22px', marginTop: '20px' }}>
+              EVENT ORGANIZER REGISTRATION - STEP 2
+            </h2>
             <div className="agreement">
-              <h3 style={{color:'black', marginBottom:'10px', fontSize:'20px'}}>Guidelines and Rules</h3>
+              <h3 style={{ color: 'black', marginBottom: '10px', fontSize: '20px' }}>Guidelines and Rules</h3>
               <ol>
                 <li>
                   <strong>Account Registration:</strong>
@@ -253,8 +243,11 @@ const RegistrationFormORG = () => {
                 </li>
               </ol>
               <div className="form-group">
-                <label htmlFor="organizerAGREED"style={{paddingLeft:'15px', paddingTop:'25px'}}>I agree to the guidelines and rules:</label>
-                <input style={{marginLeft: '40px', marginTop: '-35px'}}
+                <label htmlFor="organizerAGREED" style={{ paddingLeft: '15px', paddingTop: '25px' }}>
+                  I agree to the guidelines and rules:
+                </label>
+                <input
+                  style={{ marginLeft: '40px', marginTop: '-35px' }}
                   type="checkbox"
                   id="organizerAGREED"
                   name="organizerAGREED"
@@ -262,7 +255,7 @@ const RegistrationFormORG = () => {
                   onChange={handleChange}
                 />
               </div>
-              <button type="button" onClick={handlePreviousStep} className="submit"style={{marginRight:'15px', marginTop:'20px'}}>
+              <button type="button" onClick={handlePreviousStep} className="submit" style={{ marginRight: '15px', marginTop: '20px' }}>
                 Previous
               </button>
               <button type="submit" className="submit">
