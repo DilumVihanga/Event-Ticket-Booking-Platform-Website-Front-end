@@ -27,6 +27,7 @@ import Logout from './Pages/Logout';
 import PrivateRoute from './Utils/PrivateRoute';
 import {AuthProvider} from './Context/AuthContext';
 import EventForm from './Components/EventForm/EventForm';
+import MyeventsComp from './Components/Myevents/MyeventsComp';
 
 
 
@@ -64,6 +65,8 @@ export default function () {
           <Route path="events" element={<EventForm/>}/>
           <Route path="sales" element={<OrderformComp/>}/>
           <Route path="reports" element={<CardGrid/>}/>
+          <Route path="create-event" element={<EventForm/>}/>
+          <Route path="my-events" element={<MyeventsComp/>}/>
          </Route>
 
          <Route path="admin" element={<SidebarADMIN/>}> 

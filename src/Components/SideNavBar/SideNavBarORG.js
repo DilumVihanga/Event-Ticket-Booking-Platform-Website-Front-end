@@ -109,7 +109,6 @@ export default function MiniDrawer() {
 
   const TicketIcon = () => <BookOnlineIcon />;
   const OverviewIcon = () => <QueryStatsIcon />;
-  const EventsIcon = () => <EventAvailableIcon />;
   const SalesIcon = () => <MonetizationOnIcon />;
   const ReportsIcon = () => <SummarizeIcon />;
 
@@ -157,7 +156,7 @@ export default function MiniDrawer() {
           </IconButton>
           <Typography variant="h6" noWrap component="div">
             <span>Event Organizer Dashboard</span>
-            {userName && <span style={{color:'orange'}}> - Hi, {userName}</span>}
+            {userName && <span style={{ color: 'orange' }}> - Hi, {userName}</span>}
             <a href="/">
               <span className="backhome">Back To Home</span>
             </a>
@@ -172,9 +171,76 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
+          <ListItem key="Overview" disablePadding sx={{ display: 'block' }}>
+            <Link to="/dashboard/overview">
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <OverviewIcon />
+                </ListItemIcon>
+                <ListItemText primary="Overview" sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+          <ListItem key="Create Event" disablePadding sx={{ display: 'block' }}>
+            <Link to="/dashboard/create-event">
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <EventAvailableIcon />
+                </ListItemIcon>
+                <ListItemText primary="Create Event" sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+          <ListItem key="My Events" disablePadding sx={{ display: 'block' }}>
+            <Link to="/dashboard/my-events">
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <EventAvailableIcon />
+                </ListItemIcon>
+                <ListItemText primary="My Events" sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
           {[
-            { text: 'Overview', Icon: OverviewIcon, link: '/dashboard/overview' },
-            { text: 'Events', Icon: EventsIcon , link: '/dashboard/events' },
             { text: 'Tickets', Icon: TicketIcon, link: '/dashboard/tickets' },
             { text: 'Sales', Icon: SalesIcon , link: '/dashboard/sales'},
             { text: 'Reports', Icon: ReportsIcon , link: '/dashboard/reports'},
@@ -196,9 +262,9 @@ export default function MiniDrawer() {
                     }}
                   >
                     <Icon />
-                  </ListItemIcon> 
+                  </ListItemIcon>
                   <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton> 
+                </ListItemButton>
               </Link>
             </ListItem>
           ))}

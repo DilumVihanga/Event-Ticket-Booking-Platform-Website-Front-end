@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 import './EventForm.css';
 
 const EventForm = () => {
@@ -12,6 +13,25 @@ const EventForm = () => {
     eventADDRESS: '',
     eventIMAGE: null,
   });
+
+  const [organizerID, setOrganizerID] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('access_token');
+    const decodedToken = jwt_decode(token);
+    const user_id = decodedToken.user_id;
+
+    axios
+      .get(`http://localhost:8000/api/organizer-profiles/?user=${user_id}`)
+      .then((response) => {
+        console.log(response.data);
+        const organizerProfile = response.data[0];
+        setOrganizerID(organizerProfile.organizerID);
+      })
+      .catch((error) => {
+        console.error('Error fetching organizerID:', error);
+      });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,6 +61,8 @@ const EventForm = () => {
     formData.append('eventADDRESS', eventData.eventADDRESS);
     formData.append('eventIMAGE', eventData.eventIMAGE);
 
+    formData.append('organizerID', organizerID);
+
     axios
       .post('http://localhost:8000/api/events/', formData)
       .then((response) => {
@@ -52,88 +74,93 @@ const EventForm = () => {
       });
   };
 
+  if (organizerID === null) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="event-form-container">
-      <div style={{ width: '60%', display:'flex', margin:'auto' }}>
-      <form onSubmit={handleSubmit} className="form">
-        <h2 className="title">Create New Event</h2>
-        <label className="form-label">
-          Event Name
-          <input
-            type="text"
-            className="input"
-            name="eventNAME"
-            value={eventData.eventNAME}
-            onChange={handleChange}
-          />
-        </label>
-        <label className="form-label">
-          Event Date
-          <input
-            type="date"
-            name="eventDATE"
-            value={eventData.eventDATE}
-            onChange={handleChange}
-            className="input"
-          />
-        </label>
-        <label className="form-label">
-          Event Description
-          <textarea
-            name="eventDISCRIPTION"
-            value={eventData.eventDISCRIPTION}
-            onChange={handleChange}
-            className="input"
-          />
-        </label>
-        <label className="form-label">
-          Event Location
-          <input
-            type="text"
-            name="eventLOCATION"
-            value={eventData.eventLOCATION}
-            onChange={handleChange}
-            className="input"
-          />
-        </label>
-        <label className="form-label">
-          Event Address
-          <input
-            type="text"
-            name="eventADDRESS"
-            value={eventData.eventADDRESS}
-            onChange={handleChange}
-            className="input"
-          />
-        </label>
-        <label className="form-label">
-          Event Start Time
-          <input
-            type="time"
-            name="eventSTARTTIME"
-            value={eventData.eventSTARTTIME}
-            onChange={handleChange}
-            className="input"
-          />
-        </label>
-        <label className="form-label">
-          Event Image
-          <div className="form-file-input">
-            <input style={{paddingBottom:'45px'}}
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
+      <div style={{ width: '60%', display: 'flex', margin: 'auto' }}>
+        <form onSubmit={handleSubmit} className="form">
+          <h2 className="title">Create New Event</h2>
+          <label className="form-label">
+            Event Name
+            <input
+              type="text"
+              className="input"
+              name="eventNAME"
+              value={eventData.eventNAME}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="form-label">
+            Event Date
+            <input
+              type="date"
+              name="eventDATE"
+              value={eventData.eventDATE}
+              onChange={handleChange}
               className="input"
             />
-            <span className="form-file-name">
-              {eventData.eventIMAGE ? eventData.eventIMAGE.name : 'No file chosen'}
-            </span>
-          </div>
-        </label>
-        <button type="submit" className="submit">
-          Create an Event
-        </button>
-      </form>
+          </label>
+          <label className="form-label">
+            Event Description
+            <textarea
+              name="eventDISCRIPTION"
+              value={eventData.eventDISCRIPTION}
+              onChange={handleChange}
+              className="input"
+            />
+          </label>
+          <label className="form-label">
+            Event Location
+            <input
+              type="text"
+              name="eventLOCATION"
+              value={eventData.eventLOCATION}
+              onChange={handleChange}
+              className="input"
+            />
+          </label>
+          <label className="form-label">
+            Event Address
+            <input
+              type="text"
+              name="eventADDRESS"
+              value={eventData.eventADDRESS}
+              onChange={handleChange}
+              className="input"
+            />
+          </label>
+          <label className="form-label">
+            Event Start Time
+            <input
+              type="time"
+              name="eventSTARTTIME"
+              value={eventData.eventSTARTTIME}
+              onChange={handleChange}
+              className="input"
+            />
+          </label>
+          <label className="form-label">
+            Event Image
+            <div className="form-file-input">
+              <input
+                style={{ paddingBottom: '45px' }}
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="input"
+              />
+              <span className="form-file-name">
+                {eventData.eventIMAGE ? eventData.eventIMAGE.name : 'No file chosen'}
+              </span>
+            </div>
+          </label>
+          <button type="submit" className="submit">
+            Create an Event
+          </button>
+        </form>
       </div>
     </div>
   );
