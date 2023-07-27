@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import './EventForm.css';
@@ -14,43 +14,15 @@ const EventForm = () => {
     eventIMAGE: null,
   });
 
-  const [organizerID, setOrganizerID] = useState(null);
-
-  useEffect(() => {
-    const token = localStorage.getItem('access_token');
-    const decodedToken = jwt_decode(token);
-    const user_id = decodedToken.user_id;
-
-    axios
-      .get(`http://localhost:8000/api/organizer-profiles/?user=${user_id}`)
-      .then((response) => {
-        console.log(response.data);
-        const organizerProfile = response.data[0];
-        setOrganizerID(organizerProfile.organizerID);
-      })
-      .catch((error) => {
-        console.error('Error fetching organizerID:', error);
-      });
-  }, []);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEventData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setEventData((prevState) => ({
-      ...prevState,
-      eventIMAGE: file,
-    }));
-  };
+  const [eventCreated, setEventCreated] = useState(false); // New state for success message
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const token = localStorage.getItem('access_token');
+    const decodedToken = jwt_decode(token);
+    const user_id = decodedToken.user_id;
+    console.log('user_id:', user_id);
 
     const formData = new FormData();
     formData.append('eventNAME', eventData.eventNAME);
@@ -60,26 +32,30 @@ const EventForm = () => {
     formData.append('eventSTARTTIME', eventData.eventSTARTTIME);
     formData.append('eventADDRESS', eventData.eventADDRESS);
     formData.append('eventIMAGE', eventData.eventIMAGE);
-
-    formData.append('organizerID', organizerID);
+    formData.append('user', user_id); // Use user_id instead of organizerID
 
     axios
       .post('http://localhost:8000/api/events/', formData)
       .then((response) => {
         // Handle the response from the backend
         console.log(response.data);
+        setEventCreated(true); // Set the state to show success message
+        setTimeout(() => {
+          window.location.reload(); // Reload the page after a delay
+        }, 2000); // Change the delay (in milliseconds) as needed
       })
       .catch((error) => {
         console.error('Error:', error);
       });
   };
 
-  if (organizerID === null) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="event-form-container">
+      {eventCreated && (
+        <div className="success-message">
+          Event created successfully. Reloading the page...
+        </div>
+      )}
       <div style={{ width: '60%', display: 'flex', margin: 'auto' }}>
         <form onSubmit={handleSubmit} className="form">
           <h2 className="title">Create New Event</h2>
@@ -90,7 +66,7 @@ const EventForm = () => {
               className="input"
               name="eventNAME"
               value={eventData.eventNAME}
-              onChange={handleChange}
+              onChange={(e) => setEventData({ ...eventData, eventNAME: e.target.value })}
             />
           </label>
           <label className="form-label">
@@ -99,7 +75,7 @@ const EventForm = () => {
               type="date"
               name="eventDATE"
               value={eventData.eventDATE}
-              onChange={handleChange}
+              onChange={(e) => setEventData({ ...eventData, eventDATE: e.target.value })}
               className="input"
             />
           </label>
@@ -108,7 +84,7 @@ const EventForm = () => {
             <textarea
               name="eventDISCRIPTION"
               value={eventData.eventDISCRIPTION}
-              onChange={handleChange}
+              onChange={(e) => setEventData({ ...eventData, eventDISCRIPTION: e.target.value })}
               className="input"
             />
           </label>
@@ -118,7 +94,7 @@ const EventForm = () => {
               type="text"
               name="eventLOCATION"
               value={eventData.eventLOCATION}
-              onChange={handleChange}
+              onChange={(e) => setEventData({ ...eventData, eventLOCATION: e.target.value })}
               className="input"
             />
           </label>
@@ -128,7 +104,7 @@ const EventForm = () => {
               type="text"
               name="eventADDRESS"
               value={eventData.eventADDRESS}
-              onChange={handleChange}
+              onChange={(e) => setEventData({ ...eventData, eventADDRESS: e.target.value })}
               className="input"
             />
           </label>
@@ -138,7 +114,7 @@ const EventForm = () => {
               type="time"
               name="eventSTARTTIME"
               value={eventData.eventSTARTTIME}
-              onChange={handleChange}
+              onChange={(e) => setEventData({ ...eventData, eventSTARTTIME: e.target.value })}
               className="input"
             />
           </label>
@@ -149,7 +125,7 @@ const EventForm = () => {
                 style={{ paddingBottom: '45px' }}
                 type="file"
                 accept="image/*"
-                onChange={handleImageChange}
+                onChange={(e) => setEventData({ ...eventData, eventIMAGE: e.target.files[0] })}
                 className="input"
               />
               <span className="form-file-name">

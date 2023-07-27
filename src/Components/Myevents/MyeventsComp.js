@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './EventTable.css';
+import jwt_decode from 'jwt-decode';
 
 const EventTable = () => {
   const [events, setEvents] = useState([]);
 
+  const token = localStorage.getItem('access_token');
+  const decodedToken = jwt_decode(token);
+  const user_id = decodedToken.user_id;
+  console.log('user_id:', user_id);  
+
   useEffect(() => {
     // Fetch data from the Django backend API
-    axios.get('http://localhost:8000/api/events/')
+    axios.get(`http://localhost:8000/api/pak/${user_id}`)
       .then(response => {
         setEvents(response.data);
       })
@@ -40,7 +46,7 @@ const EventTable = () => {
               <td className="table-cell">{event.eventSTARTTIME}</td>
               <td className="table-cell">{event.eventADDRESS}</td>
               <td className="table-cell">
-                {event.eventIMAGE && <img src={event.eventIMAGE} alt={event.eventNAME} className="event-image" />}
+                {event.eventIMAGE && <img src={`http://localhost:8000/${event.eventIMAGE}`} alt={event.eventNAME} className="event-image" />}
               </td>
             </tr>
           ))}

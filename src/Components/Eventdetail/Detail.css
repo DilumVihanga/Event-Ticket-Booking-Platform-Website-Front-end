@@ -1,12 +1,12 @@
 
 /* main */
 header {
-    height: 360px;
+    /* height: 360px; */
     z-index: 10;
 }
 .header-banner {
     background-color: #333;
-    background-image: url('https://static.vecteezy.com/system/resources/previews/020/615/112/non_2x/vintage-color-backgrounds-set-from-the-70s-free-vector.jpg');
+    
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,7 +15,7 @@ header {
 }
 
 header h1 {
-    background-color: rgba(99, 20, 145, 0.66);
+    background-color: rgb(161 0 255);
     border-radius: 15px;
     color: #fff;
     padding: 0 1rem;

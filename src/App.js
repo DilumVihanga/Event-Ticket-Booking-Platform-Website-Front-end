@@ -29,6 +29,10 @@ import {AuthProvider} from './Context/AuthContext';
 import EventForm from './Components/EventForm/EventForm';
 import MyeventsComp from './Components/Myevents/MyeventsComp';
 
+import TicketcreateformComp from './Components/Ticketcreateform/TicketcreateformComp';
+import EventDetailComp from './Components/Eventdetail/EventdetailComp';
+
+
 
 
 
@@ -46,6 +50,8 @@ export default function () {
         <Route path="/upcomingevents" element={<Upcomingevents/>}/>
         <Route path="/login" element={<LoginSignup/>}/>
         <Route path="/logout" element={<Logout/>}/>
+        {/* <Route path="/"  component={CardGrid} /> */}
+        <Route path="/event/:id" element={<EventDetailComp/>} />
         
         <Route path="/detail" element={<Detail/>}/> 
         <Route path="/orderform" element={<TicketOrder/>}/>
@@ -61,7 +67,7 @@ export default function () {
         <Route path="dashboard" element={<SidebarORG/>}> 
         <Route path="" element={<LoginComp/>}/>
          <Route path="overview" element={<LoginComp/>}/>
-          <Route path="tickets" element={<CardGrid/>}/>
+          <Route path="tickets" element={<TicketcreateformComp/>}/>
           <Route path="events" element={<EventForm/>}/>
           <Route path="sales" element={<OrderformComp/>}/>
           <Route path="reports" element={<CardGrid/>}/>
