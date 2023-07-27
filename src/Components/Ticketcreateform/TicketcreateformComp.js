@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-import './TicketPackageForm.css'; // Assuming you have a CSS file for this form
+import './TicketPackageForm.css'; // Assuming you have a CSS file for this 
+import swal from 'sweetalert';
+
 
 const TicketPackageForm = () => {
   const [ticketPackageData, setTicketPackageData] = useState({
@@ -110,7 +112,7 @@ const TicketPackageForm = () => {
             className="input"
           />
         </label>
-        <button type="submit" className="form-button">Create Ticket Package</button>
+        <button type="submit" className="form-button" onClick={() => swal("Good job!", "Package Created Sucessfully !", "success")}>Create Ticket Package</button>
       </form>
     </div>
   );

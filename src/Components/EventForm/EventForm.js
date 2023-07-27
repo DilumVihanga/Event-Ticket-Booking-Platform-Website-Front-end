@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import './EventForm.css';
+import swal from 'sweetalert';
+
 
 const EventForm = () => {
   const [eventData, setEventData] = useState({
@@ -13,8 +15,6 @@ const EventForm = () => {
     eventADDRESS: '',
     eventIMAGE: null,
   });
-
-  const [eventCreated, setEventCreated] = useState(false); // New state for success message
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,10 +39,6 @@ const EventForm = () => {
       .then((response) => {
         // Handle the response from the backend
         console.log(response.data);
-        setEventCreated(true); // Set the state to show success message
-        setTimeout(() => {
-          window.location.reload(); // Reload the page after a delay
-        }, 2000); // Change the delay (in milliseconds) as needed
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -51,11 +47,6 @@ const EventForm = () => {
 
   return (
     <div className="event-form-container">
-      {eventCreated && (
-        <div className="success-message">
-          Event created successfully. Reloading the page...
-        </div>
-      )}
       <div style={{ width: '60%', display: 'flex', margin: 'auto' }}>
         <form onSubmit={handleSubmit} className="form">
           <h2 className="title">Create New Event</h2>
@@ -133,9 +124,9 @@ const EventForm = () => {
               </span>
             </div>
           </label>
-          <button type="submit" className="submit">
-            Create an Event
-          </button>
+          <button type="submit" className="submit" onClick={() => swal("Good job!", "Event Creation Successful!", "success")}>
+        Create an Event
+      </button>
         </form>
       </div>
     </div>

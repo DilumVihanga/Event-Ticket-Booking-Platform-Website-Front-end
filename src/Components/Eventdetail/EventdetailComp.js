@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays, faClock, faLocationDot, faUser, faTag } from '@fortawesome/free-solid-svg-icons';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import NavComp from '../Nav/NavComp';
+
 
 export default function EventDetailComp({ match }) {
   const { id } = useParams();
   const [eventData, setEventData] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchEventDetails = async () => {
@@ -16,20 +19,17 @@ export default function EventDetailComp({ match }) {
 
     fetchEventDetails();
   }, [id]);
-  console.log('eventData:', eventData);
-  console.log('id:', id);
-  console.log('matchsajkjska');
 
   return (
+    
     <div>
+      <NavComp/>
+
       <div>
-        
         <header>
           <div className="header-banner" style={{ backgroundImage: `url(${eventData.eventIMAGE})` }}>
             <h1 className="detailhead">{eventData.eventNAME}</h1>
-            <a href="/orderform">
-              <button className="bookbutton">Buy Tickets</button>
-            </a>
+            <button className="bookbutton" onClick={() => navigate(`/orderform/${id}`)}>Buy Tickets</button>
           </div>
         </header>
         <section style={{marginTop:'21em'}} className="content">
@@ -65,7 +65,7 @@ export default function EventDetailComp({ match }) {
                     <FontAwesomeIcon icon={faUser} size="2xl" />
                     <br />
                     <span className="textb">Organizer<br /></span>
-                    <span className="textp">Music Lanka LTD</span>
+                    <span className="textp">{eventData.user}</span>
                   </p>
                 </li>
                 <li className="service-flex-item">

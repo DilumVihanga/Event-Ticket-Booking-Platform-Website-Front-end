@@ -52,6 +52,7 @@ export default function () {
         <Route path="/logout" element={<Logout/>}/>
         {/* <Route path="/"  component={CardGrid} /> */}
         <Route path="/event/:id" element={<EventDetailComp/>} />
+        <Route path="/orderform/:id" element={<OrderformComp/>} />
         
         <Route path="/detail" element={<Detail/>}/> 
         <Route path="/orderform" element={<TicketOrder/>}/>
