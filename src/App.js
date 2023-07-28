@@ -31,6 +31,7 @@ import MyeventsComp from './Components/Myevents/MyeventsComp';
 
 import TicketcreateformComp from './Components/Ticketcreateform/TicketcreateformComp';
 import EventDetailComp from './Components/Eventdetail/EventdetailComp';
+import CartComp from './Components/Cart/CartComp';
 
 
 
@@ -53,6 +54,7 @@ export default function () {
         {/* <Route path="/"  component={CardGrid} /> */}
         <Route path="/event/:id" element={<EventDetailComp/>} />
         <Route path="/orderform/:id" element={<OrderformComp/>} />
+        <Route path="/cart" element={<CartComp/>}/>
         
         <Route path="/detail" element={<Detail/>}/> 
         <Route path="/orderform" element={<TicketOrder/>}/>

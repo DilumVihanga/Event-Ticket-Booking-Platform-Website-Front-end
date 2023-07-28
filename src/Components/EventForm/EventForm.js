@@ -4,7 +4,6 @@ import jwt_decode from 'jwt-decode';
 import './EventForm.css';
 import swal from 'sweetalert';
 
-
 const EventForm = () => {
   const [eventData, setEventData] = useState({
     eventNAME: '',
@@ -22,7 +21,6 @@ const EventForm = () => {
     const token = localStorage.getItem('access_token');
     const decodedToken = jwt_decode(token);
     const user_id = decodedToken.user_id;
-    console.log('user_id:', user_id);
 
     const formData = new FormData();
     formData.append('eventNAME', eventData.eventNAME);
@@ -32,16 +30,17 @@ const EventForm = () => {
     formData.append('eventSTARTTIME', eventData.eventSTARTTIME);
     formData.append('eventADDRESS', eventData.eventADDRESS);
     formData.append('eventIMAGE', eventData.eventIMAGE);
-    formData.append('user', user_id); // Use user_id instead of organizerID
+    formData.append('user', user_id); 
 
     axios
       .post('http://localhost:8000/api/events/', formData)
       .then((response) => {
-        // Handle the response from the backend
         console.log(response.data);
+        swal("Good job!", "Event Creation Successful!", "success");
       })
       .catch((error) => {
         console.error('Error:', error);
+        swal("Oops!", "Something went wrong. Please try again.", "error");
       });
   };
 
@@ -124,9 +123,9 @@ const EventForm = () => {
               </span>
             </div>
           </label>
-          <button type="submit" className="submit" onClick={() => swal("Good job!", "Event Creation Successful!", "success")}>
-        Create an Event
-      </button>
+          <button type="submit" className="submit">
+            Create an Event
+          </button>
         </form>
       </div>
     </div>
