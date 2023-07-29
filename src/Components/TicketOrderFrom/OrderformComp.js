@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 import { useParams } from 'react-router-dom';
 import DetailHeaderComp from '../Eventdetail/DetailHeaderComp'
 import PackageTabComp from '../PackageTab/PackageTabComp.js'
@@ -8,6 +9,7 @@ import DetailboxComp from '../Detailbox/DetailboxComp'
 import "../Eventdetail/bookbutton.css"
 import "./Orderform.css"
 import NavComp from '../Nav/NavComp';
+import swal from 'sweetalert';
 
 export default function OrderformComp() {
   const { id } = useParams();
@@ -33,8 +35,8 @@ export default function OrderformComp() {
     setSelectedQuantity(e.target.value);
   };
 
-  const handleAddToCart = () => {
-    const packageId = selectedPackage;
+  const handleAddToCart = async () => {
+    const packageId = Number(selectedPackage);  // Convert to number
     const selectedPackageDetails = eventData.ticket_packages.find(pkg => pkg.packageID === packageId);
 
     if (!selectedPackageDetails) {
@@ -42,17 +44,26 @@ export default function OrderformComp() {
       return;
     }
 
-    const newItem = {
-      eventName: eventData.eventNAME,
-      packageName: selectedPackageDetails.package_name,
+    const token = localStorage.getItem('access_token');
+    const decodedToken = jwt_decode(token);
+    const user_id = decodedToken.user_id;  // Get user id from token
+
+    // Prepare data to be sent
+    const data = {
+      cart: user_id,  // Use user id as cart id
+      event: id,
+      ticket_package: packageId,
       quantity: selectedQuantity
     };
 
-    setCartData(prevCartData => {
-      const updatedCartData = [...prevCartData, newItem];
-      localStorage.setItem('cartData', JSON.stringify(updatedCartData));
-      return updatedCartData;
-    });
+    // Post data to server
+    try {
+      await axios.post('http://localhost:8000/api/items/', data);
+      swal("Success!", "Item added to cart successfully!", "success");
+    } catch (error) {
+      swal("Error!", "An error occurred while adding the item to the cart.", "error");
+      console.error(error);
+    }
   };
 
   return (

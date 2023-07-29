@@ -1,63 +1,76 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
+import swal from 'sweetalert';
+import './Cart.css';
+import NavComp from '../Nav/NavComp';
 
-function Cart({ cartId }) {
+const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     const fetchCartItems = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8000/api/items/cart/1/`);
-        const fetchedItems = response.data;
+      const token = localStorage.getItem('access_token');
+      const decodedToken = jwt_decode(token);
+      const user_id = decodedToken.user_id;
 
-        const mergedItems = Object.values(
-          fetchedItems.reduce((acc, item) => {
-            if (acc[item.ticket_package]) {
-              acc[item.ticket_package].quantity += item.quantity;
-            } else {
-              acc[item.ticket_package] = item;
-            }
-            return acc;
-          }, {})
-        );
-
-        setCartItems(mergedItems);
-      } catch (error) {
-        console.error('Error fetching cart items:', error);
-      }
+      const response = await axios.get(`http://localhost:8000/api/items/cart/${user_id}/`);
+      setCartItems(response.data);
     };
 
     fetchCartItems();
-  }, [cartId]);
+  }, []);
 
-  const subtotal = cartItems.reduce((acc, item) => acc + item.quantity * item.package_price, 0);
-  const total = subtotal;  // Update this if you have additional charges to add to the total
+  const handleRemoveItem = async (itemId) => {
+    await axios.delete(`http://localhost:8000/api/items/${itemId}/`);
 
-  const removeFromCart = async (itemId) => {
-    console.log('Removing item with ID:', itemId);  // Add this line
+    const token = localStorage.getItem('access_token');
+    const decodedToken = jwt_decode(token);
+    const user_id = decodedToken.user_id;
+
+    const response = await axios.get(`http://localhost:8000/api/items/cart/${user_id}/`);
+    setCartItems(response.data);
+
+    swal("Success!", "The item has been removed from the cart.", "success");
+  };
+
+  const subtotals = cartItems.map(item => item.package_price * item.quantity);
+  const total = subtotals.reduce((total, subtotal) => total + subtotal, 0);
+
+  const handleCheckout = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/items/cart/1/`);
-      setCartItems(cartItems.filter(item => item.id !== itemId));
+      // Create a checkout session on the server
+      const response = await axios.post('http://localhost:8000/api/create-checkout-session', { amount: total });
+
+      // Redirect to the Stripe Checkout page
+      window.location.href = response.data.session.url;
     } catch (error) {
-      console.error('Error removing item from cart:', error);
+      console.error(error);
+      swal("Error!", "An error occurred while processing your payment. Please try again later.", "error");
     }
   };
 
   return (
     <div>
-      <h1>Your Cart</h1>
-      {cartItems.map(item => (
-        <div key={item.id}>
-          <h2>{item.ticket_package}</h2>
-          <p>Quantity: {item.quantity}</p>
-          <p>Price: {item.package_price}</p>
-          <button onClick={() => removeFromCart(item.id)}>Remove</button>
+      <NavComp/>
+      <div className="cart-container">
+        <h2 className="cart-head">Ticket Cart</h2>
+        {cartItems.map((item, index) => (
+          <div key={item.id} className="cart-item">
+            <p>Event: {item.event_name}</p>
+            <p>Package: {item.package_name}</p>
+            <p>Quantity: {item.quantity}</p>
+            <p>Subtotal: Rs.{subtotals[index]}/=</p>
+            <button className="remove-button" onClick={() => handleRemoveItem(item.id)}>Remove</button>
+          </div>
+        ))}
+        <div className="cart-total">
+          <h2>Total: Rs.{total}/=</h2>
         </div>
-      ))}
-      <h2>Subtotal: {subtotal}</h2>
-      <h2>Total: {total}</h2>
+        <button className="checkout-button" onClick={handleCheckout}>Continue Checkout</button>
+      </div>
     </div>
   );
-}
+};
 
 export default Cart;
