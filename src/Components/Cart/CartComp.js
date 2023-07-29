@@ -42,8 +42,36 @@ const Cart = () => {
       // Create a checkout session on the server
       const response = await axios.post('http://localhost:8000/api/create-checkout-session', { amount: total });
 
-      // Redirect to the Stripe Checkout page
-      window.location.href = response.data.session.url;
+      // Open the Stripe Checkout page in a new window
+      const checkoutWindow = window.open(response.data.session.url, '_blank');
+
+      if (checkoutWindow) {
+        checkoutWindow.focus();
+      } else {
+        swal("Please allow pop-ups for this website", "error");
+      }
+
+      // After successful payment, save ticket purchase details
+      const token = localStorage.getItem('access_token');
+      const decodedToken = jwt_decode(token);
+      const user_id = decodedToken.user_id;
+
+      cartItems.forEach(async item => {
+        await axios.post('http://localhost:8000/api/save-ticket-purchase', {
+          user_id,
+          event_name: item.event_name,
+          package_name: item.package_name,
+          package_price: item.package_price,
+          quantity: item.quantity,
+          subtotal: item.package_price * item.quantity,
+        }, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+      });
+
+      swal("Success!", "Payment and ticket purchase were successful!", "success");
     } catch (error) {
       console.error(error);
       swal("Error!", "An error occurred while processing your payment. Please try again later.", "error");

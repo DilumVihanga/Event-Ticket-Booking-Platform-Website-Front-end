@@ -30,6 +30,17 @@ const LoginForm = () => {
 
         // Set isLoggedIn state to true to trigger the redirect
         setLoggedIn(true);
+
+        // Create a cart for the user
+        const user_id = decodedToken.user_id; // Assuming user_id is part of the token payload
+        await axios.post('http://localhost:8000/api/carts/', {
+          id: user_id,
+          user: user_id,
+        }, {
+          headers: {
+            'Authorization': `Bearer ${access}`
+          }
+        });
       } else {
         console.error('Only customers are allowed to log in.');
       }
