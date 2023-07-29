@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { DataGrid } from '@mui/x-data-grid';
 import './EventTable.css';
 import jwt_decode from 'jwt-decode';
 
 const EventTable = () => {
   const [events, setEvents] = useState([]);
+  const [searchText, setSearchText] = useState('');
 
   const token = localStorage.getItem('access_token');
   const decodedToken = jwt_decode(token);
   const user_id = decodedToken.user_id;
-  console.log('user_id:', user_id);  
 
   useEffect(() => {
-    // Fetch data from the Django backend API
     axios.get(`http://localhost:8000/api/pak/${user_id}`)
       .then(response => {
         setEvents(response.data);
@@ -20,38 +20,75 @@ const EventTable = () => {
       .catch(error => {
         console.error('Error fetching events:', error);
       });
-  }, []);
+  }, [user_id]);
+
+  const handleSearchTextChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const mySaveOnServerFunction = (updatedRow) => {
+    const formData = new FormData();
+    Object.keys(updatedRow).forEach(key => {
+      formData.append(key, updatedRow[key]);
+    });
+
+    axios.put(`http://localhost:8000/api/events/${updatedRow.id}/`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then(response => {
+      setEvents(events.map(event => (event.id === updatedRow.id ? updatedRow : event)));
+    })
+    .catch(error => {
+      console.error('Error updating event:', error);
+    });
+  };
+
+  const filteredEvents = events.filter(event =>
+    event.eventNAME.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+  const eventsWithId = filteredEvents.map(event => ({
+    ...event,
+    id: event.eventID,
+  }));
+
+  const columns = [
+    { field: 'id', headerName: 'Event ID', width: 120, editable: false },
+    { field: 'eventNAME', headerName: 'Name', width: 200, editable: true },
+    { field: 'eventDATE', headerName: 'Date', width: 120, editable: true },
+    { field: 'eventDISCRIPTION', headerName: 'Description', width: 200, editable: true },
+    { field: 'eventLOCATION', headerName: 'Location', width: 150, editable: true },
+    { field: 'eventSTARTTIME', headerName: 'Start Time', width: 150, editable: true },
+    { field: 'eventADDRESS', headerName: 'Address', width: 200, editable: true },
+    {
+      field: 'eventIMAGE',
+      headerName: 'Image',
+      width: 100,
+      renderCell: (params) => (
+        params.value ? <img src={`http://localhost:8000/${params.value}`} alt={params.row.eventNAME} className="event-image" /> : null
+      ),
+      editable: false },
+  ];
 
   return (
     <div className="event-table-container">
-      <table className="event-table">
-        <thead>
-          <tr>
-            <th className="table-header-cell">Name</th>
-            <th className="table-header-cell">Date</th>
-            <th className="table-header-cell">Description</th>
-            <th className="table-header-cell">Location</th>
-            <th className="table-header-cell">Start Time</th>
-            <th className="table-header-cell">Address</th>
-            <th className="table-header-cell">Image</th>
-          </tr>
-        </thead>
-        <tbody>
-          {events.map(event => (
-            <tr key={event.id}>
-              <td className="table-cell">{event.eventNAME}</td>
-              <td className="table-cell">{event.eventDATE}</td>
-              <td className="table-cell">{event.eventDISCRIPTION}</td>
-              <td className="table-cell">{event.eventLOCATION}</td>
-              <td className="table-cell">{event.eventSTARTTIME}</td>
-              <td className="table-cell">{event.eventADDRESS}</td>
-              <td className="table-cell">
-                {event.eventIMAGE && <img src={`http://localhost:8000/${event.eventIMAGE}`} alt={event.eventNAME} className="event-image" />}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <input
+        type="text"
+        value={searchText}
+        onChange={handleSearchTextChange}
+        placeholder="Search by Event Name"
+        className="search-field"
+      />
+      <div style={{ height: 400, width: '100%' }}>
+        <DataGrid
+          rows={eventsWithId}
+          columns={columns}
+          pageSize={5}
+          processRowUpdate={(updatedRow) => mySaveOnServerFunction(updatedRow)}
+        />
+      </div>
     </div>
   );
 };
