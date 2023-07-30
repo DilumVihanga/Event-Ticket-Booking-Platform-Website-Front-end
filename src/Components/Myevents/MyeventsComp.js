@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbarContainer, GridToolbarExport, GridToolbarFilterButton } from '@mui/x-data-grid';
 import './EventTable.css';
 import jwt_decode from 'jwt-decode';
 
@@ -69,8 +69,19 @@ const EventTable = () => {
       renderCell: (params) => (
         params.value ? <img src={`http://localhost:8000/${params.value}`} alt={params.row.eventNAME} className="event-image" /> : null
       ),
-      editable: false },
+      editable: false
+    },
   ];
+
+  // Custom toolbar component
+  const CustomToolbar = () => {
+    return (
+      <GridToolbarContainer>
+        <GridToolbarFilterButton />
+        <GridToolbarExport/>
+      </GridToolbarContainer>
+    );
+  };
 
   return (
     <div className="event-table-container">
@@ -82,10 +93,14 @@ const EventTable = () => {
         className="search-field"
       />
       <div style={{ height: 400, width: '100%' }}>
+        {/* Use the CustomToolbar component in the DataGrid */}
         <DataGrid
           rows={eventsWithId}
           columns={columns}
           pageSize={5}
+          components={{
+            Toolbar: CustomToolbar,
+          }}
           processRowUpdate={(updatedRow) => mySaveOnServerFunction(updatedRow)}
         />
       </div>
