@@ -4,6 +4,7 @@ import { Card, CardContent, Typography, Container, Grid } from '@mui/material';
 
 function TicketPurchaseDetails() {
   const [details, setDetails] = useState([]);
+  const [qrCodeImage, setQrCodeImage] = useState(null);
 
   useEffect(() => {
     const purchaseIds = JSON.parse(localStorage.getItem('purchaseIds') || '[]');
@@ -12,6 +13,7 @@ function TicketPurchaseDetails() {
       try {
         const promises = purchaseIds.map(id => axios.get(`http://localhost:8000/api/ticket-purchases/${id}/`));
         const responses = await Promise.all(promises);
+        
         setDetails(responses.map(response => response.data));
       } catch (error) {
         console.error(error);
@@ -20,6 +22,19 @@ function TicketPurchaseDetails() {
 
     fetchDetails();
   }, []);
+
+  useEffect(() => {
+    const fetchQrCodeImage = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/qr-codes/${details[0]?.id}/`);
+        setQrCodeImage(response.data.qr_code_image);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchQrCodeImage();
+  }, [details]);
 
   return (
     <Container>
@@ -44,6 +59,12 @@ function TicketPurchaseDetails() {
           </Grid>
         ))}
       </Grid>
+      {qrCodeImage && (
+        <div>
+          <Typography variant="h6">QR Code:</Typography>
+          <img src={qrCodeImage} alt="QR Code" />
+        </div>
+      )}
     </Container>
   );
 }
