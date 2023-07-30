@@ -32,6 +32,8 @@ import MyeventsComp from './Components/Myevents/MyeventsComp';
 import TicketcreateformComp from './Components/Ticketcreateform/TicketcreateformComp';
 import EventDetailComp from './Components/Eventdetail/EventdetailComp';
 import StripeCart from './Components/StripeCart/StripeCart';
+import PaymentSuccess from './Components/PaymentSuccess/PaymentSuccess';
+import QRscanComp from './Components/QRscan/QRscanComp';
 
 
 
@@ -54,6 +56,8 @@ export default function () {
         <Route path="/event/:id" element={<EventDetailComp/>} />
         <Route path="/orderform/:id" element={<OrderformComp/>} />
         <Route path="/cart" element={<StripeCart />} />
+        <Route path="/ordersuccess" element={<PaymentSuccess/>}/>
+        <Route path="/orderscan" element={<QRscanComp/>}/>
         
         <Route path="/detail" element={<Detail/>}/> 
         <Route path="/orderform" element={<TicketOrder/>}/>

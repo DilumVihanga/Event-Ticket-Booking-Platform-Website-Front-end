@@ -39,25 +39,21 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     try {
-      // Create a checkout session on the server
       const response = await axios.post('http://localhost:8000/api/create-checkout-session', { amount: total });
-
-      // Open the Stripe Checkout page in a new window
       const checkoutWindow = window.open(response.data.session.url, '_blank');
-
       if (checkoutWindow) {
         checkoutWindow.focus();
       } else {
         swal("Please allow pop-ups for this website", "error");
       }
 
-      // After successful payment, save ticket purchase details
       const token = localStorage.getItem('access_token');
       const decodedToken = jwt_decode(token);
       const user_id = decodedToken.user_id;
+      const purchaseIds = [];
 
-      cartItems.forEach(async item => {
-        await axios.post('http://localhost:8000/api/save-ticket-purchase', {
+      for (const item of cartItems) {
+        const response = await axios.post('http://localhost:8000/api/save-ticket-purchase', {
           user_id,
           event_name: item.event_name,
           package_name: item.package_name,
@@ -69,8 +65,11 @@ const Cart = () => {
             'Authorization': `Bearer ${token}`
           }
         });
-      });
 
+        purchaseIds.push(response.data.ticket_purchase_id);
+      }
+
+      localStorage.setItem('purchaseIds', JSON.stringify(purchaseIds));
       swal("Success!", "Payment and ticket purchase were successful!", "success");
     } catch (error) {
       console.error(error);
