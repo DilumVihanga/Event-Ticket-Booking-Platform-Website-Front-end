@@ -36,6 +36,9 @@ import PaymentSuccess from './Components/PaymentSuccess/PaymentSuccess';
 import QRscanComp from './Components/QRscan/QRscanComp';
 import ValidateQR from './Components/ValidQR/ValidateQR';
 import MysalesComp from './Components/Mysales/MysalesComp';
+import ChartsComp from './Components/Charts/ChartsComp';
+import UserSaleTable from './Components/UserSale/UserSaleTable';
+import UserQRStatus from './Components/UserQR/UserQRStatus';
 
 
 
@@ -75,7 +78,7 @@ export default function () {
      
         <Route path="dashboard" element={<SidebarORG/>}> 
         <Route path="" element={<LoginComp/>}/>
-         <Route path="overview" element={<LoginComp/>}/>
+         <Route path="overview" element={<ChartsComp/>}/>
           <Route path="tickets" element={<TicketcreateformComp/>}/>
           <Route path="events" element={<EventForm/>}/>
           <Route path="sales" element={<MysalesComp/>}/>
@@ -97,8 +100,8 @@ export default function () {
          <Route path="ordermanage" element={<SidebarUSER/>}> 
         <Route path="" element={<LoginComp/>}/>
          
-          <Route path="orders" element={<CardGrid/>}/>
-          <Route path="validated" element={<CardGrid/>}/>
+          <Route path="orders" element={<UserSaleTable/>}/>
+          <Route path="validated" element={<UserQRStatus/>}/>
           <Route path="events" element={<HeroComp/>}/>
           <Route path="sales" element={<OrderformComp/>}/>
          </Route>

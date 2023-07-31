@@ -25,6 +25,7 @@ const EventForm = () => {
     const formData = new FormData();
     formData.append('eventNAME', eventData.eventNAME);
     formData.append('eventDATE', eventData.eventDATE);
+    formData.append('eventSHORTDESC', eventData.eventSHORTDESC);
     formData.append('eventDISCRIPTION', eventData.eventDISCRIPTION);
     formData.append('eventLOCATION', eventData.eventLOCATION);
     formData.append('eventSTARTTIME', eventData.eventSTARTTIME);
@@ -66,6 +67,15 @@ const EventForm = () => {
               name="eventDATE"
               value={eventData.eventDATE}
               onChange={(e) => setEventData({ ...eventData, eventDATE: e.target.value })}
+              className="input"
+            />
+          </label>
+          <label className="form-label">
+            Event Short Description
+            <textarea
+              name="eventSHORTDESC"
+              value={eventData.eventSHORTDESC}
+              onChange={(e) => setEventData({ ...eventData, eventSHORTDESC: e.target.value })}
               className="input"
             />
           </label>

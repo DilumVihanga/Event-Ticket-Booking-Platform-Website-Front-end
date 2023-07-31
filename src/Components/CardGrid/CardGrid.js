@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../CardGrid/CardGrid.css';
+import './CardGrid.css';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -58,7 +58,7 @@ export default function CardGrid() {
                     {event.eventNAME}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" style={{ marginBottom: '20px' }}>
-                    {event.eventDISCRIPTION}
+                    {event.eventSHORTDESC}
                   </Typography>
                   <button
                     className="btn card_btn"

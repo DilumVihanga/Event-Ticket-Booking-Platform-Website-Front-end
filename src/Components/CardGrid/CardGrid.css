@@ -136,3 +136,6 @@ img {
   gap: 20px;
 }
 
+.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{
+  background-color: #ffffff;
+}
