@@ -34,6 +34,7 @@ import EventDetailComp from './Components/Eventdetail/EventdetailComp';
 import StripeCart from './Components/StripeCart/StripeCart';
 import PaymentSuccess from './Components/PaymentSuccess/PaymentSuccess';
 import QRscanComp from './Components/QRscan/QRscanComp';
+import ValidateQR from './Components/ValidQR/ValidateQR';
 
 
 
@@ -58,6 +59,7 @@ export default function () {
         <Route path="/cart" element={<StripeCart />} />
         <Route path="/ordersuccess" element={<PaymentSuccess/>}/>
         <Route path="/orderscan" element={<QRscanComp/>}/>
+        <Route path="/validate" element={<ValidateQR/>}/>
         
         <Route path="/detail" element={<Detail/>}/> 
         <Route path="/orderform" element={<TicketOrder/>}/>

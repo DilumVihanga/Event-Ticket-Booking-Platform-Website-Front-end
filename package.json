@@ -26,6 +26,7 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "cdbreact": "^1.5.16",
+    "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
     "framer-motion": "^10.12.16",
     "fullcalendar": "^3.9.0",

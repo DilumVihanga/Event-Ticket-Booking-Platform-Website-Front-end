@@ -22,7 +22,7 @@ export default function NavComp() {
            <li><a href="/upcomingevents"> All Events</a></li>
            <li><a href="/detail"> Event Detail</a></li>
            <li><a href="/contact">Contact</a></li>                      
-            <li><a href="/upcomingevents">Cart</a></li>
+            <li><a href="/cart">Cart</a></li>
             <li><a href="/upcomingevents">Checkout</a></li>
             <li><a href="/login">Login</a></li> 
        </ul>
