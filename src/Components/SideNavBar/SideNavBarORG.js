@@ -26,6 +26,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import LogoutIcon from '@mui/icons-material/Logout';
 import jwtDecode from 'jwt-decode'; // Import the jwt-decode library
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+
 
 const drawerWidth = 240;
 
@@ -97,7 +99,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const navigate = useNavigate(); // Get the navigate function
+  const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -111,6 +113,8 @@ export default function MiniDrawer() {
   const OverviewIcon = () => <QueryStatsIcon />;
   const SalesIcon = () => <MonetizationOnIcon />;
   const ReportsIcon = () => <SummarizeIcon />;
+  const ValidateTicketsIcon = () => <CheckCircleOutlineIcon />;
+
 
   // Function to decode the JWT and extract the username
   const getUserNameFromToken = (token) => {
@@ -147,10 +151,7 @@ export default function MiniDrawer() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: 'none' }),
-            }}
+            sx={{ marginRight: 5, ...(open && { display: 'none' }) }}
           >
             <MenuIcon />
           </IconButton>
@@ -173,20 +174,8 @@ export default function MiniDrawer() {
         <List>
           <ListItem key="Overview" disablePadding sx={{ display: 'block' }}>
             <Link to="/dashboard/overview">
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
+              <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}>
+                <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center' }}>
                   <OverviewIcon />
                 </ListItemIcon>
                 <ListItemText primary="Overview" sx={{ opacity: open ? 1 : 0 }} />
@@ -195,20 +184,8 @@ export default function MiniDrawer() {
           </ListItem>
           <ListItem key="Create Event" disablePadding sx={{ display: 'block' }}>
             <Link to="/dashboard/create-event">
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
+              <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}>
+                <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center' }}>
                   <EventAvailableIcon />
                 </ListItemIcon>
                 <ListItemText primary="Create Event" sx={{ opacity: open ? 1 : 0 }} />
@@ -217,86 +194,56 @@ export default function MiniDrawer() {
           </ListItem>
           <ListItem key="My Events" disablePadding sx={{ display: 'block' }}>
             <Link to="/dashboard/my-events">
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
+              <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}>
+                <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center' }}>
                   <EventAvailableIcon />
                 </ListItemIcon>
                 <ListItemText primary="My Events" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </Link>
           </ListItem>
-        </List>
-        <Divider />
-        <List>
-          {[
-            { text: 'Tickets', Icon: TicketIcon, link: '/dashboard/tickets' },
-            { text: 'Sales', Icon: SalesIcon , link: '/dashboard/sales'},
-            { text: 'Reports', Icon: ReportsIcon , link: '/dashboard/reports'},
-          ].map(({ text, Icon, link }, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <Link to={link}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Icon />
-                  </ListItemIcon>
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </Link>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {[
-            { text: 'Profile', icon: <AccountCircleIcon /> },
-            { text: 'Logout', icon: <LogoutIcon />, action: handleLogout }, // Add the handleLogout function to the "Logout" item
-          ].map((item) => (
-            <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-                onClick={item.action} // Call the handleLogout function when "Logout" is clicked
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {item.icon}
+          <ListItem key="Validate Tickets" disablePadding sx={{ display: 'block' }}>
+            <Link to="/dashboard/validate-tickets">
+              <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}>
+                <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center' }}>
+                  <ValidateTicketsIcon />
                 </ListItemIcon>
-                <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary="Validate Tickets" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
-            </ListItem>
-          ))}
+            </Link>
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          {[{ text: 'Tickets', Icon: TicketIcon, link: '/dashboard/tickets' },
+            { text: 'Sales', Icon: SalesIcon, link: '/dashboard/sales' },
+            { text: 'Reports', Icon: ReportsIcon, link: '/dashboard/reports' }].map(({ text, Icon, link }, index) => (
+              <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                <Link to={link}>
+                  <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}>
+                    <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center' }}>
+                      <Icon />
+                    </ListItemIcon>
+                    <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
+        </List>
+        <Divider />
+        <List>
+          {[{ text: 'Profile', icon: <AccountCircleIcon /> },
+            { text: 'Logout', icon: <LogoutIcon />, action: handleLogout }].map((item) => (
+              <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
+                <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}
+                  onClick={item.action}>
+                  <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center' }}>
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
+            ))}
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import jsQR from 'jsqr';
 import NavComp from '../Nav/NavComp';
-import { Container, Paper, Typography, Button, Grid, Box, IconButton, Checkbox, FormControlLabel } from '@mui/material';
+import { Container, Paper, Typography, Button, Grid, Box, IconButton } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
 import swal from 'sweetalert';
-
 
 function QRCodeUploader() {
   const [qrResult, setQrResult] = useState(null);
@@ -13,6 +12,15 @@ function QRCodeUploader() {
   const [userDetails, setUserDetails] = useState(null);
   const [validated, setValidated] = useState(null);
   const fileInputRef = React.createRef();
+
+  const fetchValidationStatus = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:8000/api/qr-codes/${id}`);
+      setValidated(response.data.validated);
+    } catch (error) {
+      console.error('Error fetching validation status:', error);
+    }
+  };
 
   const fetchUserDetails = async (userId) => {
     try {
@@ -27,8 +35,6 @@ function QRCodeUploader() {
     try {
       const response = await axios.get(`http://localhost:8000/api/ticket-purchases/${id}/`);
       setPurchaseDetails(response.data);
-      // Here you may also want to set the validation status from the response if available
-      // setValidated(response.data.qr_code.validated);
     } catch (error) {
       console.error('Error fetching purchase details:', error);
     }
@@ -36,8 +42,9 @@ function QRCodeUploader() {
 
   const validateQRCode = async () => {
     try {
-      await axios.post(`http://localhost:8000/api/validate-qr-code/${qrResult}/`, { validated: validated },swal("Validated!", "Allowed Checked In!", "success"));
-      // You may want to refresh the data after validation, e.g., re-fetch purchase details
+      await axios.post(`http://localhost:8000/api/validate-qr-code/${qrResult}/`, { validated: validated });
+      swal("Validated!", "Allowed Checked In!", "success");
+      fetchValidationStatus(qrResult);
     } catch (error) {
       console.error('Error validating QR code:', error);
     }
@@ -61,6 +68,7 @@ function QRCodeUploader() {
           if (code) {
             setQrResult(code.data);
             fetchPurchaseDetails(code.data);
+            fetchValidationStatus(code.data);
           } else {
             setQrResult('No QR code found');
           }
@@ -72,11 +80,14 @@ function QRCodeUploader() {
 
   return (
     <div>
-      <NavComp />
-      <Container style={{ paddingTop: '200px' }}>
+      
+      <Container style={{ paddingTop: '100px' }}>
         <Paper elevation={3} style={{ padding: '60px' }}>
           <Typography variant="h4" gutterBottom style={{ textAlign: 'center' }}>
             Scan QR Code
+          </Typography>
+          <Typography variant="subtitle1" style={{ color: validated ? "red" : "green", textAlign: 'center' }}>
+            {validated !== null ? (validated ? "This QR code is validated." : "This QR code is not validated.") : ''}
           </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} style={{ textAlign: 'center' }}>
@@ -116,24 +127,13 @@ function QRCodeUploader() {
             )}
             {qrResult && (
               <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={validated}
-                      onChange={(e) => setValidated(e.target.checked)}
-                      color="primary"
-                    />
-                  }
-                  label="Validate QR Code"
-                />
                 <Button
                   variant="contained"
                   color="primary"
                   onClick={validateQRCode}
                 >
-                  Update Validation Status
+                  Validate QR Code
                 </Button>
-                {validated && <Typography variant="subtitle1" color="success"></Typography>}
               </div>
             )}
           </Grid>

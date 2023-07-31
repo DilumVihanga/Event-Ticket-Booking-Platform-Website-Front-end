@@ -35,6 +35,7 @@ import StripeCart from './Components/StripeCart/StripeCart';
 import PaymentSuccess from './Components/PaymentSuccess/PaymentSuccess';
 import QRscanComp from './Components/QRscan/QRscanComp';
 import ValidateQR from './Components/ValidQR/ValidateQR';
+import MysalesComp from './Components/Mysales/MysalesComp';
 
 
 
@@ -77,10 +78,11 @@ export default function () {
          <Route path="overview" element={<LoginComp/>}/>
           <Route path="tickets" element={<TicketcreateformComp/>}/>
           <Route path="events" element={<EventForm/>}/>
-          <Route path="sales" element={<OrderformComp/>}/>
+          <Route path="sales" element={<MysalesComp/>}/>
           <Route path="reports" element={<CardGrid/>}/>
           <Route path="create-event" element={<EventForm/>}/>
           <Route path="my-events" element={<MyeventsComp/>}/>
+          <Route path="validate-tickets" element={<ValidateQR/>}/>
          </Route>
 
          <Route path="admin" element={<SidebarADMIN/>}> 
