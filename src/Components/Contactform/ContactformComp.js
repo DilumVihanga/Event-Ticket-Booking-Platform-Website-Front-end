@@ -3,34 +3,42 @@ import './contact.css'
 
 export default function ContactformComp() {
   return (
-    <div>
-        <div class="container" style={{padding:'0 200px 0 200px'}}>  
-  <form id="contact" action="" method="post">
-    <h3>Event Ticket.lk Contact Form</h3>
-    <h4>Contact us for custom quote</h4>
-    <fieldset>
-      <div>
-  <input placeholder="Your name" type="text" tabIndex={1} required autofocus />
-  <fieldset>
-    <input placeholder="Your Email Address" type="email" tabIndex={2} required />
-  </fieldset>
-  <fieldset>
-    <input placeholder="Your Phone Number (optional)" type="tel" tabIndex={3} required />
-  </fieldset>
-  <fieldset>
-    <input placeholder="Your Web Site (optional)" type="url" tabIndex={4} required />
-  </fieldset></div>
+    <div style={{display:'flex', justifyContent:'center'}}>
+      <form class="my-custom-form">
+    <div class="my-custom-flex">
+        <label>
+            <input required="" placeholder="" type="text" class="my-custom-input"/>
+            <span>first name</span>
+        </label>
 
-    </fieldset>
-    <fieldset>
-      <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
-    </fieldset>
-    <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-    </fieldset>
+        <label>
+            <input required="" placeholder="" type="text" class="my-custom-input"/>
+            <span>last name</span>
+        </label>
+    </div>  
+            
+    <label>
+        <input required="" placeholder="" type="email" class="my-custom-input"/>
+        <span>email</span>
+    </label> 
+        
+    <label>
+        <input required="" type="tel" placeholder="" class="my-custom-input"/>
+        <span>contact number</span>
+    </label>
+    <label>
+        <textarea required="" rows="3" placeholder="" class="my-custom-textarea"></textarea>
+        <span>message</span>
+    </label>
     
-  </form>
-</div>
+    <button class="my-custom-fancy" href="#">
+      <span class="my-custom-top-key"></span>
+      <span class="my-custom-text">submit</span>
+      <span class="my-custom-bottom-key-1"></span>
+      <span class="my-custom-bottom-key-2"></span>
+    </button>
+</form>
+
     </div>
   )
 }

@@ -52,7 +52,7 @@ export default function () {
       
       <Routes>
         <Route index element={<Home/>}/>
-        <Route element= {<PrivateRoute/>}> <Route element= {<Contact/>}  path="/contact"/> </Route>
+        
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/upcomingevents" element={<Upcomingevents/>}/>
         <Route path="/login" element={<LoginSignup/>}/>

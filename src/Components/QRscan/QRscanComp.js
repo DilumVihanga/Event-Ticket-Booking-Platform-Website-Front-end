@@ -85,9 +85,9 @@ function QRCodeUploader() {
                   <Typography variant="h5">Purchase Details:</Typography>
                   <Typography>Event Name: {purchaseDetails.event_name}</Typography>
                   <Typography>Package Name: {purchaseDetails.package_name}</Typography>
-                  <Typography>Package Price: ${purchaseDetails.package_price}</Typography>
+                  <Typography>Package Price: Rs.{purchaseDetails.package_price}</Typography>
                   <Typography>Quantity: {purchaseDetails.quantity}</Typography>
-                  <Typography>Subtotal: ${purchaseDetails.subtotal}</Typography>
+                  <Typography>Subtotal: Rs.{purchaseDetails.subtotal}</Typography>
                   <Typography>Purchase Date: {new Date(purchaseDetails.purchase_date).toLocaleString()}</Typography>
                 </Box>
               </Grid>
