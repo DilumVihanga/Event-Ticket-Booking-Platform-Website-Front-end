@@ -21,14 +21,16 @@ const ValidatedQRCodes = () => {
         const qrCodeResponse = await axios.get('http://localhost:8000/api/qr-codes/');
 
         // Filter QR codes by user purchases
-        const userQrCodes = qrCodeResponse.data.map(qr => {
-          const purchase = userPurchases.find(p => p.id === qr.ticket_purchase);
-          return {
-            ...qr,
-            ...purchase,
-            id: qr.id,
-          };
-        });
+        const userQrCodes = qrCodeResponse.data
+          .filter(qr => userPurchases.some(p => p.id === qr.ticket_purchase))
+          .map(qr => {
+            const purchase = userPurchases.find(p => p.id === qr.ticket_purchase);
+            return {
+              ...qr,
+              ...purchase,
+              id: qr.id,
+            };
+          });
 
         setQrCodes(userQrCodes);
       } catch (error) {

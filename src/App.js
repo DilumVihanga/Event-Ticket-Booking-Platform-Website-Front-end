@@ -39,7 +39,7 @@ import MysalesComp from './Components/Mysales/MysalesComp';
 import ChartsComp from './Components/Charts/ChartsComp';
 import UserSaleTable from './Components/UserSale/UserSaleTable';
 import UserQRStatus from './Components/UserQR/UserQRStatus';
-
+import ProfileEditComp from './Components/ProfileEdit/ProfileEditComp';
 
 
 
@@ -64,6 +64,7 @@ export default function () {
         <Route path="/ordersuccess" element={<PaymentSuccess/>}/>
         <Route path="/orderscan" element={<QRscanComp/>}/>
         <Route path="/validate" element={<ValidateQR/>}/>
+        <Route path="profileuser" element={<ProfileEditComp/>}/>
         
         <Route path="/detail" element={<Detail/>}/> 
         <Route path="/orderform" element={<TicketOrder/>}/>
@@ -104,6 +105,7 @@ export default function () {
           <Route path="validated" element={<UserQRStatus/>}/>
           <Route path="events" element={<HeroComp/>}/>
           <Route path="sales" element={<OrderformComp/>}/>
+          
          </Route>
         </Routes>      
       </BrowserRouter>
