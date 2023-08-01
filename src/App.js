@@ -89,15 +89,7 @@ export default function () {
           <Route path="validate-tickets" element={<ValidateQR/>}/>
          </Route>
 
-         <Route path="admin" element={<SidebarADMIN/>}> 
-        <Route path="" element={<LoginComp/>}/>
-         <Route path="overview" element={<LoginComp/>}/>
-          <Route path="tickets" element={<CardGrid/>}/>
-          <Route path="events" element={<HeroComp/>}/>
-          <Route path="users" element={<OrderformComp/>}/>
-          <Route path="organizers" element={<OrderformComp/>}/>
-         </Route>
-
+         
          <Route path="ordermanage" element={<SidebarUSER/>}> 
         <Route path="" element={<LoginComp/>}/>
          
@@ -107,6 +99,16 @@ export default function () {
           <Route path="sales" element={<OrderformComp/>}/>
           
          </Route>
+
+         <Route path="admin" element={<SidebarADMIN/>}> 
+        <Route path="" element={<LoginComp/>}/>
+         <Route path="overview" element={<LoginComp/>}/>
+          <Route path="tickets" element={<CardGrid/>}/>
+          <Route path="events" element={<HeroComp/>}/>
+          <Route path="users" element={<OrderformComp/>}/>
+          <Route path="organizers" element={<OrderformComp/>}/>
+         </Route>
+         
         </Routes>      
       </BrowserRouter>
       </AuthProvider>

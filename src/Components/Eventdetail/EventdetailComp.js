@@ -5,23 +5,24 @@ import { faCalendarDays, faClock, faLocationDot, faUser, faTag } from '@fortawes
 import { useParams, useNavigate } from 'react-router-dom';
 import NavComp from '../Nav/NavComp';
 
-
 export default function EventDetailComp({ match }) {
   const { id } = useParams();
   const [eventData, setEventData] = useState({});
+  const [organizer, setOrganizer] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchEventDetails = async () => {
       const response = await axios.get(`http://localhost:8000/api/events/${id}`);
       setEventData(response.data);
+      const organizerResponse = await axios.get(`http://localhost:8000/api/users/${response.data.user}`);
+      setOrganizer(organizerResponse.data.username); // Assuming the username field is available in the user object
     };
 
     fetchEventDetails();
   }, [id]);
 
   return (
-    
     <div>
       <NavComp/>
 
@@ -65,7 +66,7 @@ export default function EventDetailComp({ match }) {
                     <FontAwesomeIcon icon={faUser} size="2xl" />
                     <br />
                     <span className="textb">Organizer<br /></span>
-                    <span className="textp">{eventData.user}</span>
+                    <span className="textp">{organizer}</span>
                   </p>
                 </li>
                 <li className="service-flex-item">

@@ -61,6 +61,8 @@ export default function OrderformComp() {
       swal("Error!", `Selected quantity not available from this package.`, "error");
       return;
     }
+/* Available quantity - ${availableQuantity} */
+
 
     const token = localStorage.getItem('access_token');
     const decodedToken = jwt_decode(token);

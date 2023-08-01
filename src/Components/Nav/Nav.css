@@ -126,7 +126,7 @@
     right: 100%;
     width: 200px;
     height: 200px;
-    background: rgba(250,130,70,1);
+    background: rgb(37, 36, 36);
     cursor: pointer;
     -webkit-transition: all ease .5s;
     -moz-transition: all ease .5s;

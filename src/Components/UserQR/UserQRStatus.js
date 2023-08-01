@@ -61,7 +61,7 @@ const ValidatedQRCodes = () => {
       headerName: 'Status',
       width: 120,
       renderCell: (params) => (
-        <div style={{ color: params.value ? 'green' : 'red' }}>
+        <div style={{ color: params.value ? 'red' : 'green' }}>
           {params.value ? 'Used' : 'Not Used'}
         </div>
       ),

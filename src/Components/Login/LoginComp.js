@@ -1,60 +1,9 @@
-import React, { createContext, useContext } from "react";
-import "./Login.css"
-import useForm from "./UseForm";
+import React from 'react'
+import Lottie from "lottie-react"
+import Dash from '../Dash.json'
 
-const App = () => {
-  const submit = values => {
-    console.log("submit", values);
-  };
-  const { state, handleChange, handleSubmit } = useForm(submit); // add validation func, initState as argum
-  // console.log(state);
-
+export default function LoginComp() {
   return (
-    // <LoginContext.Provider value={{state, handleChange}}>
-    <div className="formstyle">
-      <h1 className="heading">Login Form</h1>
-      <form onSubmit={handleSubmit} noValidate>
-        <div className="form-containerpage">
-          <LoginInput
-            state={state}
-            handleChange={handleChange}
-            name="email"
-            label="E-mail"
-          />
-          <LoginInput
-            state={state}
-            handleChange={handleChange}
-            name="password"
-            label="Password"
-          />
-          <button type="submit" className="submit-btn">
-            Log In
-          </button>
-        </div>
-      </form>
-    </div>
-    // </LoginContext.Provider>
-  );
-};
-
-// const LoginContext = createContext({state, handleChange});
-
-export default App;
-
-const LoginInput = ({ name, label, state, handleChange }) => {
-  // const {state, handleChange} = useContext(LoginContext);
-  return (
-    <label>
-      {label}
-      <input
-        type={name}
-        placeholder={name}
-        name={name}
-        value={state.input[name]}
-        onChange={handleChange}
-      />
-      <span className="validation-errors">{state.validationErrs[name]}</span>
-    </label>
-  );
-};
-
+    <div style={{width:'600px',  margin:'30px 0px 0px 350px',height:'400px'}}><Lottie animationData={Dash} /></div>
+  )
+}
