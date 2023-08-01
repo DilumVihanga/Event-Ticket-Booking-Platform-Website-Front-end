@@ -26,7 +26,8 @@ export default function CardGrid() {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:8000/api/events');
-        setEvents(response.data);
+        const eventsWithPackages = response.data.filter(event => event.ticket_packages && event.ticket_packages.length > 0);
+        setEvents(eventsWithPackages);
       } catch (error) {
         console.error(error);
       }

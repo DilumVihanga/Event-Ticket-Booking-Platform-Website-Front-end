@@ -8,6 +8,7 @@ const EventForm = () => {
   const [eventData, setEventData] = useState({
     eventNAME: '',
     eventDATE: '',
+    eventSHORTDESC: '',
     eventDISCRIPTION: '',
     eventLOCATION: '',
     eventSTARTTIME: '',
@@ -17,6 +18,11 @@ const EventForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (eventData.eventSHORTDESC.length > 60) {
+      swal("Error!", "Short description cannot exceed 60 characters!", "error");
+      return;
+    }
 
     const token = localStorage.getItem('access_token');
     const decodedToken = jwt_decode(token);

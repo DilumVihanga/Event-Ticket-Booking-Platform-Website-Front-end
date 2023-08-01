@@ -3,7 +3,6 @@ import Webcam from 'react-webcam';
 import jsQR from 'jsqr';
 import axios from 'axios';
 import { Container, Paper, Typography, Button, Grid, Box } from '@mui/material';
-import NavComp from '../Nav/NavComp';
 import swal from 'sweetalert';
 
 function QRCodeUploader() {
@@ -100,14 +99,14 @@ function QRCodeUploader() {
 
   return (
     <div>
-      <NavComp />
-      <Container style={{ paddingTop: '100px' }}>
+      
+      <Container style={{ paddingTop: '30px' }}>
         <Paper elevation={3} style={{ padding: '60px' }}>
           <Typography variant="h4" gutterBottom style={{ textAlign: 'center' }}>
             Scan QR Code
           </Typography>
-          <Typography variant="subtitle1" style={{ color: validated ? 'green' : 'red', textAlign: 'center' }}>
-            {validated !== null ? (validated ? 'This QR code is validated.' : 'This QR code is not validated.') : ''}
+          <Typography variant="subtitle1" style={{ color: validated ? 'red' : 'green', textAlign: 'center' }}>
+            {validated !== null ? (validated ? 'Allready Used QR.' : 'QR is still Valid.') : ''}
           </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} style={{ textAlign: 'center' }}>

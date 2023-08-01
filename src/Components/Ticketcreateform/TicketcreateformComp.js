@@ -4,7 +4,6 @@ import jwt_decode from 'jwt-decode';
 import './TicketPackageForm.css'; // Assuming you have a CSS file for this 
 import swal from 'sweetalert';
 
-
 const TicketPackageForm = () => {
   const [ticketPackageData, setTicketPackageData] = useState({
     eventID: '',
@@ -34,23 +33,37 @@ const TicketPackageForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const packagePrice = parseFloat(ticketPackageData.package_price);
+    if (packagePrice < 100 || packagePrice > 100000) {
+      swal("Invalid!", "Package price must be between Rs. 100 and Rs. 100,000!", "error");
+      return;
+    }
+
+    if (ticketPackageData.package_ticketquantity < 10 || ticketPackageData.package_ticketquantity  > 10000)  {
+      swal("Invalid!", "Package ticket quantity should between 10 - 10,000!", "error");
+      return;
+    }
+
     // Send the form data to the API endpoint
     axios
       .post('http://localhost:8000/api/ticket-packages/', ticketPackageData)
       .then((response) => {
         console.log('Success:', response.data);
-        // Handle any success actions if needed
+        swal("Good job!", "Package Created Successfully!", "success")
+          .then(() => {
+            window.location.reload();
+          });
       })
       .catch((error) => {
         console.error('Error:', error);
-        // Handle any error actions if needed
+        swal("Error!", "Failed to create package. Please try again.", "error");
       });
   };
 
   return (
     <div className="event-form-container">
       <form onSubmit={handleSubmit} className="event-form">
-        <h2 style={{marginBottom:'30px'}}className="title">New Ticket Package</h2>
+        <h2 style={{marginBottom:'30px'}} className="title">New Ticket Package</h2>
         <label className="form-label">
           Select Event:
           <select
@@ -90,7 +103,7 @@ const TicketPackageForm = () => {
           />
         </label>
         <label className="form-label">
-          Package Price:
+          Package Price: Rs.
           <input
             type="number"
             step="0.01"
@@ -112,7 +125,7 @@ const TicketPackageForm = () => {
             className="input"
           />
         </label>
-        <button type="submit" className="form-button" onClick={() => swal("Good job!", "Package Created Sucessfully !", "success")}>Create Ticket Package</button>
+        <button type="submit" className="form-button">Create Ticket Package</button>
       </form>
     </div>
   );
