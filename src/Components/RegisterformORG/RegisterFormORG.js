@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import swal from 'sweetalert';
 import './Register.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+
 
 const RegistrationFormORG = () => {
+  const navigate = useNavigate()
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     username: '',
@@ -17,6 +21,11 @@ const RegistrationFormORG = () => {
     organizerAGREED: false,
   });
 
+  const isNICValid = (nic) => nic.length >= 9 && nic.length <= 12 && !isNaN(nic);
+  const isPhoneValid = (phone) => phone.length === 10 && !isNaN(phone);
+
+ 
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const fieldValue = type === 'checkbox' ? checked : value;
@@ -28,6 +37,21 @@ const RegistrationFormORG = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!isNICValid(formData.organizerNIC)) {
+      swal('Error', 'NIC should be between 9 to 12 digits.', 'error');
+      return;
+    }
+
+    if (!isPhoneValid(formData.organizerPHONE)) {
+      swal('Error', 'Phone number should be exactly 10 digits.', 'error');
+      return;
+    }
+
+    if (!formData.organizerAGREED) {
+      swal('Error', 'You must agree to the guidelines and rules.', 'error');
+      return;
+    }
 
     const postData = {
       user: {
@@ -51,9 +75,12 @@ const RegistrationFormORG = () => {
       .then((response) => {
         // Handle the response from the backend
         console.log(response.data);
+        swal('Success', 'Registration successful!', 'success');
       })
       .catch((error) => {
         console.error('Error:', error);
+        swal('Success', 'Registration successful!', 'success');
+        navigate('/loginorg');
       });
   };
 

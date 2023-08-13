@@ -19,8 +19,13 @@ const EventForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (eventData.eventSHORTDESC.length > 60) {
-      swal("Error!", "Short description cannot exceed 60 characters!", "error");
+    // Validate event date is at least 5 days ahead of the current date
+    const eventDate = new Date(eventData.eventDATE);
+    const currentDate = new Date();
+    const timeDifference = eventDate.getTime() - currentDate.getTime();
+    const daysDifference = timeDifference / (1000 * 3600 * 24);
+    if (daysDifference < 5) {
+      swal("Error!", "Event date should be at least 5 days ahead of the current date!", "error");
       return;
     }
 

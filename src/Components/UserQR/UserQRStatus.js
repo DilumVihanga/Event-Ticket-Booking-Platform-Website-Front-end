@@ -70,6 +70,8 @@ const ValidatedQRCodes = () => {
 
   const CustomToolbar = () => {
     return (
+
+      
       <GridToolbarContainer>
         <GridToolbarFilterButton />
         <GridToolbarExport />
@@ -78,7 +80,14 @@ const ValidatedQRCodes = () => {
   };
 
   return (
+
     <div style={{ height: 400, width: '100%' }}>
+     <a href="http://localhost:3000/orderscan">
+  <button style={{ backgroundColor: "rgb(191, 122, 255)", margin: '30px', borderRadius: '20px', padding: '5px' }}>
+    Scan QR
+  </button>
+</a>
+
       <DataGrid
         rows={qrCodes}
         columns={columns}

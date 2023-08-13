@@ -23,7 +23,7 @@ export default function NavComp() {
             <li><a href="/contact">Contact</a></li>                      
             <li><a href="/cart">Cart</a></li>
             
-            <li><a href="/login">Login</a></li> 
+            <li><a href="/loginopt">Login</a></li> 
        </ul>
    </nav>
 </div>

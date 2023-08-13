@@ -13,14 +13,11 @@ const OrganizerDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const eventResponse = await axios.get(`http://localhost:8000/api/pak/${user_id}`);
-        const eventNames = eventResponse.data.map(event => event.eventNAME); // Assuming events have an event_name field
- 
-        let relatedPurchases = [];
-        for (const eventName of eventNames) {
-          const purchaseResponse = await axios.get(`http://localhost:8000/api/purchaseevent/${eventName}/`);
-          relatedPurchases = relatedPurchases.concat(purchaseResponse.data);
-        }
+        const eventResponse = await axios.get(`http://localhost:8000/api/events/?user_id=${user_id}`);
+        const eventNames = eventResponse.data.map(event => event.eventNAME);
+        
+        const purchaseResponse = await axios.get('http://localhost:8000/api/ticket-purchases/');
+        const relatedPurchases = purchaseResponse.data.filter(purchase => eventNames.includes(purchase.event_name));
 
         setPurchases(relatedPurchases.map((purchase, index) => ({
           ...purchase,
@@ -53,7 +50,10 @@ const OrganizerDashboard = () => {
   };
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+
+    <div><button onClick={window.print} style={{backgroundColor:"rgb(191, 122, 255)", margin:'30px', borderRadius:'20px', padding:'5px'}}> Download Report </button>
+        <iframe title="powerbi" width="1370" height="741.25" src="https://app.powerbi.com/reportEmbed?reportId=ec180bdb-e28f-4d96-b593-03647882131e&autoAuth=true&ctid=aa232db2-7a78-4414-a529-33db9124cba7" frameborder="0" allowFullScreen="true" ></iframe>
+    <div style={{ height: 400, width: '100%',marginTop:'70px'}}>
       <DataGrid
         rows={purchases}
         columns={purchaseColumns}
@@ -62,6 +62,7 @@ const OrganizerDashboard = () => {
           Toolbar: CustomToolbar,
         }}
       />
+    </div>
     </div>
   );
 };

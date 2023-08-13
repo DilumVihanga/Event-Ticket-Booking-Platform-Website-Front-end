@@ -40,6 +40,8 @@ import ChartsComp from './Components/Charts/ChartsComp';
 import UserSaleTable from './Components/UserSale/UserSaleTable';
 import UserQRStatus from './Components/UserQR/UserQRStatus';
 import ProfileEditComp from './Components/ProfileEdit/ProfileEditComp';
+import LogOptionComp from './Components/LogOption/LogOptionComp';
+import ReportComp from './Components/Report/ReportComp';
 
 
 
@@ -65,6 +67,7 @@ export default function () {
         <Route path="/orderscan" element={<QRscanComp/>}/>
         <Route path="/validate" element={<ValidateQR/>}/>
         <Route path="profileuser" element={<ProfileEditComp/>}/>
+        <Route path="/loginopt" element={<LogOptionComp/>}/>
         
         <Route path="/detail" element={<Detail/>}/> 
         <Route path="/orderform" element={<TicketOrder/>}/>
@@ -78,12 +81,13 @@ export default function () {
         <Route path="/log" element={<Userlogin/>}/>
      
         <Route path="dashboard" element={<SidebarORG/>}> 
+        
         <Route path="" element={<LoginComp/>}/>
          <Route path="overview" element={<ChartsComp/>}/>
           <Route path="tickets" element={<TicketcreateformComp/>}/>
           <Route path="events" element={<EventForm/>}/>
           <Route path="sales" element={<MysalesComp/>}/>
-          <Route path="reports" element={<CardGrid/>}/>
+          <Route path="reports" element={<ReportComp/>}/>
           <Route path="create-event" element={<EventForm/>}/>
           <Route path="my-events" element={<MyeventsComp/>}/>
           <Route path="validate-tickets" element={<ValidateQR/>}/>
@@ -91,7 +95,8 @@ export default function () {
 
          
          <Route path="ordermanage" element={<SidebarUSER/>}> 
-        <Route path="" element={<LoginComp/>}/>
+         {/* <Route element= {<PrivateRoute/>}> <Route element={<LoginComp/>} path=""/> </Route> */}
+        <Route path="" element={<LoginComp/>}/>       
          
           <Route path="orders" element={<UserSaleTable/>}/>
           <Route path="validated" element={<UserQRStatus/>}/>
@@ -108,7 +113,6 @@ export default function () {
           <Route path="users" element={<OrderformComp/>}/>
           <Route path="organizers" element={<OrderformComp/>}/>
          </Route>
-         
         </Routes>      
       </BrowserRouter>
       </AuthProvider>

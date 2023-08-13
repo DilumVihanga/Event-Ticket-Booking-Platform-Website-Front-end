@@ -20,7 +20,7 @@ export default function Home() {
      <CategorycardComp/><br></br><br></br>
      <h1 style={{fontFamily:"cursive" , color: "white"}}>Upcoming Events </h1> <br></br><br></br><br></br><br></br>
      
-     <HorizontalcardComp/> <br></br> <PadignationComp/>  <br></br><br></br><br></br>
+     <HorizontalcardComp/> <br></br>   <br></br><br></br><br></br>
      <h1 style={{fontFamily:"cursive" , color: "white"}}>Most Popular Events</h1> <br></br><br></br><br></br><br></br>
           <CardGrid/><br></br><PadignationComp/> <br></br><br></br>
          
